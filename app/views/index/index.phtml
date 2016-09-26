@@ -1,0 +1,44 @@
+
+<? foreach ($news->items as $new) {?>
+    <div class="section">
+        <div class="row">
+            <div class="col s12 m12 l12 news-title">
+                <?= $new->title ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12 l12 news-short-description">
+                <?= $new->shortDescription ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12 l12 news-author">
+                <?= $new->author ?>
+            </div>
+        </div>
+    </div>
+<? } ?>
+
+
+<ul class="pagination">
+    <li class="<?= ($news->before  <= 1) ? 'disabled' : 'waves-effect' ?>">
+        <a href="/?page=<?= $news->before ?>"> <i class="material-icons">chevron_left</i> </a>
+    </li>
+    <li class="waves-effect active">
+        <a href="/?page=<?= $news->current ?>"> <?= $news->current ?></a>
+    </li>
+    <? if($news->total_pages > 1) { ?>
+        <li class="<?= ($news->next  >= $news->total_pages) ? 'disabled' : 'waves-effect' ?>">
+            <a href="/?page=<?= $news->next ?>"> <?= $news->next ?></a>
+        </li>
+    <? } ?>
+    <li class="waves-effect">
+        <a href="/?page=<?= $news->last ?>"> <i class="material-icons">chevron_right</i> </a>
+    </li>
+</ul>
+
+
+
+

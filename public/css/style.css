@@ -1,0 +1,49 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.admin-login-form{
+    margin-top: 18%;
+    background-color: whitesmoke;
+    border-radius: 3px;
+}
+
+.login-input-container{
+    padding-top: 10px;
+}
+
+.login-submit-button{
+    margin-left: 30%;
+}
+
+.input-field > input.input-error{
+    border-color: red;
+}
+
+.admin-page-nav{
+    background-color: whitesmoke !important;
+    width: 250px !important;
+}
+
+.admin-page-main-section{
+    padding: 4px;
+}
+
+.userView{
+   background-image: url("/img/admin-nav-bg.png");
+}
+
+#admin-avatar{
+    margin-left: 33% !important;
+}

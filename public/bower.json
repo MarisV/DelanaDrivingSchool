@@ -1,0 +1,25 @@
+{
+  "name": "De Lana Auto",
+  "description": "Website for De Lana autoschool",
+  "main": "",
+  "keywords": [
+    "delana",
+    "autoschool"
+  ],
+  "authors": [
+    "Maris Vigulis"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "jquery": "^3.1.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "package.json",
+    "src"
+  ]
+}

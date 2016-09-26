@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Administratora sadaļa</title>
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <?php $this->assets->outputCss() ?>
+    <?php $this->assets->outputJs() ?>
+
+</head>
+
+<body>
+<header>
+    <ul id="slide-out" class="side-nav fixed admin-page-nav">
+        <li>
+            <div class="userView">
+                <?= $this->tag->image(['img/admin-avatar.png', 'class' => 'circle responsive-img', 'id' => 'admin-avatar']) ?>
+                <a href="#"><span class="black-text name center-align"><?= $admin->firstname . ' '. $admin->lastname?></span></a>
+                <a href="#"><span class="black-text email center-align"><?= $admin->email ?></span></a>
+            </div>
+        </li>
+        <li> <?= $this->tag->linkTo('admin/news', 'Jaunumi'); ?> </li>
+        <li> <?= $this->tag->linkTo('admin/pages', 'Lapas'); ?></li>
+        <li> <?= $this->tag->linkTo('admin/languages', 'Valodas');?></li>
+        <li> <?= $this->tag->linkTo('admin/seo', 'SEO iestatījumi');?></li>
+        <li> <?= $this->tag->linkTo('admin/feedback', 'Atsauksmes');?></li>
+        <li> <?= $this->tag->linkTo('admin/categories', 'Kategorijas');?></li>
+        <li> <?= $this->tag->linkTo('admin/applications_for_courses', 'Pieteikšanās kursiem') ?></li>
+        <li> <?= $this->tag->linkTo('admins/instructors', 'Pasniedzēji');?></li>
+        <li> <?= $this->tag->linkTo('admin/pols', 'Aptaujas');?></li>
+        <li> <?= $this->tag->linkTo('admin/contacts', 'Kontaktinformācija')?> </li>
+    </ul>
+
+    <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+</header>
+<main style="padding-left: 250px">
+    <div class="section admin-page-main-section">
+        <?= $this->getContent() ?>
+    </div>
+</main>
+
+
+</body>
+
+</html>

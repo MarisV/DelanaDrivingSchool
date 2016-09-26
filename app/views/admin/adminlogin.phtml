@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Admin login page</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <?php $this->assets->outputCss() ?>
+    <?php $this->assets->outputJs() ?>
+</head>
+
+<body class="light-blue lighten-2">
+
+    <div class="container">
+        <div class="section">
+
+            <div class="row">
+                <div class="col s12 m6 l6 push-s3 push-m3 push-l3 admin-login-form">
+
+                    <form class="col s12 m12 l12" method="post">
+                        <div class="row login-input-container">
+                            <div class="input-field col s12 m12 l12">
+                                <input id="login" name="username" type="text" class="validate <?= (!empty($error['euname']) ? ' input-error' : '') ?>">
+                                <label for="login">Login</label>
+                                <?= (!empty($error['euname']) ? $error['euname'] : '') ?>
+                            </div>
+                            <div class="input-field col s12 m12 l12">
+                                <input id="password" name="password" type="password" class="validate <?= (!empty($error['epassword']) ? ' input-error' : '') ?>">
+                                <label for="password">Password</label>
+                                <?= (!empty($error['euname']) ? $error['epassword'] : '') ?>
+                            </div>
+                            <div class="input-field col s12 m12 l12">
+                                <button class="btn waves-effect waves-light login-submit-button" type="submit" name="action">Login
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

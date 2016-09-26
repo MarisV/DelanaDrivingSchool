@@ -13,8 +13,6 @@ class AdminController extends ControllerBase
 {
     private $cache;
 
-    private $admin;
-
     public function beforeExecuteRoute(){
 
         parent::beforeExecuteroute();

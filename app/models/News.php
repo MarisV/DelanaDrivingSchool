@@ -41,7 +41,8 @@ class News extends Model
             'seo_title'         =>  'seoTitle',
             'seo_description'   =>  'seoDescription',
             'seo_keywords'      =>  'seoKeywords',
-            'language_id'       =>  'languageId'
+            'language_id'       =>  'languageId',
+            'image'             =>  'image'
         ];
     }
 

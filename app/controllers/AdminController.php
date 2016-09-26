@@ -32,16 +32,16 @@ class AdminController extends ControllerBase
 
     public function indexAction()
     {
-
-
-
-
+        $this->dispatcher->forward(['controller' => 'admin', 'action' => 'news']);
+        return false;
     }
 
     public function newsAction()
     {
+        $latestNews = News::find();
 
 
+        $this->view->setVar('news', $latestNews);
     }
 
 

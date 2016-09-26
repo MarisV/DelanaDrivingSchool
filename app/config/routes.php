@@ -43,4 +43,9 @@ $router->add('/:controller/:action', array(
     'action'      => 2
 ));
 
+$router->add('/admin', array(
+    'controller'    =>  'admin',
+    'action'        =>  'news'
+));
+
 return $router;

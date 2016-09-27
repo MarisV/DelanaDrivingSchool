@@ -9,8 +9,29 @@
         }
     );
 
-      $('.add-news-modal').on('click', function(){
+      $('.add-news-modal').on('click', function(e){
+          e.preventDefault();
          $('#add-news-modal').openModal();
+      });
+
+      $(".classy-editor").ClassyEdit();
+
+      $('.submit-news').on('click', function (e) {
+         e.preventDefault();
+
+          var form = $('.add-news-form');
+
+          var formData = $('.add-news-form').serialize();
+
+          $.ajax({
+              url : '/news/add',
+              method : 'POST',
+              data : {'new' : formData},
+              success : function(data){
+                  console.log(data);
+              }
+          });
+
       });
 
   });

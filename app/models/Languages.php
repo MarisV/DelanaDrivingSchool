@@ -16,6 +16,8 @@ class Languages extends Model
 
     public $code;
 
+    public $visible;
+
     public function initialize()
     {
         $this->belongsTo('id', 'News', 'language_id');

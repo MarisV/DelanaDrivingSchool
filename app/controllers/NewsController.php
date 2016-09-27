@@ -6,8 +6,6 @@
  * Time: 20:04
  */
 
-namespace controllers;
-
 use Phalcon\Mvc\View;
 use library\SharedService;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
@@ -19,7 +17,9 @@ class NewsController extends \ControllerBase
     {
         $this->view->disable();
 
+        $new = $this->request->getPost('new');
 
+        die(var_dump(($new)));
     }
 
 }

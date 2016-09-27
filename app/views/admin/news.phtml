@@ -55,8 +55,106 @@
 
 <div id="add-news-modal" class="modal">
     <div class="modal-content">
+        <div class="row">
+            <form class="col s12 add-news-form" method="post" action="#">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Заголовок" id="title" name="news-title" type="text" class="validate">
+                        <label for="title">Заголовок</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea  value="Краткое описание" type="text" name="news-short-description" class="materialize-textarea validate" length="200"> </textarea>
+                        <label for="disabled">Краткое описание</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea  value="Короткое описание" type="text" name="news-full-description" class="materialize-textarea classy-editor validate"> </textarea>
+                        <label for="disabled" style="padding-bottom: 10px">Полное описание</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="file-field input-field news-image">
+                        <div class="btn">
+                            <span>Изображение</span>
+                            <input type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Выберите изображение">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <ul class="collapsible" data-collapsible="accordion" style="width: 640px !important; margin-left: -13px">
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">language</i>Язык новости</div>
+                                <div class="collapsible-body">
+                                    <?php foreach ($languages as $lang) { ?>
+                                        <? $ruSelected = ($lang->id == 3) ? 'checked' : '' ?>
+                                        <p>
+                                            <input name="languages" class="with-gap" type="radio" id="<?= $lang->code ?>" <?= $ruSelected  ?> >
+                                            <label for="<?= $lang->code ?>"> <?= $lang->name ?></label>
+                                        </p>
+                                    <?php } ?>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <ul class="collapsible" data-collapsible="accordion" style="width: 640px !important; margin-left: -13px">
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">settings</i>SEO Настройки</div>
+                                <div class="collapsible-body">
+                                    <div class="row" style="margin-top: 10px">
+                                        <div class="input-field col s12">
+                                            <input placeholder="SEO Заголовок" id="news-seo-title" name="news-seo-title" type="text" class="validate">
+                                            <label for="title">SEO Заголовок</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input placeholder="SEO ключевые слова" id="news-seo-keywords" name="news-seo-keywords" type="text" class="validate">
+                                            <label for="title">SEO ключевые слова</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea  value="SEO описание" type="text" name="news-seo-description" class="materialize-textarea validate" length="160"> </textarea>
+                                            <label for="news-seo-description">SEO описание</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <div class="switch">
+                            <label>
+                                Скрыть
+                                <input type="checkbox">
+                                <span class="lever"></span>
+                                Опубликовать
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 input-field center" style="margin-top: 30px;">
+                        <button class="btn waves-effect waves-light submit-news" type="submit" name="action">Добавить
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
     </div>
 </div>

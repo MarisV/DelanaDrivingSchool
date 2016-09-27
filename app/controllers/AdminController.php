@@ -31,6 +31,9 @@ class AdminController extends ControllerBase
         $this->cache = SharedService::getCache();
         $this->view->setVar('admin', SharedService::getLoggedInAdmin());
 
+        $this->assets->addCss('components/jq-text-editor/css/jquery.classyedit.css');
+
+        $this->assets->addJs('components/jq-text-editor/js/jquery.classyedit.js');
     }
 
     public function indexAction()
@@ -46,6 +49,10 @@ class AdminController extends ControllerBase
         $latestNews = News::find([
             'order'     =>  'dateAdded desc',
         ]);
+        $visibleLanguages = Languages::find([
+            'visible'   =>  'yes',
+            'order'     =>  'id desc'
+        ]);
 
         $paginator = new PaginatorModel([
             'data'  =>  $latestNews,
@@ -56,6 +63,7 @@ class AdminController extends ControllerBase
         $news = $paginator->getPaginate();
 
         $this->view->setVar('news', $news);
+        $this->view->setVar('languages', $visibleLanguages);
     }
 
 

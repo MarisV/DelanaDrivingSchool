@@ -9,5 +9,9 @@
         }
     );
 
+      $('.add-news-modal').on('click', function(){
+         $('#add-news-modal').openModal();
+      });
+
   });
 })(jQuery);

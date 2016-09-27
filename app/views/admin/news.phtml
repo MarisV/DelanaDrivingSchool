@@ -5,7 +5,7 @@
         </h5>
     </div>
     <div class="col s6 m6 l6 right-align" style="margin-top: -26px">
-        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger add-news-modal" href="#add-news-modal"><i class="material-icons">add</i></a>
     </div>
 </div>
 <div class="divider"></div>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="card-action">
                     <?= $this->tag->linkTo('news/'.$new->id, $new->title) ?>
-                    <?= $this->tag->linkTo(['news/'.$new->id, 'Labot', 'class' => 'red-text']) ?>
+                    <?= $this->tag->linkTo(['news/edit/'.$new->id, 'Редактировать', 'class' => 'red-text']) ?>
                 </div>
             </div>
         </div>
@@ -35,10 +35,15 @@
     <li class="<?= ($news->before  < 1) ? 'disabled' : 'waves-effect' ?>">
         <?= $this->tag->linkTo(['admin/news/page/'.$news->before, '<i class="material-icons">chevron_left</i>']) ?>
     </li>
+    <? if($news->current != 1) { ?>
+        <li class="waves-effect">
+            <?= $this->tag->linkTo(['admin/news/page/'.$news->before, $news->before]) ?>
+        </li>
+    <? }?>
     <li class="waves-effect active">
         <?= $this->tag->linkTo(['admin/news/page/'.$news->current, $news->current]) ?>
     </li>
-    <? if($news->total_pages > 1) { ?>
+    <? if($news->current != $news->total_pages) { ?>
         <li class="<?= ($news->next  > $news->total_pages) ? 'disabled' : 'waves-effect' ?>">
             <?= $this->tag->linkTo(['admin/news/page/'.$news->next, $news->next]) ?>
         </li>
@@ -47,3 +52,11 @@
         <?= $this->tag->linkTo(['admin/news/page/'.$news->last, '<i class="material-icons">chevron_right</i>']) ?>
     </li>
 </ul>
+
+<div id="add-news-modal" class="modal">
+    <div class="modal-content">
+
+
+
+    </div>
+</div>

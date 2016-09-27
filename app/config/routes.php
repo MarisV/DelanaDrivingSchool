@@ -48,4 +48,11 @@ $router->add('/admin', array(
     'action'        =>  'news'
 ));
 
+$router->add('/admin/news/page/:int', array(
+    'controller'    =>  'admin',
+    'action'        =>  'news',
+    'page'          =>  1
+));
+
+
 return $router;

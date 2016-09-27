@@ -8,10 +8,13 @@
  */
 use Phalcon\Mvc\View;
 use library\SharedService;
+use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
 class AdminController extends ControllerBase
 {
     private $cache;
+
+    const NEWS_PER_PAGE = 4;
 
     public function beforeExecuteRoute(){
 
@@ -38,10 +41,21 @@ class AdminController extends ControllerBase
 
     public function newsAction()
     {
-        $latestNews = News::find();
+        $page = $this->dispatcher->getParam('page');
 
+        $latestNews = News::find([
+            'order'     =>  'dateAdded desc',
+        ]);
 
-        $this->view->setVar('news', $latestNews);
+        $paginator = new PaginatorModel([
+            'data'  =>  $latestNews,
+            'limit' =>  self::NEWS_PER_PAGE,
+            'page'  =>  $page
+        ]);
+
+        $news = $paginator->getPaginate();
+
+        $this->view->setVar('news', $news);
     }
 
 

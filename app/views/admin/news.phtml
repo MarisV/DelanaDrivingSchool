@@ -30,7 +30,9 @@
                         <div class="col s12 m12 l12">
                             <div class="left">
                                 <?= $this->tag->linkTo(['news/edit/'.$new->id, '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn']) ?>
-                                <?= $this->tag->linkTo(['news/delete/'.$new->id, '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light red btn delete-new-btn', 'id' => $new->id]) ?>
+                            </div>
+                            <div class="right">
+                                <?= $this->tag->linkTo(['news/delete/'.$new->id, '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-new-btn', 'id' => $new->id]) ?>
                             </div>
                         </div>
                     </div>

@@ -14,7 +14,7 @@ class AdminController extends ControllerBase
 {
     private $cache;
 
-    const NEWS_PER_PAGE = 4;
+    const NEWS_PER_PAGE = 40;
 
     public function beforeExecuteRoute(){
 
@@ -84,10 +84,10 @@ class AdminController extends ControllerBase
             $password = $this->request->getPost('password', ['trim']);
 
             if(empty($userName)){
-                $errors['euname'] = 'Lietotājvārds nevar būt tukšs';
+                $errors['euname'] = 'Имя пользователя не может быть пустым';
             }
             if(empty($password)){
-                $errors['epassword'] = 'Parole nevar būt tukša';
+                $errors['epassword'] = 'Пароль не может быть пустым';
             }
 
             if(empty($errors)){
@@ -102,7 +102,6 @@ class AdminController extends ControllerBase
 
             $this->view->setVar('error', $errors);
         }
-
     }
 
     public function logoutadminAction()

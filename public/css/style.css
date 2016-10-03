@@ -47,3 +47,7 @@
 #admin-avatar{
     margin-left: 33% !important;
 }
+
+.toast{
+    background-color: lightgreen !important;
+}

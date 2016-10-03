@@ -29,6 +29,10 @@ class News extends Model
 
     public $languageId;
 
+    public $image;
+
+    public $published;
+
     public function columnMap()
     {
         return [
@@ -51,4 +55,5 @@ class News extends Model
     {
         $this->hasOne('language_id', 'Languages', 'id');
     }
+
 }

@@ -21,4 +21,16 @@ class ControllerBase extends Controller
             return false;
         }
     }
+
+    public function forwardTo404()
+    {
+        $this->getDI()->get('dispatcher')->forward(
+            array(
+                'controller' => 'error',
+                'action'     => 'error404'
+            )
+        );
+
+        return false;
+    }
 }

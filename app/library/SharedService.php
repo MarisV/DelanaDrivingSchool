@@ -47,7 +47,7 @@ class SharedService
     /**
      * Return logged admin object.
      *
-     * @return mixed
+     * @return \Administrators
      */
     public static function getLoggedInAdmin()
     {

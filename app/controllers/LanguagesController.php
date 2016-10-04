@@ -37,4 +37,13 @@ class LanguagesController extends ControllerBase
 
     }
 
+    public function editAction()
+    {
+        $languageToEditId = $this->dispatcher->getParam('languageId');
+
+        if ($languageToEditId) {
+
+        }
+    }
+
 }

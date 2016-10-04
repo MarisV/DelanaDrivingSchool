@@ -59,6 +59,12 @@ $router->add('/admin/news/page/:int', array(
     'page'          =>  1
 ));
 
+$router->add('/languages/delete/:int', array(
+    'controller'    =>  'languages',
+    'action'        =>  'delete',
+    'languageId'    =>  1
+));
+
 
 
 return $router;

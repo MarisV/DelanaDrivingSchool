@@ -114,5 +114,12 @@ class AdminController extends ControllerBase
         }
     }
 
+    public function languagesAction()
+    {
+        $allLanguagesList = Languages::find();
+
+        $this->view->setVar('languages', $allLanguagesList);
+    }
+
 
 }

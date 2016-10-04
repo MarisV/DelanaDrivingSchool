@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col s6 m6 l6" style="margin-top: -30px">
+        <h5 class="teal-text">
+            Управление языками
+        </h5>
+    </div>
+    <div class="col s6 m6 l6 right-align" style="margin-top: -26px">
+        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger add-news-modal" href="#add-news-modal"><i class="material-icons">add</i></a>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col s12 m 12 l12">
+        <table class="highlight responsive-table">
+            <thead>
+            <tr>
+                <th data-field="language">Язык</th>
+                <th data-field="code">Код</th>
+                <th data-field="visible">Активный</th>
+                <th data-field="actions">Управление</th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($languages as $lang) {?>
+                    <tr>
+                        <td>
+                            <?= $lang->name?>
+                        </td>
+                        <td>
+                            <?= $lang->code?>
+                        </td>
+                        <td>
+                            <?= $lang->visible ?>
+                        </td>
+                        <td>
+                            <div class="left">
+                                <?= $this->tag->linkTo(['languages/edit/'.$new->id, '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn', 'title' => 'Редактировать']) ?>
+                            </div>
+                            <div class="right">
+                                <?= $this->tag->linkTo(['languages/delete/'.$new->id, '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-new-btn', 'id' => $new->id, 'title' => 'Удалить']) ?>
+                            </div>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
+</div>

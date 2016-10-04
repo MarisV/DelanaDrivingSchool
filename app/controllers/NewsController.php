@@ -17,34 +17,18 @@ class NewsController extends \ControllerBase
     {
         $this->view->disable();
 
-        $new = $this->request->getPost('new');
-
-        if(!SharedService::isAdminLogged()){
+        if (!SharedService::isAdminLogged()) {
             $this->forwardTo404();
             return false;
         }
 
-        if($new && $this->request->isAjax()){
+        $new = $this->request->getPost('new');
 
-           $addingNew = new News();
-
-           $fields =  $addingNew->getModelsMetaData()->getReverseColumnMap($addingNew);
+        if ($new && $this->request->isAjax()) {
 
            $new = json_decode($new, true);
 
-           foreach ($new as $value) {
-
-                $fieldName = $value['name'];
-                $fieldValue = $value['value'];
-
-                if(array_key_exists($fieldName, $fields)) {
-                    $addingNew->$fieldName = $fieldValue;
-                }
-           }
-
-           $addingNew->author = SharedService::getLoggedInAdmin()->username;
-
-           $createResult = $addingNew->create();
+           $createResult = (new News())->create($new);
 
            die(json_encode(['result' => $createResult]));
         }

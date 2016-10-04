@@ -41,6 +41,7 @@
                 if(response.result == true){
                     Materialize.toast('Новость успешно добавлена', 4000, 'top');
                     $('#add-news-modal').closeModal();
+                    location.href = location;
                 }
               }
             });
@@ -60,7 +61,7 @@
               dataType: "json",
               success : function(response){
                   if(response.result == true){
-                      location.reload();
+                      location.href = location;
                   } else {
                       Materialize.toast(response.result, 4000, 'top');
                   }

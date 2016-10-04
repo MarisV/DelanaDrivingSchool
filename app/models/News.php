@@ -8,6 +8,8 @@
  */
 
 use Phalcon\Mvc\Model;
+use library\SharedService;
+use library\Utils\Slug;
 
 class News extends Model
 {
@@ -54,6 +56,52 @@ class News extends Model
     public function initialize()
     {
         $this->hasOne('language_id', 'Languages', 'id');
+    }
+
+    /**
+     *  Map JSON decoded 'New' data to News model.
+     *
+     * @param JSON $rawNew
+     */
+    private function prepareNewDataFromJsonToModel($rawNew)
+    {
+        $fields =  $this->getModelsMetaData()->getReverseColumnMap($this);
+
+        foreach ($rawNew as $value) {
+
+            $fieldName = $value['name'];
+            $fieldValue = $value['value'];
+
+            if(array_key_exists($fieldName, $fields)) {
+                $this->$fieldName = $fieldValue;
+            }
+        }
+        $this->author = SharedService::getLoggedInAdmin()->username;
+    }
+
+    /**
+     * Overrided method.  Prepare JSON encoded "New" data,
+     * and save it.
+     *
+     * @param mixed $data
+     * @param mixed $whiteList
+     * @return bool
+     */
+    public function create($data = null, $whiteList = null)
+    {
+        $this->prepareNewDataFromJsonToModel($data);
+
+        return parent::create();
+    }
+
+    /**
+     * Get link to new
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return 'news/'.$this->id . '/' . Slug::generate($this->title);
     }
 
 }

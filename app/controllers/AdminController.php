@@ -49,6 +49,7 @@ class AdminController extends ControllerBase
         $latestNews = News::find([
             'order'     =>  'dateAdded desc',
         ]);
+
         $visibleLanguages = Languages::find([
             'visible'   =>  'yes',
             'order'     =>  'id desc'

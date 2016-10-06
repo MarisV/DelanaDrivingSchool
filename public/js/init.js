@@ -76,7 +76,8 @@
                   dismissible: true,
                   opacity: .7,
                   complete: function() {
-
+                      var languageAddForm = $('#language-add-form')[0];
+                      languageAddForm.reset();
                   }
               }
           );
@@ -89,7 +90,7 @@
           var newLanguage = $('#language-add-form').serializeArray();
 
           $.ajax({
-              url : '/languages/add',
+              url : '/languages/addOrEdit',
               method : 'POST',
               data : {'language' : JSON.stringify(newLanguage)},
               dataType: "json",
@@ -123,7 +124,31 @@
                   }
               }
           });
+      });
 
+      $('.edit-language-btn').on('click', function(e){
+         e.preventDefault();
+
+            var languageId = $(this).attr('id');
+
+            var tr = $(this).parent().parent().parent();
+
+            var id = $(this).attr('id');
+            var name =  $(tr).find('td#name')[0].innerText;
+            var code =  $(tr).find('td#code')[0].innerText;
+            var visible = $(tr).find('td#visible')[0].innerText;
+
+
+
+            $('.add-language-modal').click();
+
+            $('#language_name').val(name);
+            $('#language_code').val(code);
+            $('#language_visible').val(visible);
+
+            $('#lstat').val(id);
+
+            $('select').material_select();
 
       });
 

@@ -23,18 +23,18 @@
             <tbody>
                 <?php foreach ($languages as $lang) {?>
                     <tr>
-                        <td>
+                        <td id="name">
                             <?= $lang->name?>
                         </td>
-                        <td>
+                        <td id="code">
                             <?= $lang->code?>
                         </td>
-                        <td>
+                        <td id="visible">
                             <?= $lang->visible ?>
                         </td>
                         <td>
                             <div class="left">
-                                <?= $this->tag->linkTo(['languages/edit/'.$lang->id, '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn', 'title' => 'Редактировать']) ?>
+                                <?= $this->tag->linkTo(['languages/edit/', '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn edit-language-btn', 'title' => 'Редактировать', 'id' => "$lang->id"]) ?>
                             </div>
                             <div class="right">
                                 <?= $this->tag->linkTo(['languages/delete/'.$lang->id, '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-language-btn', 'id' => $lang->id, 'title' => 'Удалить']) ?>
@@ -52,6 +52,7 @@
     <div class="modal-content">
         <div class="row">
             <?=  Phalcon\Tag::form(array("languages/add", "method" => "post", 'class' => 'col s12 m12 l12', 'id' => 'language-add-form')); ?>
+                <input type="hidden" id="lstat" value="new" name="lstat">
                 <div class="row">
                     <div class="input-field col s12 m12 l12">
                         <input placeholder="Язык" id="language_name" name="name" type="text" class="validate">
@@ -60,13 +61,13 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l12">
-                        <input id="language_code" name="code" type="text" class="validate">
+                        <input placeholder="Код" id="language_code" name="code" type="text" class="validate">
                         <label for="language_code">Код языка</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <select name="visible">
+                        <select name="visible" id="language_visible">
                             <option value="yes">Да</option>
                             <option value="no">Нет</option>
                         </select>

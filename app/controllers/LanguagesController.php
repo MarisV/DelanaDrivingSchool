@@ -22,7 +22,7 @@ class LanguagesController extends ControllerBase
 
     }
 
-    public function addAction()
+    public function addOrEditAction()
     {
         $this->view->disable();
 
@@ -30,17 +30,29 @@ class LanguagesController extends ControllerBase
 
         $newLanguage = json_decode($newLanguage, true);
 
-        $languageToSave = new Languages();
+        if ($newLanguage[0]['name'] == 'lstat'){
+            $langId = $newLanguage[0]['value'];
 
-        $languageToSave->mapDataFromJsonToModel($newLanguage);
+            $languageToSave = Languages::findFirst($langId);
 
-        $createResult = $languageToSave->save();
+            $languageToSave->mapDataFromJson($newLanguage);
+
+            $createResult = $languageToSave->save();
+        } else {
+            $languageToSave = new Languages();
+
+            $languageToSave->mapDataFromJson($newLanguage);
+
+            $createResult = $languageToSave->create();
+        }
 
         die(json_encode(['result' => $createResult]));
     }
 
     public function deleteAction()
     {
+        $this->view->disable();
+
         $languageToDeleteId = $this->request->getPost('languageId');
 
         if ($languageToDeleteId) {
@@ -53,15 +65,6 @@ class LanguagesController extends ControllerBase
             die(json_encode(['result'   =>  'Invalid language id param']));
         }
 
-    }
-
-    public function editAction()
-    {
-        $languageToEditId = $this->dispatcher->getParam('languageId');
-
-        if ($languageToEditId) {
-
-        }
     }
 
 }

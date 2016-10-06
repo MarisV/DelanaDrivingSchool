@@ -38,7 +38,7 @@ class Languages extends Model
      *
      * @param JSON $rawNew
      */
-    public function mapDataFromJsonToModel($rawNew)
+    public function mapDataFromJson($rawNew)
     {
         $fields = $this->getModelsMetaData()->getReverseColumnMap($this);
 

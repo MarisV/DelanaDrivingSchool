@@ -5,7 +5,7 @@
         </h5>
     </div>
     <div class="col s6 m6 l6 right-align" style="margin-top: -26px">
-        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger add-news-modal" href="#add-news-modal"><i class="material-icons">add</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger add-language-modal" href="#add-news-modal"><i class="material-icons">add</i></a>
     </div>
 </div>
 <div class="row">
@@ -34,10 +34,10 @@
                         </td>
                         <td>
                             <div class="left">
-                                <?= $this->tag->linkTo(['languages/edit/'.$new->id, '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn', 'title' => 'Редактировать']) ?>
+                                <?= $this->tag->linkTo(['languages/edit/'.$lang->id, '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn', 'title' => 'Редактировать']) ?>
                             </div>
                             <div class="right">
-                                <?= $this->tag->linkTo(['languages/delete/'.$new->id, '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-new-btn', 'id' => $new->id, 'title' => 'Удалить']) ?>
+                                <?= $this->tag->linkTo(['languages/delete/'.$lang->id, '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-language-btn', 'id' => $lang->id, 'title' => 'Удалить']) ?>
                             </div>
                         </td>
                     </tr>
@@ -46,4 +46,39 @@
         </table>
     </div>
 
+</div>
+
+<div id="add-language-modal" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <?=  Phalcon\Tag::form(array("languages/add", "method" => "post", 'class' => 'col s12 m12 l12', 'id' => 'language-add-form')); ?>
+                <div class="row">
+                    <div class="input-field col s12 m12 l12">
+                        <input placeholder="Язык" id="language_name" name="name" type="text" class="validate">
+                        <label for="language_name">Язык</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l12">
+                        <input id="language_code" name="code" type="text" class="validate">
+                        <label for="language_code">Код языка</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select name="visible">
+                            <option value="yes">Да</option>
+                            <option value="no">Нет</option>
+                        </select>
+                        <label>Включить</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <?= Phalcon\Tag::submitButton(['Save', 'class' => 'btn waves-effect waves-light submit-language-add' ]) ?>
+                    </div>
+                </div>
+            <?= \Phalcon\Tag::endForm(); ?>
+        </div>
+    </div>
 </div>

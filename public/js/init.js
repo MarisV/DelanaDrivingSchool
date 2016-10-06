@@ -69,5 +69,63 @@
           });
         })
 
+      $('.add-language-modal').on('click', function(e){
+          e.preventDefault();
+
+          $('#add-language-modal').openModal({
+                  dismissible: true,
+                  opacity: .7,
+                  complete: function() {
+
+                  }
+              }
+          );
+
+      });
+
+      $('.submit-language-add').on('click', function(e){
+          e.preventDefault();
+
+          var newLanguage = $('#language-add-form').serializeArray();
+
+          $.ajax({
+              url : '/languages/add',
+              method : 'POST',
+              data : {'language' : JSON.stringify(newLanguage)},
+              dataType: "json",
+              success : function(response){
+                  if(response.result == true){
+                      Materialize.toast('Новый язык успешно добавлен', 4000, 'top');
+                      $('#add-language-modal').closeModal();
+                      setTimeout(function(){
+                          location.href = location;
+                      }, 1000);
+
+                  }
+              }
+          });
+
+      });
+
+      $('.delete-language-btn').on('click', function(e){
+         e.preventDefault();
+
+          var languageId = $(this).attr('id');
+
+          $.ajax({
+              url : '/languages/delete',
+              method : 'POST',
+              data : {'languageId' : languageId},
+              dataType: "json",
+              success : function(response){
+                  if(response.result == true){
+                        location.href = location;
+                  }
+              }
+          });
+
+
+      });
+
   });
 })(jQuery);

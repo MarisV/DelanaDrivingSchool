@@ -59,7 +59,7 @@ class News extends Model
     }
 
     /**
-     *  Map JSON decoded 'New' data to News model.
+     *  Map JSON decoded model data to normal model.
      *
      * @param JSON $rawNew
      */
@@ -76,7 +76,7 @@ class News extends Model
                 $this->$fieldName = $fieldValue;
             }
         }
-        $this->author = SharedService::getLoggedInAdmin()->username;
+
     }
 
     /**
@@ -90,6 +90,7 @@ class News extends Model
     public function create($data = null, $whiteList = null)
     {
         $this->prepareNewDataFromJsonToModel($data);
+        $this->author = SharedService::getLoggedInAdmin()->username;
 
         return parent::create();
     }

@@ -22,15 +22,33 @@ class LanguagesController extends ControllerBase
 
     }
 
+    public function addAction()
+    {
+        $this->view->disable();
+
+        $newLanguage = $this->request->getPost('language');
+
+        $newLanguage = json_decode($newLanguage, true);
+
+        $languageToSave = new Languages();
+
+        $languageToSave->mapDataFromJsonToModel($newLanguage);
+
+        $createResult = $languageToSave->save();
+
+        die(json_encode(['result' => $createResult]));
+    }
+
     public function deleteAction()
     {
-        $languageToDeleteId = $this->dispatcher->getParam('languageId');
+        $languageToDeleteId = $this->request->getPost('languageId');
 
         if ($languageToDeleteId) {
 
             $deleteResult = Languages::findFirst($languageToDeleteId)->delete();
 
             die(json_encode(['result'   =>  $deleteResult]));
+
         } else {
             die(json_encode(['result'   =>  'Invalid language id param']));
         }

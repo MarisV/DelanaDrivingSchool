@@ -1,6 +1,8 @@
 (function($){
   $(function(){
 
+
+      //---------- COMMON ---------- //
         $('.button-collapse').sideNav();
         $(".classy-editor").ClassyEdit();
         $('select').material_select();
@@ -10,6 +12,7 @@
             }
         );
 
+      //---------- ADMIN NEWS ---------- //
         $('.add-news-modal').on('click', function(e){
         e.preventDefault();
 
@@ -69,6 +72,7 @@
           });
         })
 
+      //---------- ADMIN LANGUAGES---------- //
       $('.add-language-modal').on('click', function(e){
           e.preventDefault();
 
@@ -137,7 +141,6 @@
             var name =  $(tr).find('td#name')[0].innerText;
             var code =  $(tr).find('td#code')[0].innerText;
             var visible = $(tr).find('td#visible')[0].innerText;
-
 
 
             $('.add-language-modal').click();

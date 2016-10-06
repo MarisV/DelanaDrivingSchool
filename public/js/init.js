@@ -155,5 +155,48 @@
 
       });
 
+      //---------- ADMIN USERS---------- //
+
+
+      $('.add-user-modal').on('click', function(e){
+          e.preventDefault();
+
+          $('#add-user-modal').openModal({
+                  dismissible: true,
+                  opacity: .7,
+                  complete: function() {
+                      var userAddForm = $('#user-add-form')[0];
+                      userAddForm.reset();
+                  }
+              }
+          );
+
+      });
+
+      $('.submit-user-add').on('click', function(e){
+          e.preventDefault();
+
+          var newUser = $('#user-add-form').serializeArray();
+
+          $.ajax({
+              url : '/users/add',
+              method : 'POST',
+              data : {'user' : JSON.stringify(newUser)},
+              dataType: "json",
+              success : function(response){
+                  if(response.result == true){
+                      Materialize.toast('Новый пользователь успешно добавлен', 4000, 'top');
+                      $('#add-user-modal').closeModal();
+                      setTimeout(function(){
+                          location.href = location;
+                      }, 1000);
+
+                  }
+              }
+          });
+
+      });
+
+
   });
 })(jQuery);

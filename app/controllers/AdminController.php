@@ -121,5 +121,14 @@ class AdminController extends ControllerBase
         $this->view->setVar('languages', $allLanguagesList);
     }
 
+    public function usersAction()
+    {
+
+        $administrators = Administrators::find();
+
+        $this->view->setVar('administrators', $administrators);
+
+    }
+
 
 }

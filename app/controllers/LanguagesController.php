@@ -30,7 +30,7 @@ class LanguagesController extends ControllerBase
 
         $newLanguage = json_decode($newLanguage, true);
 
-        if ($newLanguage[0]['name'] == 'lstat'){
+        if ($newLanguage[0]['name'] == 'lstat' && !empty($newLanguage[0]['value'])){
             $langId = $newLanguage[0]['value'];
 
             $languageToSave = Languages::findFirst($langId);

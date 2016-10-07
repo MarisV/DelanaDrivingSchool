@@ -197,6 +197,30 @@
 
       });
 
+      $('.delete-user-btn').on('click', function(e){
+          e.preventDefault();
+
+          var userId = $(this).attr('id');
+
+          $.ajax({
+              url : '/users/delete',
+              method : 'POST',
+              data : {'userId' : userId},
+              dataType: "json",
+              success : function(response){
+                  if(response.result == true){
+                      Materialize.toast('Пользователь успешно удален', 4000, 'top');
+                      setTimeout(function(){
+                          location.href = location;
+                      }, 1000);
+
+                  } else {
+                      Materialize.toast(response.result, 4000, 'top');
+                  }
+              }
+          });
+      });
+
 
   });
 })(jQuery);

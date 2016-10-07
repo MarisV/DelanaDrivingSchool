@@ -40,7 +40,7 @@
                             <?= $this->tag->linkTo(['users/edit/', '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn edit-user-btn', 'title' => 'Редактировать', 'id' => "$user->id"]) ?>
                         </div>
                         <div class="right">
-                            <?= $this->tag->linkTo(['users/delete/'.$user->id, '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-user-btn', 'id' => $user->id, 'title' => 'Удалить']) ?>
+                            <?= $this->tag->linkTo(['#', '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-user-btn', 'id' => $user->id, 'title' => 'Удалить']) ?>
                         </div>
                     </td>
                 </tr>

@@ -45,6 +45,8 @@ class UsersController extends ControllerBase
 
         if ($userId) {
             $deleteResult = \Administrators::findFirst($userId)->delete();
+        } else {
+            $deleteResult = 'Произошла ошибка при удалении пользователя.';
         }
 
         die(json_encode(['result' => $deleteResult]));

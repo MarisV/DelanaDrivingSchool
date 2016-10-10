@@ -32,10 +32,10 @@
                         </div>
                         <div class="col s12 m12 l12">
                             <div class="left">
-                                <?= $this->tag->linkTo(['news/edit/'.$new->id, '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn', 'title' => 'Редактировать']) ?>
+                                <a href="#" class="waves-effect waves-light btn edit-new-btn" id="<?= $new->id ?>" title="Редактировать"><i class="material-icons">mode_edit</i></a>
                             </div>
                             <div class="right">
-                                <?= $this->tag->linkTo(['news/delete/'.$new->id, '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-new-btn', 'id' => $new->id, 'title' => 'Удалить']) ?>
+                                <a href="#" class="waves-effect waves-light btn  red lighten-1 delete-new-btn" title="Удалить" id="<?= $new->id?>"><i class="material-icons">delete</i></a>
                             </div>
                         </div>
                     </div>
@@ -104,15 +104,13 @@
 
                 <div class="row">
                     <div class="col s12 input-field" style="width: 735px !important; margin-left: -13px;">
-
-                        <select name="languageId">
+                        <select name="languageId" id="language-id">
                             <?php foreach ($languages AS $language) { ?>
                                 <?php  $selected = ($language->id == 3) ? ' selected ' : '' ?>
                                 <option value="<?php echo $language->id ?>"> <?php echo $language->name ?></option>
                             <? } ?>
                         </select>
                         <label>Язык новости</label>
-
                     </div>
                 </div>
 
@@ -138,7 +136,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea  value="SEO описание" type="text" name="seoDescription" class="materialize-textarea validate" length="160"> </textarea>
+                                            <textarea  value="SEO описание" type="text" name="seoDescription" id="news-seo-description" class="materialize-textarea validate" length="160"> </textarea>
                                             <label for="news-seo-description">SEO описание</label>
                                         </div>
                                     </div>
@@ -152,7 +150,7 @@
                         <div class="switch">
                             <label>
                                 Скрыть
-                                <input type="checkbox" name="published" id="published">
+                                <input type="checkbox" name="published" id="published" checked>
                                 <span class="lever"></span>
                                 Опубликовать
                             </label>

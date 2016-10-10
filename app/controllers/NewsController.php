@@ -60,4 +60,15 @@ class NewsController extends \ControllerBase
 
     }
 
+    public function getAction()
+    {
+        $this->view->disable();
+
+        $newId = $this->request->getPost('id');
+
+        $new = News::findFirst($newId);
+
+        die(json_encode(['newresult' => $new]));
+    }
+
 }

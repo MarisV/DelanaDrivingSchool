@@ -4,7 +4,7 @@
 
       //---------- COMMON ---------- //
         $('.button-collapse').sideNav();
-        $(".classy-editor").ClassyEdit();
+      //  $(".classy-editor").ClassyEdit();
         $('select').material_select();
         $('.dropdown-button').dropdown({
               hover: true,
@@ -16,6 +16,7 @@
         $('.add-news-modal').on('click', function(e){
         e.preventDefault();
 
+            $(".classy-editor").ClassyEdit();
           $('#add-news-modal').openModal({
                   dismissible: true,
                   opacity: .7,
@@ -70,7 +71,68 @@
                   }
               }
           });
-        })
+        });
+
+
+
+            //Edit new btn handler
+        $('.edit-new-btn').on('click', function(e){
+            e.preventDefault();
+
+            var newId = $(this).attr('id');
+
+            var encodedNew = '';
+
+
+            $.ajax({
+                url : '/news/get',
+                method : 'POST',
+                data : {id : newId},
+                cache: false,
+                success : function(response){
+                    result = JSON.parse(response);
+                    encodedNew = result.newresult;
+                    console.log(encodedNew);
+                    if(encodedNew !== false) {
+
+                        $('#add-news-modal').openModal({
+                                dismissible: true,
+                                opacity: .7,
+                                complete: function() {
+                                    var newsForm = $('.add-news-form')[0];
+                                    newsForm.reset();
+                                }
+                            }
+                        );
+
+                        if(encodedNew.published === 'on'){
+                            $('#published').prop('checked', true);
+                        } else {
+                            $('#published').prop('checked', false);
+                        }
+
+                        $('#title').val(encodedNew.title);
+                        $('#news-short-description').val(encodedNew.shortDescription);
+                        $('#news-full-description').val(encodedNew.fullDescription);
+                        $('#language-id').val(encodedNew.languageId);
+                        $('#news-seo-title').val(encodedNew.seoTitle);
+                        $('#news-seo-keywords').val(encodedNew.seoKeywords);
+                        $('#news-seo-description').val(encodedNew.seoDescription);
+
+                        $('select').material_select();
+                        $(".classy-editor").ClassyEdit();
+
+
+
+
+                    }
+
+
+                }
+            });
+
+        });
+
 
       //---------- ADMIN LANGUAGES---------- //
       $('.add-language-modal').on('click', function(e){

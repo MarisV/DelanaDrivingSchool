@@ -72,6 +72,7 @@
     <div class="modal-content">
         <div class="row">
             <form class="col s12 add-news-form">
+                <input type="hidden" id="nstat" value="" name="nstat">
                 <div class="row">
                     <div class="input-field col s12">
                         <input placeholder="Заголовок" id="title" name="title" type="text" class="validate">
@@ -86,7 +87,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea  value="Короткое описание" type="text" id="news-full-description" name="fullDescription" class="materialize-textarea classy-editor validate"> </textarea>
+                        <textarea  value="Полное описание" type="text" id="news-full-description" name="fullDescription" class="materialize-textarea classy-editor validate"> </textarea>
                         <label for="news-full-description" style="padding-bottom: 10px">Полное описание</label>
                     </div>
                 </div>

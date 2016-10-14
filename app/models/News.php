@@ -63,36 +63,17 @@ class News extends Model
      *
      * @param JSON $rawNew
      */
-    private function prepareNewDataFromJsonToModel($rawNew)
+    public function mapDataFromArray($rawNew)
     {
         $fields =  $this->getModelsMetaData()->getReverseColumnMap($this);
 
-        foreach ($rawNew as $value) {
+        foreach ($rawNew as $field => $value) {
 
-            $fieldName = $value['name'];
-            $fieldValue = $value['value'];
-
-            if(array_key_exists($fieldName, $fields)) {
-                $this->$fieldName = $fieldValue;
+            if(array_key_exists($field, $fields)) {
+                $this->$field = $value;
             }
         }
 
-    }
-
-    /**
-     * Overrided method.  Prepare JSON encoded "New" data,
-     * and save it.
-     *
-     * @param mixed $data
-     * @param mixed $whiteList
-     * @return bool
-     */
-    public function create($data = null, $whiteList = null)
-    {
-        $this->prepareNewDataFromJsonToModel($data);
-        $this->author = SharedService::getLoggedInAdmin()->username;
-
-        return parent::create();
     }
 
     /**
@@ -103,6 +84,12 @@ class News extends Model
     public function getLink()
     {
         return 'news/'.$this->id . '/' . Slug::generate($this->title);
+    }
+
+    public function prepareAuthorAndStatusFields()
+    {
+        $this->author = SharedService::getLoggedInAdmin()->username;
+        $this->published = ($this->published == 'true') ? 'on' : 'off';
     }
 
 }

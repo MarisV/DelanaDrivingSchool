@@ -26,9 +26,28 @@ class NewsController extends \ControllerBase
 
         if ($new && $this->request->isAjax()) {
 
-           $new = json_decode($new, true);
+            if ($this->isNewForEdit($new)){
 
-           $createResult = (new News())->create($new);
+                $newId = $new['nstat'];
+
+                $newToUpdate = News::findFirst($newId);
+
+                $newToUpdate->mapDataFromArray($new);
+
+                $newToUpdate->prepareAuthorAndStatusFields();
+
+                $createResult = $newToUpdate->save();
+
+            } else {
+
+                $newToSave = new News();
+
+                $newToSave->mapDataFromArray($new);
+
+                $newToSave->prepareAuthorAndStatusFields();
+
+                $createResult = $newToSave->create();
+            }
 
            die(json_encode(['result' => $createResult]));
         }
@@ -69,6 +88,11 @@ class NewsController extends \ControllerBase
         $new = News::findFirst($newId);
 
         die(json_encode(['newresult' => $new]));
+    }
+
+    private function isNewForEdit(&$new)
+    {
+        return !empty($new['nstat']);
     }
 
 }

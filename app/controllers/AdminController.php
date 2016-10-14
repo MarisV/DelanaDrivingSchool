@@ -31,9 +31,6 @@ class AdminController extends ControllerBase
         $this->cache = SharedService::getCache();
         $this->view->setVar('admin', SharedService::getLoggedInAdmin());
 
-        $this->assets->addCss('components/jq-text-editor/css/jquery.classyedit.css');
-
-        $this->assets->addJs('components/jq-text-editor/js/jquery.classyedit.js');
     }
 
     public function indexAction()
@@ -44,6 +41,9 @@ class AdminController extends ControllerBase
 
     public function newsAction()
     {
+        $this->assets->addJs('components/ckeditor/ckeditor.js');
+        $this->assets->addJs('js/admin-news.js');
+
         $page = $this->dispatcher->getParam('page');
 
         $latestNews = News::find([

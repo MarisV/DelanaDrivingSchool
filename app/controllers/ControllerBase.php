@@ -14,13 +14,6 @@ class ControllerBase extends Controller
             ->addJs('components/materialize/dist/js/materialize.min.js');
     }
 
-    public function isAdminLoggedIn(){
-        if($this->session->has('logged_in_admin')){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
     public function forwardTo404()
     {

@@ -91,6 +91,12 @@ class NewsController extends \ControllerBase
         die(json_encode(['newresult' => $new]));
     }
 
+    /**
+     *  Check whether received new is for editing or adding
+     *
+     * @param $new
+     * @return bool
+     */
     private function isNewForEdit(&$new)
     {
         return !empty($new['nstat']);

@@ -8,7 +8,6 @@
  */
 
 use library\SharedService;
-use News;
 
 class UploadsController extends ControllerBase
 {

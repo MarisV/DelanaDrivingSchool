@@ -96,6 +96,7 @@
                         $('#news-seo-keywords').val(encodedNew.seoKeywords);
                         $('#news-seo-description').val(encodedNew.seoDescription);
                         $('.article-image').attr('src', encodedNew.image);
+                        $('#news-image-path').val(encodedNew.image);
                         $('select').material_select();
 
                     }
@@ -105,7 +106,7 @@
         });
 
 
-        function openNewsModal(mode)
+        function openNewsModal()
         {
 
             $('#add-news-modal').openModal({

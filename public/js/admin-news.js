@@ -80,15 +80,7 @@
 
                     if(encodedNew !== false) {
 
-                        $('#add-news-modal').openModal({
-                                dismissible: true,
-                                opacity: .7,
-                                complete: function() {
-                                    var newsForm = $('.add-news-form')[0];
-                                    newsForm.reset();
-                                }
-                            }
-                        );
+                        openNewsModal();
 
                         if(encodedNew.published === 'on'){
                             $('#published').prop('checked', true);
@@ -103,7 +95,7 @@
                         $('#news-seo-title').val(encodedNew.seoTitle);
                         $('#news-seo-keywords').val(encodedNew.seoKeywords);
                         $('#news-seo-description').val(encodedNew.seoDescription);
-
+                        $('.article-image').attr('src', encodedNew.image);
                         $('select').material_select();
 
                     }
@@ -113,14 +105,17 @@
         });
 
 
-        function openNewsModal()
+        function openNewsModal(mode)
         {
+
             $('#add-news-modal').openModal({
                     dismissible: true,
                     opacity: .7,
                     complete: function() {
-                        var newsForm = $('.add-news-form')[0];
-                        newsForm.reset();
+
+                        var imagePath = $('#news-image-path').val();
+                        resetNewsForm();
+                        deleteNewsImageIfNotSubmitted(imagePath);
                     }
                 }
             );
@@ -143,12 +138,60 @@
                 seoDescription   : $('#news-seo-description').val(),
                 seoKeywords      : $('#news-seo-keywords').val(),
                 published        : $('#published').prop('checked'),
-                image            : $('.news-image input').val()
+                image            : $('#news-image-path').val()
             };
 
             return newToSave;
         }
 
+        var uploader = new ss.SimpleUpload({
+            button: $('#news-image'), // file upload button
+            url: '/uploads/uploadArticleImage', // server side handler
+            name: 'uploadfile', // upload parameter name
+            responseType: 'json',
+            allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
+            maxSize: 4096,
+            hoverClass: 'ui-state-hover',
+            focusClass: 'ui-state-focus',
+            disabledClass: 'ui-state-disabled',
+            onSubmit: function(filename, extension) {
+             //   this.setFileSizeBox(sizeBox); // designate this element as file size container
+               // this.setProgressBar(progress); // designate as progress bar
+            },
+            onComplete: function(filename, response) {
 
+                if (response.filepath !== false)
+                {
+                    $('.article-image').attr('src', response.filepath);
+                    $('#news-image-path').val(response.filepath);
+                } else {
+                    Materialize.toast('Ошибка при добавлении изобрадения', 4000, 'top');
+                }
+            }
+        });
+
+        function resetNewsForm()
+        {
+            var newsForm = $('.add-news-form')[0];
+
+            newsForm.reset();
+
+            $('.article-image').attr('src', '');
+
+            CKEDITOR.instances['news-full-description'].setData('');
+        }
+
+        function deleteNewsImageIfNotSubmitted(filepath)
+        {
+            $.ajax({
+                url : '/uploads/deleteNewsImageIfNotSubmitted',
+                method : 'POST',
+                data : {'filepath' : filepath},
+                dataType: "json",
+                success : function(response){
+
+                }
+            });
+        }
     });
 })(jQuery);

@@ -4,7 +4,7 @@
 
       //---------- COMMON ---------- //
         $('.button-collapse').sideNav();
-        // CKEDITOR.replace( 'news-full-description' );
+        $('.materialboxed').materialbox();
         $('select').material_select();
         $('.dropdown-button').dropdown({
               hover: true,

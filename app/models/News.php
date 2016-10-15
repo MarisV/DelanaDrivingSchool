@@ -92,4 +92,23 @@ class News extends Model
         $this->published = ($this->published == 'true') ? 'on' : 'off';
     }
 
+    /**
+     *  Delete article image
+     *
+     * @param $filepath
+     * @return mixed
+     */
+    public function deleteNewImage($filepath)
+    {
+        $filepath = ltrim($filepath, '/');
+
+        $deleteResult = false;
+
+        if (file_exists($filepath)) {
+            $deleteResult = unlink($filepath);
+        }
+
+        return $deleteResult;
+    }
+
 }

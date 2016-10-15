@@ -6,6 +6,7 @@
  * Date: 16.12.9
  * Time: 21:17
  */
+
 use Phalcon\Mvc\View;
 use library\SharedService;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
@@ -16,11 +17,11 @@ class AdminController extends ControllerBase
 
     const NEWS_PER_PAGE = 40;
 
-    public function beforeExecuteRoute(){
-
+    public function beforeExecuteRoute()
+    {
         parent::beforeExecuteroute();
 
-        if(SharedService::isAdminLogged() !== true && $this->dispatcher->getActionName() != 'adminlogin' ){
+        if (SharedService::isAdminLogged() !== true && $this->dispatcher->getActionName() != 'adminlogin' ) {
             $this->response->redirect('/admin/adminlogin');
             return false;
         }
@@ -30,7 +31,6 @@ class AdminController extends ControllerBase
 
         $this->cache = SharedService::getCache();
         $this->view->setVar('admin', SharedService::getLoggedInAdmin());
-
     }
 
     public function indexAction()
@@ -42,6 +42,7 @@ class AdminController extends ControllerBase
     public function newsAction()
     {
         $this->assets->addJs('components/ckeditor/ckeditor.js');
+        $this->assets->addJs('components/AjaxUpload/SimpleAjaxUploader.js');
         $this->assets->addJs('js/admin-news.js');
 
         $page = $this->dispatcher->getParam('page');
@@ -70,31 +71,31 @@ class AdminController extends ControllerBase
 
     public function adminloginAction()
     {
-        if(SharedService::isAdminLogged() === true){
+        if (SharedService::isAdminLogged() === true) {
             $this->response->redirect('admin/index');
             return false;
         }
 
         $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
 
-        if($this->request->isPost()){
+        if ($this->request->isPost()) {
 
             $errors = [];
 
             $userName = $this->request->getPost('username',['string', 'trim']);
             $password = $this->request->getPost('password', ['trim']);
 
-            if(empty($userName)){
+            if (empty($userName)) {
                 $errors['euname'] = 'Имя пользователя не может быть пустым';
             }
-            if(empty($password)){
+            if (empty($password)) {
                 $errors['epassword'] = 'Пароль не может быть пустым';
             }
 
-            if(empty($errors)){
+            if (empty($errors)) {
                 $admin = Administrators::findFirstByUsername($userName);
 
-                if($admin !== false && $admin->password == $password){
+                if ($admin !== false && $admin->password == $password) {
                     $this->session->set('logged_in_admin', $admin);
                     $this->response->redirect('admin/index');
                     return false;
@@ -107,7 +108,7 @@ class AdminController extends ControllerBase
 
     public function logoutadminAction()
     {
-        if($this->isAdminLoggedIn() === true){
+        if (SharedService::isAdminLogged() === true) {
             $this->session->remove('logged_in_admin');
             $this->response->redirect('admin/adminlogin');
             return false;
@@ -123,12 +124,11 @@ class AdminController extends ControllerBase
 
     public function usersAction()
     {
-
         $administrators = Administrators::find();
 
         $this->view->setVar('administrators', $administrators);
-
     }
+
 
 
 }

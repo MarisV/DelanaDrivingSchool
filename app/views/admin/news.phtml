@@ -13,38 +13,46 @@
 </div>
 <div class="divider"></div>
 <div class="row">
-    <?php foreach ($news->items as $new) { ?>
-        <div class="col s3 l3 m3">
-            <div class="card hoverable small">
-                <div class="card-image">
-                    <img src="/<?= ($new->image != null) ? $new->image : 'img/noimage.png' ?>">
-                    <span class="card-title"><?= substr($new->title, 0 ,20) ?>...</span>
-                </div>
-                <div class="card-content">
-                    <p>
-                        <?= substr($new->shortDescription, 0 ,20) ?>
-                    </p>
-                </div>
-                <div class="card-action" style="padding-bottom: 0px">
-                    <div class="row">
-                        <div class="col s12 m12 l12">
-                            <?= $this->tag->linkTo([$new->getLink(), substr($new->title, 0 ,20).'...', 'title' => "$new->title"]) . '<br><br>' ?>
-                        </div>
-                        <div class="col s12 m12 l12">
-                            <div class="left">
-                                <a href="#" class="waves-effect waves-light btn edit-new-btn" id="<?= $new->id ?>" title="Редактировать"><i class="material-icons">mode_edit</i></a>
-                            </div>
-                            <div class="right">
-                                <a href="#" class="waves-effect waves-light btn  red lighten-1 delete-new-btn" title="Удалить" id="<?= $new->id?>"><i class="material-icons">delete</i></a>
-                            </div>
-                        </div>
+    <?php if ($news->total_items > 0) { ?>
+        <?php foreach ($news->items as $new) { ?>
+            <div class="col s3 l3 m3">
+                <div class="card hoverable small">
+                    <div class="card-image">
+                        <img src="<?= ($new->image != null) ? $new->image : '/img/noimage.png' ?>">
+                        <span class="card-title"><?= substr($new->title, 0 ,20) ?>...</span>
                     </div>
+                    <div class="card-content">
+                        <p>
+                            <?= substr($new->shortDescription, 0 ,20) ?>
+                        </p>
+                    </div>
+                    <div class="card-action" style="padding-bottom: 0px">
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <?= $this->tag->linkTo([$new->getLink(), substr($new->title, 0 ,20).'...', 'title' => "$new->title"]) . '<br><br>' ?>
+                            </div>
+                            <div class="col s12 m12 l12">
+                                <div class="left">
+                                    <a href="#" class="waves-effect waves-light btn edit-new-btn" id="<?= $new->id ?>" title="Редактировать"><i class="material-icons">mode_edit</i></a>
+                                </div>
+                                <div class="right">
+                                    <a href="#" class="waves-effect waves-light btn  red lighten-1 delete-new-btn" title="Удалить" id="<?= $new->id?>"><i class="material-icons">delete</i></a>
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
                 </div>
             </div>
+        <?php } ?>
+    <?php } else { ?>
+        <div class="col s12">
+            <h5 class="center-align">Пока что новостей нет</h5>
         </div>
-    <? } ?>
+    <?php } ?>
 </div>
+
+<?php if ($news->total_items  > 0) { ?>
 
 <ul class="pagination">
     <li class="<?= ($news->before  < 1) ? 'disabled' : 'waves-effect' ?>">
@@ -67,6 +75,8 @@
         <?= $this->tag->linkTo(['admin/news/page/'.$news->last, '<i class="material-icons">chevron_right</i>']) ?>
     </li>
 </ul>
+
+<?php } ?>
 
 <div id="add-news-modal" class="modal">
     <div class="modal-content">
@@ -92,14 +102,18 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="file-field input-field news-image">
+                    <div class="col s12 file-field input-field news-image">
                         <div class="btn">
                             <span>Изображение</span>
-                            <input type="file">
+                            <input type="file" id="news-image">
+                            <input type="hidden" value="" id="news-image-path">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" name="image" type="text" placeholder="Выберите изображение">
                         </div>
+                    </div>
+                    <div class="col s12">
+                        <img class="materialboxed article-image" width="200" src="">
                     </div>
                 </div>
 
@@ -107,8 +121,8 @@
                     <div class="col s12 input-field" style="width: 735px !important; margin-left: -13px;">
                         <select name="languageId" id="language-id">
                             <?php foreach ($languages AS $language) { ?>
-                                <?php  $selected = ($language->id == 3) ? ' selected ' : '' ?>
-                                <option value="<?php echo $language->id ?>"> <?php echo $language->name ?></option>
+                                <?php  $selected = ($language->code == 'ru') ? ' selected ' : '' ?>
+                                <option value="<?php echo $language->id ?>" <?= $selected ?> > <?php echo $language->name ?></option>
                             <? } ?>
                         </select>
                         <label>Язык новости</label>
@@ -161,7 +175,7 @@
                 <div class="row">
                     <div class="col s12 input-field center" style="margin-top: 30px;">
                         <button class="btn waves-effect waves-light submit-news" type="submit" name="action">
-                            Добавить<i class="material-icons right">send</i>
+                            Сохранить<i class="material-icons right">send</i>
                         </button>
                     </div>
                 </div>

@@ -71,6 +71,7 @@ class NewsController extends \ControllerBase
             if (!$newToDelete) {
                 $deleteResult = 'Извините, произошла ошибка в процессе удаления!';
             } else {
+                $newToDelete->deleteNewImage($newToDelete->image);
                 $deleteResult = $newToDelete->delete();
             }
 

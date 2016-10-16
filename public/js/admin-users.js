@@ -108,6 +108,7 @@
                     opacity: .7,
                     complete: function() {
                         var userAddForm = $('#user-add-form')[0];
+                        $('#ustat').val('');
                         userAddForm.reset();
                     }
                 }

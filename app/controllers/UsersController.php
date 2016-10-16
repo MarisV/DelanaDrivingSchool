@@ -20,28 +20,41 @@ class UsersController extends ControllerBase
         }
     }
 
-    public function addAction()
+    public function addOrEditAction()
     {
+        $this->view->disable();
 
-        $newUser = $this->request->getPost('user');
+        $user = $this->request->getPost('user');
 
-        $newUser = json_decode($newUser, true);
+        if ($this->isUserForEdit($user)) {
 
-        $userToSave = new \Administrators();
+            $userForEditId = $user['ustat'];
 
-        $userToSave->mapDataFromJson($newUser);
+            $userToUpdate = Administrators::findFirst($userForEditId);
 
-        $userToSave->password = $this->security->hash($userToSave->password);
-        $createResult = $userToSave->create();
+            $userToUpdate->mapDataFromArray($user);
 
-        die(json_encode(['result' => $createResult]));
+            $result = $userToUpdate->save();
+
+        } else {
+
+            $userToSave = new \Administrators();
+
+            $userToSave->mapDataFromArray($user);
+
+            $userToSave->password = $this->security->hash($userToSave->password);
+
+            $result = $userToSave->create();
+        }
+
+        die(json_encode(['result' => $result]));
     }
 
     public function deleteAction()
     {
-        $userId = $this->request->getPost('userId');
+        $this->view->disable();
 
-        $deleteResult = false;
+        $userId = $this->request->getPost('userId');
 
         if ($userId) {
             $deleteResult = \Administrators::findFirst($userId)->delete();
@@ -50,5 +63,22 @@ class UsersController extends ControllerBase
         }
 
         die(json_encode(['result' => $deleteResult]));
+    }
+
+    public function getUserAction()
+    {
+        $this->view->disable();
+
+        $userId = $this->request->getPost('userId');
+
+        $user =  Administrators::findFirst($userId);
+
+        die(json_encode(['result' => $user]));
+
+    }
+
+    public function isUserForEdit(&$user)
+    {
+        return !empty($user['ustat']);
     }
 }

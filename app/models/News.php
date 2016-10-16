@@ -59,21 +59,20 @@ class News extends Model
     }
 
     /**
-     *  Map JSON decoded model data to normal model.
+     *  Map article array to news model object
      *
-     * @param JSON $rawNew
+     * @param array $newAsArray
      */
-    public function mapDataFromArray($rawNew)
+    public function mapDataFromArray($newAsArray)
     {
         $fields =  $this->getModelsMetaData()->getReverseColumnMap($this);
 
-        foreach ($rawNew as $field => $value) {
+        foreach ($newAsArray as $field => $value) {
 
-            if(array_key_exists($field, $fields)) {
+            if (array_key_exists($field, $fields)) {
                 $this->$field = $value;
             }
         }
-
     }
 
     /**

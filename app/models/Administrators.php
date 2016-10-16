@@ -8,7 +8,6 @@
  */
 
 use Phalcon\Mvc\Model;
-use Phalcon\Security;
 
 class Administrators extends Model
 {
@@ -37,20 +36,18 @@ class Administrators extends Model
     }
 
     /**
-     *  Map JSON decoded model data to normal model.
+     *  Map array with user data to user model object
      *
-     * @param JSON $rawNew
+     * @param array $userAsArray
      */
-    public function mapDataFromJson($rawNew)
+    public function mapDataFromArray($userAsArray)
     {
         $fields = $this->getModelsMetaData()->getReverseColumnMap($this);
 
-        foreach ($rawNew as $value) {
-            $fieldName = $value['name'];
-            $fieldValue = $value['value'];
+        foreach ($userAsArray as $field => $value) {
 
-            if(array_key_exists($fieldName, $fields)) {
-                $this->$fieldName = $fieldValue;
+            if (array_key_exists($field, $fields)) {
+                $this->$field = $value;
             }
         }
     }

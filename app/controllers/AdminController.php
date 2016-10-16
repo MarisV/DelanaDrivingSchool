@@ -93,9 +93,10 @@ class AdminController extends ControllerBase
             }
 
             if (empty($errors)) {
+
                 $admin = Administrators::findFirstByUsername($userName);
 
-                if ($admin !== false && $admin->password == $password) {
+                if ($admin !== false && $this->security->checkHash($password, $admin->password)) {
                     $this->session->set('logged_in_admin', $admin);
                     $this->response->redirect('admin/index');
                     return false;
@@ -103,15 +104,6 @@ class AdminController extends ControllerBase
             }
 
             $this->view->setVar('error', $errors);
-        }
-    }
-
-    public function logoutadminAction()
-    {
-        if (SharedService::isAdminLogged() === true) {
-            $this->session->remove('logged_in_admin');
-            $this->response->redirect('admin/adminlogin');
-            return false;
         }
     }
 
@@ -124,9 +116,20 @@ class AdminController extends ControllerBase
 
     public function usersAction()
     {
+        $this->assets->addJs('js/admin-users.js');
+
         $administrators = Administrators::find();
 
         $this->view->setVar('administrators', $administrators);
+    }
+
+    public function logoutadminAction()
+    {
+        if (SharedService::isAdminLogged() === true) {
+            $this->session->remove('logged_in_admin');
+            $this->response->redirect('admin/adminlogin');
+            return false;
+        }
     }
 
 

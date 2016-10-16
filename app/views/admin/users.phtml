@@ -37,7 +37,7 @@
                     </td>
                     <td>
                         <div class="left">
-                            <?= $this->tag->linkTo(['users/edit/', '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn edit-user-btn', 'title' => 'Редактировать', 'id' => "$user->id"]) ?>
+                            <?= $this->tag->linkTo(['#', '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn edit-user-btn', 'title' => 'Редактировать', 'id' => "$user->id"]) ?>
                         </div>
                         <div class="right">
                             <?= $this->tag->linkTo(['#', '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-user-btn', 'id' => $user->id, 'title' => 'Удалить']) ?>
@@ -55,7 +55,7 @@
     <div class="modal-content">
         <div class="row">
             <?=  Phalcon\Tag::form(array("users/add", "method" => "post", 'class' => 'col s12 m12 l12', 'id' => 'user-add-form')); ?>
-            <input type="hidden" id="lstat" value="" name="lstat">
+            <input type="hidden" id="ustat" value="" name="lstat">
             <div class="row">
                 <div class="input-field col s12 m12 l12">
                     <input placeholder="Имя пользователя" id="username-add" name="username" type="text" class="validate">
@@ -80,7 +80,7 @@
                     <label for="email-add">E-mail</label>
                 </div>
             </div>
-            <div class="row">
+            <div class="row password-row">
                 <div class="input-field col s12 m12 l12">
                     <input placeholder="" id="password-add" name="password" type="password" class="validate">
                     <label for="password-add">Пароль</label>

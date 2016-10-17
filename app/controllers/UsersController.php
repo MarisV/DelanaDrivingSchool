@@ -47,6 +47,20 @@ class UsersController extends ControllerBase
             $result = $userToSave->create();
         }
 
+        if (!$result) {
+
+            $errorMessages = $userToSave->getMessages();
+
+            foreach ($errorMessages as $message) {
+                $result[] = [
+                    'field'     =>  $message->getField(),
+                    'msg'       =>  $message->getMessage()
+                ];
+            }
+            die(json_encode(['errors' => $result]));
+        }
+
+
         die(json_encode(['result' => $result]));
     }
 

@@ -7,9 +7,13 @@
  * Time: 18:10
  */
 
-use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness as UniquenessValidator;
+use Phalcon\Validation\Validator\Email as EmailValidator;
+use Phalcon\Validation\Validator\PresenceOf;
 
-class Administrators extends Model
+
+class Administrators extends BaseModel
 {
     public $id;
 
@@ -50,5 +54,41 @@ class Administrators extends Model
                 $this->$field = $value;
             }
         }
+    }
+
+    public function validation()
+    {
+        $validator = new Validation();
+
+        $validator->add(
+            'firstname',
+            new PresenceOf([
+                'Введите имя'
+            ]));
+
+        $validator->add(
+            'lastname',
+            new PresenceOf([
+                'Введите фамилию'
+            ]));
+
+        $validator->add(
+            'email',
+            new EmailValidator([
+                'message' => 'Неправльный e-mail адрес'
+            ]));
+        $validator->add(
+            'email',
+            new UniquenessValidator([
+                'message' => 'Извините, Данный e-mail уже зарегистрирован'
+            ]));
+        $validator->add(
+            'username',
+            new UniquenessValidator([
+                'message' => 'Извините, данное имя пользователя уже занято'
+            ]));
+
+
+        return $this->validate($validator);
     }
 }

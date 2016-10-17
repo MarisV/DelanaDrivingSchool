@@ -25,6 +25,7 @@
                 data : {'user' : newUser},
                 dataType: "json",
                 success : function(response){
+
                     if(response.result == true){
                         Materialize.toast('Новый пользователь успешно добавлен', 4000, 'top');
                         $('#add-user-modal').closeModal();
@@ -32,11 +33,23 @@
                             location.href = location;
                         }, 1000);
 
+                    } else {
+                        setValidationErrors(response.errors);
                     }
                 }
             });
 
         });
+
+        function setValidationErrors(errors)
+        {
+            $('.validation-errors ul').html('');
+            for(var i = 0; i < errors.length; i++)
+            {
+
+                $('.validation-errors ul').append('<li>' +capitalizeFirstLetter(errors[i].msg) + '</li>');
+            }
+        }
 
         $('.delete-user-btn').on('click', function(e){
 
@@ -110,6 +123,7 @@
                         var userAddForm = $('#user-add-form')[0];
                         $('#ustat').val('');
                         userAddForm.reset();
+                        $('.validation-errors ul').html('');
                     }
                 }
             );
@@ -127,6 +141,10 @@
             };
 
             return user;
+        }
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
         }
 
     });

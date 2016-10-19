@@ -19,17 +19,17 @@
                 <div class="card hoverable small">
                     <div class="card-image">
                         <img src="<?= ($new->image != null) ? $new->image : '/img/noimage.png' ?>">
-                        <span class="card-title"><?= substr($new->title, 0 ,20) ?>...</span>
+                        <span class="card-title"><?= mb_substr($new->title, 0 ,20) ?>...</span>
                     </div>
                     <div class="card-content">
                         <p>
-                            <?= substr($new->shortDescription, 0 ,20) ?>
+                            <?= mb_substr($new->shortDescription, 0 ,20) ?>
                         </p>
                     </div>
                     <div class="card-action" style="padding-bottom: 0px">
                         <div class="row">
                             <div class="col s12 m12 l12">
-                                <?= $this->tag->linkTo([$new->getLink(), substr($new->title, 0 ,20).'...', 'title' => "$new->title"]) . '<br><br>' ?>
+                                <?= $this->tag->linkTo([$new->getLink(), mb_substr($new->title, 0 ,20).'...', 'title' => "$new->title"]) . '<br><br>' ?>
                             </div>
                             <div class="col s12 m12 l12">
                                 <div class="left">

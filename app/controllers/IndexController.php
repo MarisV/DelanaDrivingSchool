@@ -4,12 +4,15 @@ use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
 class IndexController extends ControllerBase
 {
-
     public function indexAction()
     {
         $page = $this->request->getQuery('page', 'int');
 
-        $news = News::find();
+        $news = News::find([
+            'published' =>  'on',
+            'order' =>  'dateAdded desc'
+        ]);
+
 
         $paginator = new PaginatorModel([
             'data'  =>  $news,

@@ -58,3 +58,16 @@
     margin-bottom: 4px;
     font-size: large;
 }
+
+.news-date-added{
+    height: 35px;
+    line-height: 35px;
+}
+
+.top-page-navigation{
+    min-height: 90px;
+}
+
+.nav-wrapper .container ul {
+    height: 100%;
+}

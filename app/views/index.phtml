@@ -24,10 +24,13 @@
 </ul>
 
 <nav class="light-blue lighten-1 top-page-navigation" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">
+            <img class="responsive-img" src="img/logo.png" >
+        </a>
 
         <ul class="right hide-on-med-and-down">
-            <li><a href="#">Kontakti</a></li>
+            <li><?= $this->tag->linkTo('contacts/index', 'Контакты')?> </li>
         </ul>
         <ul class="right hide-on-med-and-down">
             <li><a href="#">Noderīga informācija</a></li>

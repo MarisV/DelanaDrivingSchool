@@ -37,7 +37,7 @@ class UsersController extends ControllerBase
             $result = $userToUpdate->save();
 
             if ($result === false) {
-                $result = $this->getValidationMessages($userToUpdate);
+                $result = $userToUpdate->getValidationMessages();
             }
 
 
@@ -52,24 +52,11 @@ class UsersController extends ControllerBase
             $result = $userToSave->create();
 
             if ($result === false) {
-                $result = $this->getValidationMessages($userToSave);
+                $result = $userToSave->getValidationMessages();
             }
         }
 
         die(json_encode(['result' => $result]));
-    }
-
-    private function getValidationMessages(Administrators $userModel)
-    {
-        $errorMessages = $userModel->getMessages();
-
-        foreach ($errorMessages as $message) {
-            $result[] = [
-                'msg'       =>  $message->getMessage()
-            ];
-        }
-
-        return $result;
     }
 
     public function deleteAction()

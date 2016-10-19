@@ -132,6 +132,13 @@ class AdminController extends ControllerBase
         }
     }
 
+    public function pagesAction()
+    {
+
+
+
+    }
+
 
 
 }

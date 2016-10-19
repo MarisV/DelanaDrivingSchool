@@ -36,7 +36,7 @@ class UsersController extends ControllerBase
 
             $result = $userToUpdate->save();
 
-            if (!$result) {
+            if ($result === false) {
                 $result = $this->getValidationMessages($userToUpdate);
             }
 
@@ -51,7 +51,7 @@ class UsersController extends ControllerBase
 
             $result = $userToSave->create();
 
-            if (!$result) {
+            if ($result === false) {
                 $result = $this->getValidationMessages($userToSave);
             }
         }
@@ -65,7 +65,6 @@ class UsersController extends ControllerBase
 
         foreach ($errorMessages as $message) {
             $result[] = [
-                'field'     =>  $message->getField(),
                 'msg'       =>  $message->getMessage()
             ];
         }

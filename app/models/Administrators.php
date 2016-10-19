@@ -39,6 +39,12 @@ class Administrators extends BaseModel
         ];
     }
 
+    public function initialize(){
+        $this->setup(
+            array('notNullValidations'=>false)
+        );
+    }
+
 
     public function validation()
     {

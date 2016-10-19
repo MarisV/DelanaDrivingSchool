@@ -36,6 +36,11 @@ class UsersController extends ControllerBase
 
             $result = $userToUpdate->save();
 
+            if (!$result) {
+                $result = $this->getValidationMessages($userToUpdate);
+            }
+
+
         } else {
 
             $userToSave = new \Administrators();
@@ -45,23 +50,27 @@ class UsersController extends ControllerBase
             $userToSave->password = $this->security->hash($userToSave->password);
 
             $result = $userToSave->create();
-        }
 
-        if (!$result) {
-
-            $errorMessages = $userToSave->getMessages();
-
-            foreach ($errorMessages as $message) {
-                $result[] = [
-                    'field'     =>  $message->getField(),
-                    'msg'       =>  $message->getMessage()
-                ];
+            if (!$result) {
+                $result = $this->getValidationMessages($userToSave);
             }
-            die(json_encode(['errors' => $result]));
         }
-
 
         die(json_encode(['result' => $result]));
+    }
+
+    private function getValidationMessages(Administrators $userModel)
+    {
+        $errorMessages = $userModel->getMessages();
+
+        foreach ($errorMessages as $message) {
+            $result[] = [
+                'field'     =>  $message->getField(),
+                'msg'       =>  $message->getMessage()
+            ];
+        }
+
+        return $result;
     }
 
     public function deleteAction()

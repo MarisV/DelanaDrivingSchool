@@ -39,6 +39,58 @@ class Administrators extends BaseModel
         ];
     }
 
+
+    public function validation()
+    {
+        $validator = new Validation();
+
+        $validator->add(
+            ['firstname', 'lastname', 'email', 'password'],
+            new PresenceOf(
+                [
+                    'message' => [
+                        'firstname' =>  'Введите имя',
+                        'lastname'  =>  'Введите фамилию',
+                        'email'     =>  'Введите e-mail',
+                        'password'  =>  'Введите пароль'
+                    ]
+                ]
+            )
+        );
+
+
+        $validator->add(
+            'email',
+            new EmailValidator(
+                [
+                    'message' => 'Неправльный e-mail адрес'
+                ]
+            )
+        );
+
+        $validator->add(
+            'email',
+            new UniquenessValidator(
+                [
+                    'model'     =>  new Administrators(),
+                    'message'   =>  'Извините, Данный e-mail уже зарегистрирован'
+                ]
+            )
+        );
+
+        $validator->add(
+            'username',
+            new UniquenessValidator(
+                [
+                    'model'     =>  new Administrators(),
+                    'message'   =>  'Извините, данное имя пользователя уже занято'
+                ]
+            )
+        );
+
+        return $this->validate($validator);
+    }
+
     /**
      *  Map array with user data to user model object
      *
@@ -56,39 +108,5 @@ class Administrators extends BaseModel
         }
     }
 
-    public function validation()
-    {
-        $validator = new Validation();
 
-        $validator->add(
-            'firstname',
-            new PresenceOf([
-                'Введите имя'
-            ]));
-
-        $validator->add(
-            'lastname',
-            new PresenceOf([
-                'Введите фамилию'
-            ]));
-
-        $validator->add(
-            'email',
-            new EmailValidator([
-                'message' => 'Неправльный e-mail адрес'
-            ]));
-        $validator->add(
-            'email',
-            new UniquenessValidator([
-                'message' => 'Извините, Данный e-mail уже зарегистрирован'
-            ]));
-        $validator->add(
-            'username',
-            new UniquenessValidator([
-                'message' => 'Извините, данное имя пользователя уже занято'
-            ]));
-
-
-        return $this->validate($validator);
-    }
 }

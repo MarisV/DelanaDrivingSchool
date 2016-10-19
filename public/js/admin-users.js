@@ -34,7 +34,7 @@
                         }, 1000);
 
                     } else {
-                        setValidationErrors(response.errors);
+                        setValidationErrors(response.result);
                     }
                 }
             });
@@ -46,7 +46,6 @@
             $('.validation-errors ul').html('');
             for(var i = 0; i < errors.length; i++)
             {
-
                 $('.validation-errors ul').append('<li>' +capitalizeFirstLetter(errors[i].msg) + '</li>');
             }
         }

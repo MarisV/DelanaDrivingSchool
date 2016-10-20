@@ -22,7 +22,7 @@ class AdminController extends ControllerBase
         parent::beforeExecuteroute();
 
         if (SharedService::isAdminLogged() !== true && $this->dispatcher->getActionName() != 'adminlogin' ) {
-            $this->response->redirect('/admin/adminlogin');
+            $this->response->redirect('/admin/auth/login');
             return false;
         }
 
@@ -123,14 +123,7 @@ class AdminController extends ControllerBase
         $this->view->setVar('administrators', $administrators);
     }
 
-    public function logoutadminAction()
-    {
-        if (SharedService::isAdminLogged() === true) {
-            $this->session->remove('logged_in_admin');
-            $this->response->redirect('admin/adminlogin');
-            return false;
-        }
-    }
+
 
     public function pagesAction()
     {

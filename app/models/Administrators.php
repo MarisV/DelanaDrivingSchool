@@ -7,6 +7,8 @@
  * Time: 18:10
  */
 
+namespace app\models;
+
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness as UniquenessValidator;
 use Phalcon\Validation\Validator\Email as EmailValidator;

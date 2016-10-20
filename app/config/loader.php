@@ -3,7 +3,11 @@
 $loader = new \Phalcon\Loader();
 
 $loader->registerNamespaces([
-    'library'   => $config->application->libraryDir
+    'library'               =>  $config->application->libraryDir,
+    'app\controllers'       =>  $config->application->controllersDir,
+    'app\controllers\Admin' =>  $config->application->adminControllersDir,
+    'app\models'            =>  $config->application->modelsDir
+
 ], true)->register();
 
 
@@ -15,6 +19,7 @@ $loader->registerDirs(
     [
         $config->application->controllersDir,
         $config->application->modelsDir,
-        $config->application->libraryDir
+        $config->application->libraryDir,
+        $config->application->adminControllersDir
     ]
 )->register();

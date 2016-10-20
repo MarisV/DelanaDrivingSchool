@@ -1,6 +1,10 @@
 <?php
 
+namespace app\controllers;
+use app\models\News;
+
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
+
 
 class IndexController extends ControllerBase
 {
@@ -12,7 +16,6 @@ class IndexController extends ControllerBase
             'published' =>  'on',
             'order' =>  'dateAdded desc'
         ]);
-
 
         $paginator = new PaginatorModel([
             'data'  =>  $news,

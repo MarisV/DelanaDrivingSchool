@@ -6,6 +6,8 @@
  * Time: 19:13
  */
 
+namespace app\models;
+
 use Phalcon\Mvc\Model;
 
 class Languages extends Model

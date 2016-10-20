@@ -7,6 +7,8 @@
  * Time: 21:40
  */
 
+namespace app\models;
+
 
 class Pages extends BaseModel
 {

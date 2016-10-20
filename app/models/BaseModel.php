@@ -7,6 +7,8 @@
  * Time: 18:13
  */
 
+namespace app\models;
+
 use Phalcon\Mvc\Model;
 
 class BaseModel extends Model

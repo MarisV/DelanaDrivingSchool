@@ -7,11 +7,12 @@
  * Time: 20:47
  */
 
-use Phalcon\Mvc\Model;
+namespace app\models;
+
 use library\SharedService;
 use library\Utils\Slug;
 
-class News extends Model
+class News extends BaseModel
 {
     public $id;
 

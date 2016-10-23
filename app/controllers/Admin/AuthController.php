@@ -14,16 +14,24 @@ use Phalcon\Mvc\View;
 
 class AuthController extends BaseController
 {
+    public function beforeExecuteRoute()
+    {
+        parent::beforeExecuteRoute();
+
+        $this->view->setLayout('admin');
+        $this->view->setRenderLevel(View::LEVEL_LAYOUT);
+
+    }
 
     public function loginAction()
     {
-        if (SharedService::isAdminLogged() === true) {
-            $this->response->redirect('admin/index');
-            return false;
-        }
-
         $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
 
+        if (SharedService::isAdminLogged() === true) {
+            $this->response->redirect('admin/news');
+            return false;
+        }
+        
         if ($this->request->isPost()) {
 
             $errors = [];
@@ -51,15 +59,22 @@ class AuthController extends BaseController
 
             $this->view->setVar('error', $errors);
         }
+
     }
 
     public function logoutAction()
     {
         if (SharedService::isAdminLogged() === true) {
+
             $this->session->remove('logged_in_admin');
             $this->response->redirect('admin/auth/login');
             return false;
         }
+    }
+
+    public function testAction()
+    {
+
     }
     
 }

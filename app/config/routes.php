@@ -70,6 +70,12 @@ $router->add('/admin', array(
     'page'          =>  1
 ));
 
+
+$router->add('/admin/:controller', [
+    'namespace'  => 'app\controllers\Admin',
+    'controller' => 1
+]);
+
 $router->add('/admin/:controller/:action/:params', [
     'namespace'  => 'app\controllers\Admin',
     'controller' => 1,
@@ -77,10 +83,6 @@ $router->add('/admin/:controller/:action/:params', [
     'params'     => 3,
 ]);
 
-$router->add('/admin/:controller', [
-    'namespace'  => 'app\controllers\Admin',
-    'controller' => 1
-]);
 
 
 return $router;

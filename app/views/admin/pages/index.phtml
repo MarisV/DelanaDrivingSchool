@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col s6 m6 l6" style="margin-top: -30px">
+        <h5 class="teal-text">
+            Страницы
+        </h5>
+    </div>
+    <div class="col s6 m6 l6 right-align" style="margin-top: -26px">
+        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger add-page-modal" href="#add-page-modal"><i class="material-icons">add</i></a>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m 12 l12">
+        <table class="highlight responsive-table">
+            <thead>
+            <tr>
+                <th data-field="language">Заголовок</th>
+                <th data-field="code">Дата добавления</th>
+                <th data-field="visible">Язык</th>
+                <th data-field="actions">Управление</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($pages as $page) {?>
+                <tr>
+                    <td id="name">
+                        <?= $lang->title?>
+                    </td>
+                    <td id="code">
+                        <?= $lang->dateAdded?>
+                    </td>
+                    <td id="visible">
+                        <?= $lang->languageId ?>
+                    </td>
+                    <td>
+                        <div class="left">
+                            <?= $this->tag->linkTo(['languages/edit/', '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn edit-language-btn', 'title' => 'Редактировать', 'id' => "$page->id"]) ?>
+                        </div>
+                        <div class="right">
+                            <?= $this->tag->linkTo(['languages/delete/'.$page->id, '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-language-btn', 'id' => $page->id, 'title' => 'Удалить']) ?>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div id="add-page-modal" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            123
+        </div>
+    </div>
+</div>

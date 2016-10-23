@@ -42,18 +42,18 @@ $di->setShared('view', function () {
     $view->setViewsDir($config->application->viewsDir);
 
     $view->registerEngines([
-//        '.volt' => function ($view) {
-//            $config = $this->getConfig();
-//
-//            $volt = new VoltEngine($view, $this);
-//
-//            $volt->setOptions([
-//                'compiledPath' => $config->application->cacheDir,
-//                'compiledSeparator' => '_'
-//            ]);
-//
-//            return $volt;
-//        },
+        /*'.volt' => function ($view) {
+            $config = $this->getConfig();
+
+            $volt = new VoltEngine($view, $this);
+
+            $volt->setOptions([
+                'compiledPath' => $config->application->cacheDir,
+                'compiledSeparator' => '_'
+            ]);
+
+            return $volt;
+        },*/
         '.phtml' => PhpEngine::class
 
     ]);

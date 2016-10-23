@@ -16,13 +16,23 @@ class BaseController extends Controller
 {
     public function beforeExecuteRoute()
     {
-//        if (SharedService::isAdminLogged() !== true && $this->dispatcher->getActionName() != 'adminlogin' ) {
-//            $this->response->redirect('/admin/auth/logout');
-//            return false;
-//        }
+
+        if (SharedService::isAdminLogged() !== true && $this->dispatcher->getActionName() != 'login' ) {
+            $this->response->redirect('/admin/auth/login');
+            return false;
+        }
+
+
+
+        $this->view->setViewsDir(APP_PATH . '/views/admin');
 
         $this->view->setLayout('admin');
-//        $this->view->setRenderLevel(View::LEVEL_LAYOUT);
+
+        $this->assets->addCss('css/style.css')
+            ->addCss('components/materialize/dist/css/materialize.min.css');
+
+        $this->assets->addJs('components/jquery/dist/jquery.js')->addJs('js/init.js')
+            ->addJs('components/materialize/dist/js/materialize.min.js');
 
         $this->view->setVar('admin', SharedService::getLoggedInAdmin());
     }

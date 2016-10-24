@@ -6,18 +6,30 @@
  * Time: 21:42
  */
 
-use library\SharedService;
+namespace app\controllers\Admin;
 
-class UsersController extends ControllerBase
+use library\SharedService;
+use app\models\Administrators;
+
+class UsersController extends BaseController
 {
     public function beforeExecuteRoute(){
 
         parent::beforeExecuteroute();
 
-        if(SharedService::isAdminLogged() !== true && $this->dispatcher->getActionName() != 'adminlogin' ){
-            $this->response->redirect('/admin/adminlogin');
+        if(SharedService::isAdminLogged() == false) {
+            $this->forwardTo404();
             return false;
         }
+    }
+
+    public function indexAction()
+    {
+        $this->assets->addJs('js/admin-users.js');
+
+        $administrators = Administrators::find();
+
+        $this->view->setVar('administrators', $administrators);
     }
 
     public function addOrEditAction()
@@ -43,7 +55,7 @@ class UsersController extends ControllerBase
 
         } else {
 
-            $userToSave = new \Administrators();
+            $userToSave = new Administrators();
 
             $userToSave->mapDataFromArray($user);
 
@@ -66,7 +78,7 @@ class UsersController extends ControllerBase
         $userId = $this->request->getPost('userId');
 
         if ($userId) {
-            $deleteResult = \Administrators::findFirst($userId)->delete();
+            $deleteResult = Administrators::findFirst($userId)->delete();
         } else {
             $deleteResult = 'Произошла ошибка при удалении пользователя.';
         }

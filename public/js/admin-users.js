@@ -1,8 +1,6 @@
 (function($){
     $(function(){
 
-//---------- ADMIN USERS---------- //
-
 
         $('.add-user-modal').on('click', function(e){
 
@@ -20,7 +18,7 @@
             var newUser = collectUserFormData();
 
             $.ajax({
-                url : '/users/addOrEdit',
+                url : '/admin/users/addOrEdit',
                 method : 'POST',
                 data : {'user' : newUser},
                 dataType: "json",
@@ -57,7 +55,7 @@
             var userId = $(this).attr('id');
 
             $.ajax({
-                url : '/users/delete',
+                url : '/admin/users/delete',
                 method : 'POST',
                 data : {'userId' : userId},
                 dataType: "json",
@@ -84,7 +82,7 @@
             var user = '';
 
             $.ajax({
-                url : '/users/getUser',
+                url : '/admin/users/getUser',
                 method : 'POST',
                 data : {'userId' : userId},
                 dataType: "json",

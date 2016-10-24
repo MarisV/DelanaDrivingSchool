@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="col s6 m6 l6" style="margin-top: -30px">
+        <h5 class="teal-text">
+            Управление пользователями
+        </h5>
+    </div>
+    <div class="col s6 m6 l6 right-align" style="margin-top: -26px">
+        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger add-user-modal" href="#add-user-modal"><i class="material-icons">add</i></a>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col s12 m 12 l12">
+        <table class="highlight responsive-table">
+            <thead>
+            <tr>
+                <th data-field="username">Имя пользователя</th>
+                <th data-field="firstname">Имя</th>
+                <th data-field="lastname">Фамилия</th>
+                <th data-field="email">E-mail</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($administrators as $user) {?>
+                <tr>
+                    <td id="username">
+                        <?= $user->username?>
+                    </td>
+                    <td id="firstname">
+                        <?= $user->firstname?>
+                    </td>
+                    <td id="lastname">
+                        <?= $user->lastname ?>
+                    </td>
+                    <td id="email">
+                        <?= $user->email ?>
+                    </td>
+                    <td>
+                        <div class="left">
+                            <?= $this->tag->linkTo(['#', '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn edit-user-btn', 'title' => 'Редактировать', 'id' => "$user->id"]) ?>
+                        </div>
+                        <div class="right">
+                            <?= $this->tag->linkTo(['#', '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-user-btn', 'id' => $user->id, 'title' => 'Удалить']) ?>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div id="add-user-modal" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <?=  Phalcon\Tag::form(array("#", "method" => "post", 'class' => 'col s12 m12 l12', 'id' => 'user-add-form')); ?>
+            <input type="hidden" id="ustat" value="" name="lstat">
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <input placeholder="Имя пользователя" id="username-add" name="username" type="text" class="validate">
+                    <label for="username-add">Имя пользователя</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <input placeholder="Имя" id="firstname-add" name="firstname" type="text" class="validate">
+                    <label for="firstname-add">Имя</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <input placeholder="Фамилия" id="lastname-add" name="lastname" type="text" class="validate">
+                    <label for="lastname-add" >Фамилия</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <input placeholder="E-mail" id="email-add" name="email" type="text" class="validate">
+                    <label for="email-add">E-mail</label>
+                </div>
+            </div>
+            <div class="row password-row">
+                <div class="input-field col s12 m12 l12">
+                    <input placeholder="" id="password-add" name="password" type="password" class="validate">
+                    <label for="password-add">Пароль</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m12 l12 center-align">
+                    <?= Phalcon\Tag::submitButton(['Сохранить', 'class' => 'btn waves-effect waves-light submit-user-add' ]) ?>
+                </div>
+            </div>
+            <?= \Phalcon\Tag::endForm(); ?>
+        </div>
+        <div class="row">
+            <div class="col s12 validation-errors">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

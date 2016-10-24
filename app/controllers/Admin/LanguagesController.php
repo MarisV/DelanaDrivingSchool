@@ -1,17 +1,21 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: Maris Vigulis
- * Date: 16.4.10
- * Time: 22:25
+ * Date: 16.24.10
+ * Time: 07:26
  */
+
+namespace app\controllers\Admin;
 
 use library\SharedService;
 
-class LanguagesController extends ControllerBase
+use app\models\Languages;
+
+
+class LanguagesController extends BaseController
 {
-    public function beforeExecuteroute()
+    public function beforeExecuteRoute()
     {
         parent::beforeExecuteroute();
 
@@ -19,7 +23,15 @@ class LanguagesController extends ControllerBase
             $this->forwardTo404();
             return false;
         }
+    }
 
+    public function indexAction()
+    {
+        $this->assets->addJs('js/admin-languages.js');
+
+        $allLanguagesList = Languages::find();
+
+        $this->view->setVar('languages', $allLanguagesList);
     }
 
     public function addOrEditAction()
@@ -66,5 +78,4 @@ class LanguagesController extends ControllerBase
         }
 
     }
-
 }

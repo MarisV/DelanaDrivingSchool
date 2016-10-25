@@ -78,4 +78,9 @@ class UploadsController extends ControllerBase
         }
     }
 
+    public function uploadPageImageAction()
+    {
+        
+    }
+
 }

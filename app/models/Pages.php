@@ -40,7 +40,8 @@ class Pages extends BaseModel
             'seo_description'   =>  'seoDescription',
             'seo_keywords'      =>  'seoKeywords',
             'date_added'        =>  'dateAdded',
-            'language_id'       =>  'languageId'
+            'language_id'       =>  'languageId',
+            'order_index'       =>  'orderIndex'
         ];
     }
 

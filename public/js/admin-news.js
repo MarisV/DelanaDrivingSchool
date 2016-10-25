@@ -2,7 +2,7 @@
     $(function(){
 
         // Init CKEditor on new full description field
-        CKEDITOR.replace( 'news-full-description' );
+        CKEDITOR.replace( 'news-full-description');
 
 
         //---------- ADMIN NEWS ---------- //
@@ -10,7 +10,6 @@
             e.preventDefault();
 
             openNewsModal();
-
         });
 
         // Add new btn handler

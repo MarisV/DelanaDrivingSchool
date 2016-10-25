@@ -33,10 +33,10 @@
                     </td>
                     <td>
                         <div class="left">
-                            <?= $this->tag->linkTo(['languages/edit/', '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn edit-language-btn', 'title' => 'Редактировать', 'id' => "$page->id"]) ?>
+                            <?= $this->tag->linkTo(['#', '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn edit-page-btn', 'title' => 'Редактировать', 'id' => "$page->id"]) ?>
                         </div>
                         <div class="right">
-                            <?= $this->tag->linkTo(['languages/delete/'.$page->id, '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-language-btn', 'id' => $page->id, 'title' => 'Удалить']) ?>
+                            <?= $this->tag->linkTo(['#'.$page->id, '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-page-btn', 'id' => $page->id, 'title' => 'Удалить']) ?>
                         </div>
                     </td>
                 </tr>
@@ -50,7 +50,73 @@
 <div id="add-page-modal" class="modal">
     <div class="modal-content">
         <div class="row">
-            123
+            <form class="col s12 add-news-form">
+                <input type="hidden" id="nstat" value="" name="nstat">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Заголовок" id="title" name="title" type="text" class="validate">
+                        <label for="news-title">Название</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea  value="Полное описание" type="text" id="page-description" name="pageContent" class="materialize-textarea validate"> </textarea>
+                        <label for="news-full-description" style="padding-bottom: 10px">Содержание страницы</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <ul class="collapsible" data-collapsible="accordion" style="width: 640px !important; margin-left: -13px">
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">settings</i>SEO Настройки
+                                </div>
+                                <div class="collapsible-body">
+                                    <div class="row" style="margin-top: 10px">
+                                        <div class="input-field col s12">
+                                            <input placeholder="SEO Заголовок" id="news-seo-title" name="seoTitle" type="text" class="validate">
+                                            <label for="news-seo-title">SEO Заголовок</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input placeholder="SEO ключевые слова" id="news-seo-keywords" name="seoKeywords" type="text" class="validate">
+                                            <label for="news-seo-keywords">SEO ключевые слова</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea  value="SEO описание" type="text" name="seoDescription" id="news-seo-description" class="materialize-textarea validate" length="160"> </textarea>
+                                            <label for="news-seo-description">SEO описание</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12 input-field" style="width:660px !important; margin-left: -13px;">
+                        <select name="languageId" id="language-id">
+                            <?php foreach ($languages AS $language) { ?>
+                                <?php  $selected = ($language->code == 'ru') ? ' selected ' : '' ?>
+                                <option value="<?php echo $language->id ?>" <?= $selected ?> > <?php echo $language->name ?></option>
+                            <? } ?>
+                        </select>
+                        <label>Язык новости</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12 input-field center" style="margin-top: 30px;">
+                        <button class="btn waves-effect waves-light submit-news" type="submit" name="action">
+                            Сохранить<i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

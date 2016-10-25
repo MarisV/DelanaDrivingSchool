@@ -4,6 +4,7 @@
 (function($){
     $(function(){
 
+        CKEDITOR.replace('page-description');
 
         $('.add-page-modal').on('click', function(e){
             e.preventDefault();

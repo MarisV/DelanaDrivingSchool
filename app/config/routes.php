@@ -64,7 +64,7 @@ $router->add('/admin/news/page/:int', array(
 ));
 
 $router->add('/admin', array(
-    'namespace'   => 'app\controllers\Admin',
+    'namespace'     =>  'app\controllers\Admin',
     'controller'    =>  'news',
     'action'        =>  'index',
     'page'          =>  1

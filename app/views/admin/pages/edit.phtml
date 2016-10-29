@@ -9,14 +9,14 @@
     <form class="col s12 add-news-form" action="/admin/pages/edit/<?= $page->id ?>" method="post">
         <div class="row">
             <div class="input-field col s12">
-                <input placeholder="Заголовок" id="title" name="title" type="text" class="validate" value="<?= $page->title ?>">
-                <label for="news-title">Название</label>
+                <input placeholder="Заголовок" id="title" name="title" type="text" class="validate <?= (isset($errors['title'])) ? ' invalid' : '' ?>"" value="<?= $page->title ?>">
+                <label for="title" data-error="<?= (isset($errors['title'])) ? $errors['title'] : '' ?>">Название</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <textarea  type="text" id="page-description" name="content" class="materialize-textarea validate"> <?= $page->content ?> </textarea>
-                <label for="news-full-description" style="padding-bottom: 10px">Содержание страницы</label>
+                <textarea  type="text" id="page-description" name="content" class="materialize-textarea validate <?= (isset($errors['content'])) ? ' invalid' : '' ?>"> <?= $page->content ?> </textarea>
+                <label for="page-description" data-error="<?= (isset($errors['content'])) ? $errors['content'] : '' ?>"  style="padding-bottom: 10px">Содержание страницы</label>
             </div>
         </div>
 

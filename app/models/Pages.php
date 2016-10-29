@@ -56,6 +56,9 @@ class Pages extends BaseModel
         ];
     }
 
+    /**
+     * Init some field before create record in database
+     */
     public function beforeValidationOnCreate()
     {
         $this->dateAdded = date('Y-m-d');
@@ -66,6 +69,9 @@ class Pages extends BaseModel
         $this->uri = Slug::generate($this->title);
     }
 
+    /**
+     * Init some settings
+     */
     public function initialize(){
         $this->setup(
             array('notNullValidations'=>false)
@@ -90,6 +96,11 @@ class Pages extends BaseModel
     }
 
 
+    /**
+     *  Validation rules for Pages model
+     *
+     * @return bool
+     */
     public function validation()
     {
         $validator = new Validation();
@@ -109,14 +120,16 @@ class Pages extends BaseModel
         return $this->validate($validator);
     }
 
+    /**
+     * Get validation errors for Pages model
+     * @return mixed
+     */
     public function getValidationMessages()
     {
         $errorMessages = $this->getMessages();
 
         foreach ($errorMessages as $message) {
-            $result[] = [
-                'msg'   =>  $message->getMessage()
-            ];
+            $result[$message->getField()] = $message->getMessage();
         }
 
         return $result;

@@ -8,7 +8,6 @@
 
 namespace app\controllers\Admin;
 
-
 use app\models\Pages;
 use app\models\Languages;
 
@@ -38,8 +37,8 @@ class PagesController extends BaseController
 
     public function indexAction()
     {
-
         $allPages = Pages::find();
+
         $this->view->setVar('pages', $allPages);
     }
 
@@ -93,13 +92,12 @@ class PagesController extends BaseController
             $result =  $page->save();
 
             if ($result === false) {
-                $result = $page->getValidationMessages();
-                die(json_encode(['result' => $result]));
+                $errors = $page->getValidationMessages();
+                $this->view->setVar('errors', $errors);
+            } else {
+                $this->response->redirect('/admin/pages');
+                return false;
             }
-
-            $this->response->redirect('/admin/pages');
-            return false;
-
         }
 
         $this->view->setVar('page', $page);

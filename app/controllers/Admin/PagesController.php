@@ -56,13 +56,12 @@ class PagesController extends BaseController
             $result = $page->create();
 
             if ($result === false) {
-                $result = $page->getValidationMessages();
-                die(json_encode(['result' => $result]));
+                $errors = $page->getValidationMessages();
+                $this->view->setVar('errors', $errors);
+            } else {
+                $this->response->redirect('/admin/pages');
+                return false;
             }
-
-            $this->response->redirect('/admin/pages');
-            return false;
-
         }
     }
 

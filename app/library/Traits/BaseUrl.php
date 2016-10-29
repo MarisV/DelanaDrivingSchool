@@ -25,6 +25,6 @@ trait BaseUrl
         $url .= $request->getHttpHost();
         $url .= $request->getServer('PHP_SELF') ? $request->getServer('PHP_SELF') : '/';
 
-        return rtrim($url, '/index.php');
+        return rtrim($url, 'index.php');
     }
 }

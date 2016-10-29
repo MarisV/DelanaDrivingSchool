@@ -116,18 +116,4 @@ class Administrators extends BaseModel
         }
     }
 
-    public function getValidationMessages()
-    {
-        $errorMessages = $this->getMessages();
-
-        foreach ($errorMessages as $message) {
-            $result[] = [
-                'msg'   =>  $message->getMessage()
-            ];
-        }
-
-        return $result;
-    }
-
-
 }

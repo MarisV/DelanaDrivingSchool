@@ -83,6 +83,12 @@ $router->add('/admin/:controller/:action/:params', [
     'params'     => 3,
 ]);
 
+$router->add('/admin/pages/edit/{pageid}', [
+    'namespace'  => 'app\controllers\Admin',
+    'controller' => 'pages',
+    'action'     => 'edit',
+    'pageid'     => 1,
+]);
 
 
 return $router;

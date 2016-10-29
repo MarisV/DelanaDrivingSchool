@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\library\Traits\BaseUrl;
 use Phalcon\Mvc\Controller;
 
 class ControllerBase extends Controller
@@ -9,6 +10,7 @@ class ControllerBase extends Controller
 
     public function beforeExecuteroute()
     {
+
         $this->assets->addCss('css/style.css')
             ->addCss('components/materialize/dist/css/materialize.min.css');
 

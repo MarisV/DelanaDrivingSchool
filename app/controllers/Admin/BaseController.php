@@ -9,7 +9,6 @@
 namespace app\controllers\Admin;
 
 use Phalcon\Mvc\Controller;
-use Phalcon\Mvc\View;
 use library\SharedService;
 
 class BaseController extends Controller 
@@ -21,8 +20,6 @@ class BaseController extends Controller
             $this->response->redirect('/admin/auth/login');
             return false;
         }
-
-
 
         $this->view->setViewsDir(APP_PATH . '/views/admin');
 

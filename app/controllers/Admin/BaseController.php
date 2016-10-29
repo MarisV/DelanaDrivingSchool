@@ -10,9 +10,13 @@ namespace app\controllers\Admin;
 
 use Phalcon\Mvc\Controller;
 use library\SharedService;
+use library\Traits\BaseUrl;
 
 class BaseController extends Controller 
 {
+
+    use BaseUrl;
+
     public function beforeExecuteRoute()
     {
 

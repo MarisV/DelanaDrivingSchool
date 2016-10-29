@@ -2,11 +2,13 @@
 
 namespace app\controllers;
 
-use app\library\Traits\BaseUrl;
 use Phalcon\Mvc\Controller;
+use library\Traits\BaseUrl;
 
 class ControllerBase extends Controller
 {
+
+    use BaseUrl;
 
     public function beforeExecuteroute()
     {

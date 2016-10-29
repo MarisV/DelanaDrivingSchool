@@ -18,7 +18,6 @@ class PagesController extends BaseController
     {
         parent::beforeExecuteRoute();
 
-
         $this->assets->addJs('components/ckeditor/ckeditor.js');
         $this->assets->addJs('js/admin-pages.js');
 

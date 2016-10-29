@@ -108,14 +108,14 @@ class UploadsController extends ControllerBase
 
             $uploadResult = $file->moveTo(self::PAGE_IMAGES_DIR . $newFileName);
 
-            $uri = '/'.self::PAGE_IMAGES_DIR . $newFileName;
+            $uri = $this->getBaseUrl().'/'.self::PAGE_IMAGES_DIR . $newFileName;
 
             if ($uploadResult === false) {
                 $uri = false;
             }
 
-          $resultToReturn =  "<script type='text/javascript'>
-                window.parent.CKEDITOR.tools.callFunction('0', '$uri', '');
+            $resultToReturn =  "<script type='text/javascript'>
+                window.parent.CKEDITOR.tools.callFunction('1', '$uri', '');
             </script>";
 
             die($resultToReturn);

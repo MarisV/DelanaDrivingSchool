@@ -6,7 +6,7 @@
  * Time: 22:05
  */
 
-namespace app\library\Traits;
+namespace library\Traits;
 
 use Phalcon\Di;
 

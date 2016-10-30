@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col s6 m6 l6" style="margin-top: -30px">
+        <h5 class="teal-text">
+            SEO настройки сайта
+        </h5>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="row">
+    <div class="col s6 m6 l6">
+        <h6 class="teal-text">
+            Настройки главной страницы
+        </h6>
+    </div>
+</div>
+<div class="row">
+    <div class="col s10 m10 l10">
+        <form id="main-seo-settings-form" action="/admin/seo/editmainsettings" method="POST" class="col s12 m12 l12">
+
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <input id="main-pagestitle" type="text" class="validate">
+                    <label for="main-page-title">Главный заголовок сайта</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea  value="Полное описание" type="text" id="main-page-seo-description" class="materialize-textarea validate" length="160"> </textarea>
+                    <label for="main-page-seo-description" style="padding-bottom: 10px">SEO описание сайта</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <input id="main-page-seo-keywords" type="text" class="validate">
+                    <label for="main-page-seo-keywords">SEO ключевые слова</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 input-field left" style="margin-top: -20px;">
+                    <button class="btn waves-effect waves-light" type="submit">
+                        Сохранить<i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="row">
+    <div class="col s6 m6 l6">
+        <h6 class="teal-text">
+            Основной язык
+        </h6>
+    </div>
+</div>
+<div class="row">
+    <div class="col s10 m10 l10">
+        <form id="default-site-language-form" action="#" method="POST" class="col s12 m12 l12">
+            <div class="row">
+                <div class="col s12 input-field" style="width:660px !important;">
+                    <select name="languageId" id="site-language-id">
+                        <?php foreach ($languages AS $language) { ?>
+                            <?php  $selected = ($language->id == $settings->defaultSiteLanguage) ? ' selected ' : '' ?>
+
+                            <option value="<?php echo $language->id ?>" <?= $selected ?> > <?php echo $language->name ?></option>
+                        <? } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 input-field left" style="margin-top: -20px;">
+                    <button class="btn waves-effect waves-light save-default-site-language" type="submit">
+                        Сохранить<i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

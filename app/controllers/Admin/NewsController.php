@@ -36,10 +36,7 @@ class NewsController extends BaseController
             'order'     =>  'dateAdded desc',
         ]);
 
-        $visibleLanguages = Languages::find([
-            'visible'   =>  'yes',
-            'order'     =>  'id desc'
-        ]);
+        $visibleLanguages = Languages::find("visible = 'yes'");
 
         $paginator = new PaginatorModel([
             'data'  =>  $latestNews,

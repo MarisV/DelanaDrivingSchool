@@ -24,6 +24,24 @@
                 }
             });
 
+        });
+
+
+        $('#site-seo-settings-language').on('change', function (e) {
+            e.preventDefault();
+
+            var langId = $(this).val();
+
+            if  (location.pathname.split('/')[4] === undefined) {
+                location.pathname += '/lang/' + langId;
+            } else {
+
+                var tmp = location.pathname.split('/');
+                tmp[4] = langId;
+                var tmp = tmp.join('/');
+
+                location.pathname = tmp;
+            }
         })
 
     });

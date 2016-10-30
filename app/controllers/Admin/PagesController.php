@@ -22,10 +22,7 @@ class PagesController extends BaseController
 
         $langsMap = [];
 
-        $visibleLanguages = Languages::find([
-            'visible'   =>  'yes',
-            'order'     =>  'id desc'
-        ]);
+        $visibleLanguages = Languages::find("visible = 'yes'");
 
         foreach ($visibleLanguages as $lang) {
             $langsMap[$lang->id] = $lang->name;

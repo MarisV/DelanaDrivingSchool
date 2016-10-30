@@ -32,7 +32,7 @@ class Languages extends Model
 
     public function initialize()
     {
-        $this->belongsTo('id', 'News', 'language_id');
+        $this->belongsTo('id', 'System', 'default_site_language');
     }
 
     /**

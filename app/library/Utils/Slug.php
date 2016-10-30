@@ -1,16 +1,15 @@
 <?php
 
-namespace library\Utils;
-
-use Phalcon\Exception;
-
-
 /**
  * Created by PhpStorm.
  * User: Maris Vigulis
  * Date: 16.5.10
  * Time: 20:47
  */
+
+namespace library\Utils;
+
+use Phalcon\Exception;
 
 /**
  * Slug component

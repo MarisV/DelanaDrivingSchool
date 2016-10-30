@@ -20,7 +20,6 @@ class AuthController extends BaseController
 
         $this->view->setLayout('admin');
         $this->view->setRenderLevel(View::LEVEL_LAYOUT);
-
     }
 
     public function loginAction()
@@ -65,16 +64,10 @@ class AuthController extends BaseController
     public function logoutAction()
     {
         if (SharedService::isAdminLogged() === true) {
-
             $this->session->remove('logged_in_admin');
             $this->response->redirect('admin/auth/login');
             return false;
         }
     }
 
-    public function testAction()
-    {
-
-    }
-    
 }

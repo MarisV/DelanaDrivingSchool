@@ -76,6 +76,5 @@ class LanguagesController extends BaseController
         } else {
             die(json_encode(['result'   =>  'Invalid language id param']));
         }
-
     }
 }

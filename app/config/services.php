@@ -9,7 +9,6 @@ use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Flash\Direct as Flash;
 use Phalcon\Mvc\Router;
 use library\Cache\CacheAdapter;
-use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 
 /**
@@ -125,9 +124,6 @@ $di->set('cache', function (){
 });
 
 $di->set('dispatcher', function() {
-   // $eventsManager = new EventsManager();
-   // $eventsManager->attach('dispatch', new DispatcherListener());
-
     $dispatcher = new MvcDispatcher();
 
     return $dispatcher;

@@ -1,0 +1,81 @@
+<?php
+use app\models\Contacts;
+?>
+<div class="row">
+    <div class="col s6 m6 l6" style="margin-top: -30px">
+        <h5 class="teal-text">
+            Управление контактной иформацией
+        </h5>
+    </div>
+    <div class="col s6 m6 l6 right-align" style="margin-top: -26px">
+        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger add-contact-modal" href="#add-contact-modal"><i class="material-icons">add</i></a>
+    </div>
+</div>
+<div class="divider"></div>
+
+<div class="row">
+    <div class="col s12 m 12 l12">
+        <table class="highlight responsive-table">
+            <thead>
+            <tr>
+                <th data-field="language">Тип</th>
+                <th data-field="code">Значение</th>
+                <th data-field="actions" class="center-align">Управление</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($contacts as $contact) {?>
+                <tr>
+                    <td id="name">
+                        <?= Contacts::getContactTypesAndTranslations()[$contact->contactType] ?>
+                    </td>
+                    <td id="code">
+                        <?= $contact->contactValue?>
+                    </td>
+                    <td>
+                        <div class="center-align">
+                            <?= $this->tag->linkTo(['#', '<i class="material-icons">mode_edit</i>', 'class' => 'waves-effect waves-light btn edit-contact-btn', 'title' => 'Редактировать', 'id' => "$contact->id"]) ?>
+                            <?= $this->tag->linkTo(['#', '<i class="material-icons">delete</i>', 'class' => 'waves-effect waves-light btn  red lighten-1 delete-contact-btn', 'id' => $contact->id, 'title' => 'Удалить']) ?>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="add-contact-modal" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <form action="#" method="POST" class="col s12 m12 l12" id="contact-add-form">
+                <input type="hidden" id="cstat" value="" name="cstat">
+
+                <div class="row">
+                    <div class="col s12 input-field" style="width:660px !important;">
+                        <select name="contactType" id="contactType">
+                            <?php foreach ($contactTypes AS $type   =>  $translate) { ?>
+                                <option value="<?= $type     ?>"> <?= $translate ?> </option>
+                            <? } ?>
+                        </select>
+                        <label>Тип поля</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m12 l12">
+                        <input id="contactValue" name="contactValue" type="text" class="validate">
+                        <label for="contactValue">Значение</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <?= Phalcon\Tag::submitButton(['Save', 'class' => 'btn waves-effect waves-light submit-contact-add' ]) ?>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

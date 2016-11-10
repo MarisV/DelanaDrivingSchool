@@ -13,9 +13,11 @@ use library\SharedService;
 
 class UploadsController extends ControllerBase
 {
-    const ARTICLE_IMAGES_DIR = 'uploads/news/';
+    const ARTICLE_IMAGES_DIR    =   'uploads/news/';
 
-    const PAGE_IMAGES_DIR = 'uploads/pages/';
+    const PAGE_IMAGES_DIR       =   'uploads/pages/';
+
+    const CATEGORY_IMAGES_DIR    =   'uploads/categories/';
 
     public function beforeExecuteroute()
     {
@@ -78,6 +80,18 @@ class UploadsController extends ControllerBase
     }
 
     /**
+     * Check whether pages images dir exists.
+     * If not exists - create it.
+     *
+     */
+    public function createCategoriesImagesDirIfNotExists()
+    {
+        if (!is_dir(self::CATEGORY_IMAGES_DIR)) {
+            mkdir(self::CATEGORY_IMAGES_DIR, 0755);
+        }
+    }
+
+    /**
      *  Delete article image, if article wasn't submitted;
      */
     public function deleteNewsImageIfNotSubmittedAction()
@@ -121,5 +135,35 @@ class UploadsController extends ControllerBase
             die($resultToReturn);
         }
     }
+
+    public function uploadCategoryImageAction()
+    {
+        $this->view->disable();
+
+        $this->createCategoriesImagesDirIfNotExists();
+
+        if ($this->request->hasFiles()) {
+
+            $file = $this->request->getUploadedFiles()[0];
+
+            $newFileName = md5($file->getName() . date('d-m-y H:m:s')) . '.' .  $file->getExtension();
+
+            $uploadResult = $file->moveTo(self::CATEGORY_IMAGES_DIR . $newFileName);
+
+            $uri = $this->getBaseUrl().'/'.self::CATEGORY_IMAGES_DIR. $newFileName;
+
+            if ($uploadResult === false) {
+                $uri = false;
+            }
+
+            $resultToReturn =  "<script type='text/javascript'>
+                window.parent.CKEDITOR.tools.callFunction('1', '$uri', '');
+            </script>";
+
+            die($resultToReturn);
+        }
+    }
+
+
 
 }

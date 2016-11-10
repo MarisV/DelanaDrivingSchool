@@ -90,6 +90,13 @@ $router->add('/admin/pages/edit/{pageid}', [
     'pageid'     => 1,
 ]);
 
+$router->add('/admin/categories/edit/{categoryId}', [
+    'namespace'  => 'app\controllers\Admin',
+    'controller' => 'categories',
+    'action'     => 'edit',
+    'categoryId'     => 1,
+]);
+
 $router->add('/admin/seo/lang/{languageId}', [
     'namespace'     => 'app\controllers\Admin',
     'controller'    => 'seo',

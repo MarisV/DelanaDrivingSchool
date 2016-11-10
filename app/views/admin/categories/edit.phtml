@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col s6 m6 l6" style="margin-top: -30px">
+        <h5 class="teal-text">
+            Редактировать категориюf
+        </h5>
+    </div>
+</div>
+<div class="row">
+    <form class="col s12 edit-category-form" action="/admin/categories/edit/<?= $category->id ?>" method="post">
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Заголовок" id="title" name="title" type="text" class="validate <?= (isset($errors['title'])) ? ' invalid' : '' ?>"" value="<?= $category->title ?>">
+                <label for="title" data-error="<?= (isset($errors['title'])) ? $errors['title'] : '' ?>">Название категории</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea  type="text" id="category-description" name="content" class="materialize-textarea validate <?= (isset($errors['content'])) ? ' invalid' : '' ?>"> <?= $category->content ?> </textarea>
+                <label for="category-description" data-error="<?= (isset($errors['content'])) ? $errors['content'] : '' ?>"  style="padding-bottom: 10px">Описание категории</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 input-field">
+                <ul class="collapsible" data-collapsible="accordion" style="width: 640px !important; ">
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">settings</i>SEO Настройки
+                        </div>
+                        <div class="collapsible-body">
+                            <div class="row" style="margin-top: 10px">
+                                <div class="input-field col s12">
+                                    <input placeholder="SEO Заголовок" id="category-seo-title" name="seoTitle" type="text" class="validate" value="<?= $category->seoTitle ?>">
+                                    <label for="category-seo-title">SEO Заголовок</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input placeholder="SEO ключевые слова" id="category-seo-keywords" name="seoKeywords" type="text" class="validate" value="<?= $category->seoKeywords ?>">
+                                    <label for="category-seo-keywords">SEO ключевые слова</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea  value="SEO описание" type="text" name="seoDescription" id="category-seo-description" class="materialize-textarea validate" length="160"> <?= $category->seoDescription ?> </textarea>
+                                    <label for="category-seo-description">SEO описание</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 input-field" style="width:660px !important;">
+                <select name="languageId" id="language-id">
+                    <?php foreach ($languages AS $language) { ?>
+                        <?php  $selected = ($language->id == $category->languageId) ? ' selected ' : '' ?>
+                        <option value="<?php echo $language->id ?>" <?= $selected ?> > <?php echo $language->name ?></option>
+                    <? } ?>
+                </select>
+                <label>Язык страницы</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 input-field center" style="margin-top: 30px;">
+                <button class="btn waves-effect waves-light submit-category" type="submit" name="action">
+                    Сохранить<i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

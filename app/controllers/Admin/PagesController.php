@@ -13,11 +13,13 @@ use app\models\Languages;
 
 class PagesController extends BaseController
 {
+
     public function beforeExecuteRoute()
     {
         parent::beforeExecuteRoute();
 
         $this->assets->addJs('components/ckeditor/ckeditor.js');
+        $this->assets->addJs('components/jquery-ui/jquery-ui.min.js');
         $this->assets->addJs('js/admin-pages.js');
 
         $langsMap = [];
@@ -32,12 +34,16 @@ class PagesController extends BaseController
         $this->view->setVar('languages', $visibleLanguages);
     }
 
+
     public function indexAction()
     {
-        $allPages = Pages::find();
+        $allPages = Pages::find([
+            'order'     =>  'orderIndex asc',
+        ]);
 
         $this->view->setVar('pages', $allPages);
     }
+
 
     public function addAction()
     {
@@ -61,6 +67,7 @@ class PagesController extends BaseController
         }
     }
 
+
     public function deleteAction()
     {
         $this->view->disable();
@@ -71,6 +78,7 @@ class PagesController extends BaseController
 
         die(json_encode(['result' => $result]));
     }
+
 
     public function editAction()
     {
@@ -99,4 +107,18 @@ class PagesController extends BaseController
 
         $this->view->setVar('page', $page);
     }
+
+
+    public function orderAction()
+    {
+        $orderData = $this->request->getPost('data');
+
+        $positions = Pages::getOrderPositionsFromString($orderData);
+
+        $orderResult = Pages::updatePagesPositions($positions);
+
+        die(var_dump($orderResult));
+    }
+
+
 }

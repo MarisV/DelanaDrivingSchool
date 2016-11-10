@@ -21,7 +21,7 @@
             </thead>
             <tbody>
             <?php foreach ($pages as $page) {?>
-                <tr>
+                <tr id="page-<?= $page->id ?>" class="sortable-pages">
                     <td id="name">
                         <?= $page->title?>
                     </td>

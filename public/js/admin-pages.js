@@ -6,6 +6,8 @@
 
         initCkEditor();
 
+        initSorter();
+
         $('.delete-page-btn').on('click', function(e){
             e.preventDefault();
 
@@ -43,6 +45,26 @@
                 });
             }
 
+        }
+        
+        function initSorter()
+        {
+            $('tbody').sortable({
+                axis: 'y',
+                update: function (event, ui) {
+                    var data = $(this).sortable('serialize');
+
+                    $.ajax({
+                        url : '/admin/pages/order',
+                        method : 'POST',
+                        data : {'data' : data},
+                        dataType: "json",
+                        success : function(response){
+
+                        }
+                    });
+                }
+            });
         }
 
     });

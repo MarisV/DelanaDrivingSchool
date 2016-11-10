@@ -122,6 +122,7 @@ class Pages extends BaseModel
 
     /**
      * Get validation errors for Pages model
+     *
      * @return mixed
      */
     public function getValidationMessages()
@@ -133,6 +134,49 @@ class Pages extends BaseModel
         }
 
         return $result;
+    }
+
+    /**
+     * Update pages positions
+     *
+     * @param $positions
+     * @return bool
+     */
+    public static function updatePagesPositions($positions)
+    {
+        $pages = self::find();
+
+        $positionsCounter = 0;
+        /** @var  $page Pages*/
+        foreach ($pages as $page) {
+            $page->orderIndex = $positions[$positionsCounter];
+            $page->save();
+            $positionsCounter++;
+        }
+
+        return true;
+    }
+
+    /**
+     * Extract pages order positions from request string
+     *
+     * @param $positionsString
+     * @return array
+     */
+    public static function getOrderPositionsFromString($positionsString)
+    {
+        $positions = [];
+
+        if (!empty($positionsString)) {
+
+            $firstDivide = explode('&', $positionsString);
+
+            foreach ($firstDivide as $value) {
+                $positions[] = explode('=', $value)[1];
+            }
+        }
+
+        return $positions;
     }
 
 }

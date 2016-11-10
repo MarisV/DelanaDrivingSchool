@@ -72,15 +72,4 @@ class ContactsController extends BaseController
             return false;
         }
     }
-
-    /**
-     *  Prepare contact data from request;
-     * Simply - map data to Contact model;
-     *
-     * @param array $data
-     * @param Contacts $contact
-     */
-    private function prepareContactDataFromRequest($data, &$contact)
-    {
-    }
 }

@@ -58,4 +58,14 @@ class SharedService
         }
     }
 
+    /**
+     * Returns simple veiw from phalcon
+     *
+     * @return \Phalcon\Mvc\View\Simple
+     */
+    public static function getSimpleView()
+    {
+       return self::getDi()->get('simpleview');
+    }
+
 }

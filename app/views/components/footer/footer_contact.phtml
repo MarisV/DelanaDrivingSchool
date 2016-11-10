@@ -1,0 +1,52 @@
+<?php
+use app\models\Contacts;
+?>
+
+<h5 class="white-text">"De Lana Auto"</h5>
+<p class="grey-text text-lighten-4">
+
+    <?php if ($hasContactsData) { ?>
+
+        <?php if(!empty(Contacts::getAddress() )) { ?>
+            <?php  $address = Contacts::getAddress(); ?>
+            Наш адрес:
+            <?php if (!is_array($address)) {
+                echo $address;
+            } else {
+                echo implode(', ', $address);
+            }?> <br> <br>
+        <?php } ?>
+
+        <?php if(!empty(Contacts::getPhone() )) { ?>
+            <?php  $phones = Contacts::getPhone(); ?>
+            Телефон :
+            <?php if (!is_array($phones)) {
+                echo $phones;
+            } else {
+               echo implode(', ', $phones);
+            }?> <br> <br>
+        <?php } ?>
+
+        <?php if(!empty(Contacts::getEmail() )) { ?>
+            <?php  $emails = Contacts::getEmail(); ?>
+            Email :
+            <?php if (!is_array($emails)) {
+                echo $emails;
+            } else {
+                echo implode(', ', $emails);
+            }?> <br> <br>
+        <?php } ?>
+
+        <?php if(!empty(Contacts::getSkype() )) { ?>
+            <?php  $skype = Contacts::getSkype(); ?>
+            Skype :
+            <?php if (!is_array($skype)) {
+                echo $skype;
+            } else {
+                echo implode(', ', $skype);
+            }?> <br> <br>
+        <?php } ?>
+
+    <?php } ?>
+
+</p>

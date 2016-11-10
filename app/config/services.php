@@ -10,6 +10,7 @@ use Phalcon\Flash\Direct as Flash;
 use Phalcon\Mvc\Router;
 use library\Cache\CacheAdapter;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+use Phalcon\Mvc\View\Simple as SimpleView;
 
 /**
  * Shared configuration service
@@ -28,6 +29,17 @@ $di->setShared('url', function () {
     $url->setBaseUri($config->application->baseUri);
 
     return $url;
+});
+
+/**
+ * Simple view is used to render partial views in components
+ */
+$di->setShared('simpleview', function (){
+    $view = new SimpleView();
+
+    $view->setViewsDir(APP_PATH . '/views/');
+
+    return $view;
 });
 
 /**

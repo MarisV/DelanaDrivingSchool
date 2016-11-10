@@ -8,8 +8,6 @@
 
 namespace app\controllers\Admin;
 
-
-
 use app\models\Contacts;
 use Phalcon\Mvc\View;
 
@@ -33,17 +31,16 @@ class ContactsController extends BaseController
         $this->view->disable();
 
         if ($this->request->isAjax() && $this->request->isPost()) {
+
             $data = $this->request->getPost();
 
-            $contact = new Contacts();
+            $contactModel = ($this->isDataForEdit($data)) ? Contacts::findFirst($data['id']) : new Contacts();
 
-            foreach ($data as $key  =>  $value) {
-                $contact->$key  =   $value;
-            }
+            $contactModel->initFromArray($data);
 
-            $saveResult = $contact->save();
+            $result = ($this->isDataForEdit($data)) ? $contactModel->save() : $contactModel->create();
 
-            die(json_encode(['result'   =>  $saveResult]));
+            die(json_encode(['result'   =>  $result]));
         }
     }
 
@@ -59,5 +56,31 @@ class ContactsController extends BaseController
 
             die(json_encode(['result'   =>  $result]));
         }
+    }
+
+    /**
+     *  Check whether data received from user is for edit or not
+     *
+     * @param array $data
+     * @return bool
+     */
+    private function isDataForEdit(&$data)
+    {
+        if (!empty($data['id'])) {
+            return true;
+        } else  {
+            return false;
+        }
+    }
+
+    /**
+     *  Prepare contact data from request;
+     * Simply - map data to Contact model;
+     *
+     * @param array $data
+     * @param Contacts $contact
+     */
+    private function prepareContactDataFromRequest($data, &$contact)
+    {
     }
 }

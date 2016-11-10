@@ -26,10 +26,10 @@ use app\models\Contacts;
             <tbody>
             <?php foreach ($contacts as $contact) {?>
                 <tr>
-                    <td id="name">
+                    <td class="name" data-address = "<?= $contact->contactType ?>" >
                         <?= Contacts::getContactTypesAndTranslations()[$contact->contactType] ?>
                     </td>
-                    <td id="code">
+                    <td class="code">
                         <?= $contact->contactValue?>
                     </td>
                     <td>
@@ -59,7 +59,7 @@ use app\models\Contacts;
                                 <option value="<?= $type     ?>"> <?= $translate ?> </option>
                             <? } ?>
                         </select>
-                        <label>Тип поля</label>
+                        <label>Тип данных</label>
                     </div>
                 </div>
 

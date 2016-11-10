@@ -33,6 +33,18 @@ class Contacts extends BaseModel
         ];
     }
 
+    /**
+     *  Map page data array to contact model object
+     *
+     * @param array $contactAsArray
+     */
+    public function initFromArray($contactAsArray)
+    {
+        foreach ($contactAsArray as $key  =>  $value) {
+            $this->$key  =   $value;
+        }
+    }
+
     public static function getContactTypesAndTranslations()
     {
         return [
@@ -42,5 +54,5 @@ class Contacts extends BaseModel
             self::CONTACT_TYPE_SKYPE    =>  'Скайп'
         ];
     }
-    
+
 }

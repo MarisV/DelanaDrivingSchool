@@ -15,6 +15,7 @@
                     opacity: .7,
                     complete: function() {
                         $('#contactValue').val('');
+                        $('#cstat').val('');
                     }
                 }
             );
@@ -24,13 +25,14 @@
         $('.submit-contact-add').on('click', function(e){
             e.preventDefault();
 
+            var contactId = $('#cstat').val();
             var contactType = $('#contactType').val(); // Selected contact type value
             var contactValue = $('#contactValue').val();
 
             $.ajax({
                 url : '/admin/contacts/add',
                 method : 'POST',
-                data : {'contactType' : contactType, 'contactValue' : contactValue},
+                data : {'contactType' : contactType, 'contactValue' : contactValue, 'id' : contactId},
                 dataType: "json",
                 success : function(response){
                     if(response.result == true){
@@ -71,6 +73,30 @@
                 }
             });
 
+
+        });
+
+        $('.edit-contact-btn').on('click', function(e){
+
+            e.preventDefault();
+
+            openModal();
+
+            var contactId = $(this).attr('id');
+            var tr = $(this).parent().parent().parent();
+
+            $('#cstat').val(contactId);
+
+            var contactRow = $(tr).find('td.name')[0];
+            var contactType = $(contactRow).data('address')
+            var contactValue = $(tr).find('td.code')[0];
+
+            $('#contactType').val(contactType);
+            $('#contactValue').val(contactValue.innerText);
+
+            Materialize.updateTextFields();
+
+            $('select').material_select();
 
         });
 

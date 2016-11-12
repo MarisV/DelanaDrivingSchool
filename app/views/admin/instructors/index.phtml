@@ -62,15 +62,11 @@
                             <?= $teacher->email ?>
                         </td>
                         <td>
-                            <div class="horizontal">
-                                <ul>
-                                    <li>
-                                        <?= $this->tag->linkTo(['/admin/instructors/edit/'.$teacher->id, '<i class="material-icons">mode_edit</i>', 'class' => 'btn-floating waves-light edit-teacher-btn', 'title' => 'Редактировать', 'id' => "$teacher->id"]) ?>
-                                    </li>
-                                    <li>
-                                        <?= $this->tag->linkTo(['#', '<i class="material-icons">delete</i>', 'class' => 'btn-floating waves-light btn red lighten-1 delete-teacher-btn', 'id' => $teacher->id, 'title' => 'Удалить']) ?>
-                                    </li>
-                                </ul>
+                            <div class="left">
+                                <?= $this->tag->linkTo(['/admin/instructors/edit/'.$teacher->id, '<i class="material-icons">mode_edit</i>', 'class' => 'btn-floating', 'title' => 'Редактировать', 'id' => "$teacher->id"]) ?>
+                            </div>
+                            <div class="right">
+                                <?= $this->tag->linkTo(['#', '<i class="material-icons">delete</i>', 'class' => 'btn-floating red lighten-1 delete-teacher-btn', 'id' => $teacher->id, 'title' => 'Удалить']) ?>
                             </div>
                         </td>
                     </tr>

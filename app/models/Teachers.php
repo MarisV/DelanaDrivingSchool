@@ -109,7 +109,7 @@ class Teachers extends  BaseModel
      *
      * @return array
      */
-    public static function getProfStatuses()
+    public static function getProfStatuses() : array
     {
         return [
             'teacher'       =>  self::STATUS_TEACHER,
@@ -123,7 +123,7 @@ class Teachers extends  BaseModel
      * @param string $key
      * @return string mixed
      */
-    public static function getStatusTranslation($key)
+    public static function getStatusTranslation($key) : string
     {
         return self::getProfStatuses()[$key];
     }

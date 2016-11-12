@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Administratora sadaļa</title>
+    <title>Папнель администратора</title>
 
     <link rel="shortcut icon" href="images/favicon.png">
 
@@ -17,14 +17,9 @@
 
 <body>
 <header>
-    <ul id="slide-out" class="side-nav fixed admin-page-nav">
-        <li>
-            <div class="userView">
-                <?= $this->tag->image(['img/admin-avatar.png', 'class' => 'circle responsive-img', 'id' => 'admin-avatar']) ?>
-                <a href="#"><span class="black-text name center-align"><?= $admin->firstname . ' '. $admin->lastname?></span></a>
-                <a href="#"><span class="black-text email center-align"><?= $admin->email ?></span></a>
-            </div>
-        </li>
+
+    <ul class="hide-on-med-and-down">
+
         <li> <?= $this->tag->linkTo('admin/news', 'Новости <i class="material-icons">speaker_notes</i>'); ?> </li>
         <li> <?= $this->tag->linkTo('admin/pages', 'Страницы <i class="material-icons">bookmark_border</i>'); ?></li>
         <li> <?= $this->tag->linkTo('admin/languages', 'Языки <i class="material-icons">language</i>');?></li>
@@ -38,10 +33,25 @@
         <li> <?= $this->tag->linkTo('admin/users', 'Администраторы  <i class="material-icons">info</i>')?> </li>
     </ul>
 
-    <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+    <ul id="slide-out" class="side-nav fixed">
+
+        <li> <?= $this->tag->linkTo('admin/news', 'Новости <i class="material-icons">speaker_notes</i>'); ?> </li>
+        <li> <?= $this->tag->linkTo('admin/pages', 'Страницы <i class="material-icons">bookmark_border</i>'); ?></li>
+        <li> <?= $this->tag->linkTo('admin/languages', 'Языки <i class="material-icons">language</i>');?></li>
+        <li> <?= $this->tag->linkTo('admin/seo', 'Настройки SEO <i class="material-icons">public</i>');?></li>
+        <li> <?= $this->tag->linkTo('admin/feedback', 'Отзывы <i class="material-icons">feedback</i>');?></li>
+        <li> <?= $this->tag->linkTo('admin/categories', 'Категории <i class="material-icons">toc</i>');?></li>
+        <li> <?= $this->tag->linkTo('admin/applications_for_courses', 'Заявки на курсы <i class="material-icons">receipt</i>') ?></li>
+        <li> <?= $this->tag->linkTo('admin/instructors', 'Инструкторы <i class="material-icons">supervisor_account</i>');?></li>
+        <li> <?= $this->tag->linkTo('admin/pols', 'Опросы <i class="material-icons">description</i>');?></li>
+        <li> <?= $this->tag->linkTo('admin/contacts', 'Контакты <i class="material-icons">settings_phone</i>')?> </li>
+        <li> <?= $this->tag->linkTo('admin/users', 'Администраторы  <i class="material-icons">info</i>')?> </li>
+    </ul>
+
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 </header>
-<main style="padding-left: 250px">
-    <div class="section admin-page-main-section">
+<main>
+    <div class="container admin-page-main-section">
         <?= $this->getContent() ?>
     </div>
 </main>

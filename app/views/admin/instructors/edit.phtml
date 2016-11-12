@@ -2,7 +2,7 @@
     use app\models\Teachers;
 ?>
 <div class="row">
-    <div class="col s8 m8 l8" style="margin-top: -30px">
+    <div class="col s12 m12 l8  push-m1 push-l1" style="margin-top: -30px">
         <h5 class="teal-text">
             Редактировать данные преподователя/инструктора
         </h5>
@@ -25,7 +25,6 @@
                 </p>
             </div>
         </div>
-
 
         <div class="row">
             <div class="input-field col s12">
@@ -85,11 +84,9 @@
             </div>
         </div>
 
-
-
         <div class="row">
             <div class="col s12 input-field">
-                <ul class="collapsible" data-collapsible="accordion" style="width: 640px !important; ">
+                <ul class="collapsible" data-collapsible="accordion">
                     <li>
                         <div class="collapsible-header">
                             <i class="material-icons">settings</i>Дополнительная информация
@@ -109,7 +106,7 @@
         </div>
 
         <div class="row">
-            <div class="col s11 m11 l11 input-field" style="width:630px !important;">
+            <div class="col s11 m11 l11 input-field">
                 <select name="languageId" id="languageId">
                     <?php foreach ($languages AS $language) { ?>
                         <?php  $selected = ($language->id == $teacher->languageId) ? ' selected ' : '' ?>
@@ -119,7 +116,6 @@
                 <label>Язык</label>
             </div>
         </div>
-
 
         <div class="row">
             <div class="col s12 input-field center" style="margin-top: 30px;">

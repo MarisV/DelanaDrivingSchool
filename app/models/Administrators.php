@@ -116,4 +116,20 @@ class Administrators extends BaseModel
         }
     }
 
+    /**
+     * Get validation errors for Pages model
+     *
+     * @return mixed
+     */
+    public function getValidationMessages()
+    {
+        $errorMessages = $this->getMessages();
+
+        foreach ($errorMessages as $message) {
+            $result[$message->getField()] = $message->getMessage();
+        }
+
+        return $result;
+    }
+
 }

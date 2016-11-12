@@ -19,6 +19,8 @@ class UploadsController extends ControllerBase
 
     const CATEGORY_IMAGES_DIR    =   'uploads/categories/';
 
+    const TEACHER_IMAGES_DIR    =   'uploads/teachers/';
+
     public function beforeExecuteroute()
     {
         parent::beforeExecuteroute();
@@ -63,6 +65,13 @@ class UploadsController extends ControllerBase
     {
         if (!is_dir(self::ARTICLE_IMAGES_DIR)) {
             mkdir(self::ARTICLE_IMAGES_DIR, 0755);
+        }
+    }
+
+    public function createTeacherDirIfNotExists()
+    {
+        if (!is_dir(self::TEACHER_IMAGES_DIR)) {
+            mkdir(self::TEACHER_IMAGES_DIR, 0755);
         }
     }
 
@@ -164,6 +173,28 @@ class UploadsController extends ControllerBase
         }
     }
 
+    public function uploadTeacherPhotoAction()
+    {
+        $this->view->disable();
 
+        $this->createTeacherDirIfNotExists();
+
+        if ($this->request->isAjax() === true && $this->request->hasFiles()) {
+
+            $file = $this->request->getUploadedFiles()[0];
+
+            $newFileName = md5($file->getName() . date('d-m-y H:m:s')) . '.' .  $file->getExtension();
+
+            $uploadResult = $file->moveTo(self::TEACHER_IMAGES_DIR . $newFileName);
+
+            $resultToReturn = '/'.self::TEACHER_IMAGES_DIR . $newFileName;
+
+            if ($uploadResult === false) {
+                $resultToReturn = false;
+            }
+
+            die(json_encode(['filepath' =>  $resultToReturn]));
+        }
+    }
 
 }

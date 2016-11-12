@@ -3,23 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Папнель администратора</title>
+    <title>Панель администратора</title>
 
     <link rel="shortcut icon" href="images/favicon.png">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <?php $this->assets->outputCss() ?>
     <?php $this->assets->outputJs() ?>
-
 </head>
 
 <body>
 <header>
-
     <ul class="hide-on-med-and-down">
-
         <li> <?= $this->tag->linkTo('admin/news', 'Новости <i class="material-icons">speaker_notes</i>'); ?> </li>
         <li> <?= $this->tag->linkTo('admin/pages', 'Страницы <i class="material-icons">bookmark_border</i>'); ?></li>
         <li> <?= $this->tag->linkTo('admin/languages', 'Языки <i class="material-icons">language</i>');?></li>
@@ -32,9 +28,7 @@
         <li> <?= $this->tag->linkTo('admin/contacts', 'Контакты <i class="material-icons">settings_phone</i>')?> </li>
         <li> <?= $this->tag->linkTo('admin/users', 'Администраторы  <i class="material-icons">info</i>')?> </li>
     </ul>
-
     <ul id="slide-out" class="side-nav fixed">
-
         <li> <?= $this->tag->linkTo('admin/news', 'Новости <i class="material-icons">speaker_notes</i>'); ?> </li>
         <li> <?= $this->tag->linkTo('admin/pages', 'Страницы <i class="material-icons">bookmark_border</i>'); ?></li>
         <li> <?= $this->tag->linkTo('admin/languages', 'Языки <i class="material-icons">language</i>');?></li>
@@ -47,16 +41,13 @@
         <li> <?= $this->tag->linkTo('admin/contacts', 'Контакты <i class="material-icons">settings_phone</i>')?> </li>
         <li> <?= $this->tag->linkTo('admin/users', 'Администраторы  <i class="material-icons">info</i>')?> </li>
     </ul>
-
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 </header>
-<main>
-    <div class="container admin-page-main-section">
-        <?= $this->getContent() ?>
-    </div>
-</main>
-
-
+    <main>
+        <div class="container admin-page-main-section">
+            <?= $this->getContent() ?>
+        </div>
+    </main>
 </body>
 
 </html>

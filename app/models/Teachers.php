@@ -36,7 +36,7 @@ class Teachers extends  BaseModel
 
     public $email;
 
-    const STATUS_TEACHER = 'Преподователь';
+    const STATUS_TEACHER = 'Преподаватель';
 
     const STATUS_INSTRUCTOR = 'Инструктор';
 
@@ -103,5 +103,28 @@ class Teachers extends  BaseModel
 
         return $result;
     }
-    
+
+    /**
+     *  Get professional status => translation list
+     *
+     * @return array
+     */
+    public static function getProfStatuses()
+    {
+        return [
+            'teacher'       =>  self::STATUS_TEACHER,
+            'instructor'    =>  self::STATUS_INSTRUCTOR
+        ];
+    }
+
+    /**
+     * Get professional status translation
+     *
+     * @param string $key
+     * @return string mixed
+     */
+    public static function getStatusTranslation($key)
+    {
+        return self::getProfStatuses()[$key];
+    }
 }

@@ -97,6 +97,13 @@ $router->add('/admin/categories/edit/{categoryId}', [
     'categoryId'     => 1,
 ]);
 
+$router->add('/admin/instructors/edit/{teacherId}', [
+    'namespace'  => 'app\controllers\Admin',
+    'controller' => 'instructors',
+    'action'     => 'edit',
+    'teacherId'     => 1,
+]);
+
 $router->add('/admin/seo/lang/{languageId}', [
     'namespace'     => 'app\controllers\Admin',
     'controller'    => 'seo',

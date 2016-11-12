@@ -1,3 +1,6 @@
+<?php
+use app\models\Teachers;
+?>
 <div class="row">
     <div class="col s6 m6 l6" style="margin-top: -30px">
         <h5 class="teal-text">
@@ -30,35 +33,40 @@
             <tbody>
                 <?php foreach ($teachers as $teacher) {?>
                     <tr>
-                        <td id="firstname">
+                        <td id="firstname" class="left-align">
                             <?= $teacher->firstname?>
                         </td>
-                        <td id="lastname">
+                        <td id="lastname" class="left-align">
                             <?= $teacher->lastname?>
                         </td>
-                        <td id="age">
+                        <td id="age" class="left-align">
                             <?= $teacher->age ?>
                         </td>
-                        <td id="car">
+                        <td id="car" class="left-align">
                             <?= $teacher->car ?>
                         </td>
-                        <td id="photo">
+                        <td id="photo" class="center-align">
                             <?php if ($teacher->image != null) { ?>
                                 <a href="#" data-featherlight="<?= $teacher->image ?>">Показать</a>
                             <?php  } else { ?>
                                 <p class="center-align">-</p>
                             <?php } ?>
                         </td>
-                        <td id="profStatus">
-                            <?= $teacher->profStatus?>
+                        <td id="profStatus" class="left-align">
+                            <?= Teachers::getStatusTranslation($teacher->profStatus) ?>
                         </td>
-                        <td id="phone">
+                        <td id="phone" class="left-align">
                             <?= $teacher->phone ?>
                         </td>
-                        <td id="about">
-                            <a href="#" data-featherlight=" <?= $teacher->about ?>">Показать</a>
+                        <td id="about" class="center-align">
+                            <?php if ($teacher->about != null) { ?>
+                                <a href="#" data-featherlight=" <?= $teacher->about ?>">Показать</a>
+                            <?php  } else { ?>
+                                <p class="center-align">-</p>
+                            <?php } ?>
+
                         </td>
-                        <td id="email">
+                        <td id="email" class="left-align">
                             <?= $teacher->email ?>
                         </td>
                         <td>

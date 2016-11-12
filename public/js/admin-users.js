@@ -6,8 +6,8 @@
 
             e.preventDefault();
 
-            $('.password-row').show()
-            ;
+            $('.password-row').show();
+
             openModal();
         });
 

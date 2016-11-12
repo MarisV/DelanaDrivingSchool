@@ -5,34 +5,6 @@
 
         initUpload();
 
-
-        $('.delete-teacher-btn').on('click', function(e){
-            e.preventDefault();
-
-            var teacherId = $(this).attr('id');
-
-            $.ajax({
-                url : '/admin/instructors/delete',
-                method : 'POST',
-                data : {'teacherId' : teacherId},
-                dataType: "json",
-                success : function(response){
-                    if(response.result == true){
-                        Materialize.toast('Успешно удалена', 4000, 'top');
-                        setTimeout(function(){
-                            location.href = location;
-                        }, 1000);
-
-                    } else {
-                        Materialize.toast(response.result, 4000, 'top');
-                    }
-                }
-            });
-
-        });
-
-
-
         function initUpload()
         {
             var href = location.href;
@@ -76,8 +48,35 @@
                     language: 'ru',
                 });
             }
-
         }
+
+
+        $('.delete-teacher-btn').on('click', function (e) {
+            e.preventDefault();
+
+            var teacherId = $(this).attr('id');
+
+            $.ajax({
+                url : '/admin/instructors/delete',
+                method : 'POST',
+                data : {'teacherId' : teacherId},
+                dataType: "json",
+                success : function(response){
+                    if(response.result == true){
+                        Materialize.toast('Успешно удалено', 4000, 'top');
+                        setTimeout(function(){
+                            location.href = location;
+                        }, 1000);
+
+                    } else {
+                        Materialize.toast(response.result, 4000, 'top');
+                    }
+                }
+            });
+
+
+        })
+
 
     });
 })(jQuery);

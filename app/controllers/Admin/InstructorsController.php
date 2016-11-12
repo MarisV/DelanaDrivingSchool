@@ -54,4 +54,45 @@ class InstructorsController extends BaseController
         $this->view->setVar('defaultSiteLanguage', System::findFirst()->defaultSiteLanguage);
         $this->view->setVar('languages', Languages::find());
     }
+
+    
+    public function deleteAction()
+    {
+        $this->view->disable();
+
+        if ($this->request->isAjax() && $this->request->isPost()) {
+
+            $teacherId = $this->request->getPost('teacherId');
+
+            $result = Teachers::find($teacherId)->delete();
+
+            die(json_encode(['result' => $result]));
+        }
+    }
+
+    public function editAction()
+    {
+        $teacherId = $this->dispatcher->getParam('teacherId',['int', 'trim']);
+        $teacher = Teachers::findFirst($teacherId);
+
+        if ($this->request->isPost()) {
+
+            $teacherData = $this->request->getPost();
+
+            $teacher->initFromArray($teacherData);
+
+            $saveResult = $teacher->save();
+
+            if ($saveResult === false) {
+                $saveResult = $teacher->getValidationMessages();
+
+                $this->view->setVar('errors', $saveResult);
+            } else {
+                $this->response->redirect('/admin/instructors');
+            }
+        }
+
+        $this->view->setVar('teacher', $teacher);
+        $this->view->setVar('languages', Languages::find());
+    }
 }

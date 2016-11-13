@@ -14,37 +14,40 @@
 </head>
 
 <body>
-<header>
-    <ul class="hide-on-med-and-down">
-        <li> <?= $this->tag->linkTo('admin/news', 'Новости <i class="material-icons">speaker_notes</i>'); ?> </li>
-        <li> <?= $this->tag->linkTo('admin/pages', 'Страницы <i class="material-icons">bookmark_border</i>'); ?></li>
-        <li> <?= $this->tag->linkTo('admin/languages', 'Языки <i class="material-icons">language</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/seo', 'Настройки SEO <i class="material-icons">public</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/feedback', 'Отзывы <i class="material-icons">feedback</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/categories', 'Категории <i class="material-icons">toc</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/applications_for_courses', 'Заявки на курсы <i class="material-icons">receipt</i>') ?></li>
-        <li> <?= $this->tag->linkTo('admin/instructors', 'Инструкторы <i class="material-icons">supervisor_account</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/pols', 'Опросы <i class="material-icons">description</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/contacts', 'Контакты <i class="material-icons">settings_phone</i>')?> </li>
-        <li> <?= $this->tag->linkTo('admin/users', 'Администраторы  <i class="material-icons">info</i>')?> </li>
-    </ul>
-    <ul id="slide-out" class="side-nav fixed">
-        <li> <?= $this->tag->linkTo('admin/news', 'Новости <i class="material-icons">speaker_notes</i>'); ?> </li>
-        <li> <?= $this->tag->linkTo('admin/pages', 'Страницы <i class="material-icons">bookmark_border</i>'); ?></li>
-        <li> <?= $this->tag->linkTo('admin/languages', 'Языки <i class="material-icons">language</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/seo', 'Настройки SEO <i class="material-icons">public</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/feedback', 'Отзывы <i class="material-icons">feedback</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/categories', 'Категории <i class="material-icons">toc</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/applications_for_courses', 'Заявки на курсы <i class="material-icons">receipt</i>') ?></li>
-        <li> <?= $this->tag->linkTo('admin/instructors', 'Инструкторы <i class="material-icons">supervisor_account</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/pols', 'Опросы <i class="material-icons">description</i>');?></li>
-        <li> <?= $this->tag->linkTo('admin/contacts', 'Контакты <i class="material-icons">settings_phone</i>')?> </li>
-        <li> <?= $this->tag->linkTo('admin/users', 'Администраторы  <i class="material-icons">info</i>')?> </li>
-    </ul>
-    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-</header>
+    <header>
+        <div class="container" style="margin-top: 5px; margin-left: 5px">
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+        <ul id="slide-out" class="side-nav fixed">
+            <li> <?= $this->tag->linkTo('admin/news', 'Новости <i class="left material-icons">speaker_notes</i>'); ?> </li>
+            <li> <?= $this->tag->linkTo('admin/pages', 'Страницы <i class="left material-icons">bookmark_border</i>'); ?></li>
+            <li> <?= $this->tag->linkTo('admin/languages', 'Языки <i class="material-icons">language</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/seo', 'Настройки SEO <i class="material-icons">public</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/feedback', 'Отзывы <i class="material-icons">feedback</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/categories', 'Категории <i class="material-icons">toc</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/applications_for_courses', 'Заявки на курсы <i class="material-icons">receipt</i>') ?></li>
+            <li> <?= $this->tag->linkTo('admin/instructors', 'Инструкторы <i class="material-icons">supervisor_account</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/pols', 'Опросы <i class="material-icons">description</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/contacts', 'Контакты <i class="material-icons">settings_phone</i>')?> </li>
+            <li> <?= $this->tag->linkTo('admin/users', 'Администраторы  <i class="material-icons">info</i>')?> </li>
+        </ul>
+
+        <ul class="hide-on-med-and-down hide">
+            <li> <?= $this->tag->linkTo('admin/news', 'Новости <i class="material-icons">speaker_notes</i>'); ?> </li>
+            <li> <?= $this->tag->linkTo('admin/pages', 'Страницы <i class="material-icons ">bookmark_border</i>'); ?></li>
+            <li> <?= $this->tag->linkTo('admin/languages', 'Языки <i class="material-icons">language</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/seo', 'Настройки SEO <i class="material-icons">public</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/feedback', 'Отзывы <i class="material-icons">feedback</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/categories', 'Категории <i class="material-icons">toc</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/applications_for_courses', 'Заявки на курсы <i class="material-icons">receipt</i>') ?></li>
+            <li> <?= $this->tag->linkTo('admin/instructors', 'Инструкторы <i class="material-icons">supervisor_account</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/pols', 'Опросы <i class="material-icons">description</i>');?></li>
+            <li> <?= $this->tag->linkTo('admin/contacts', 'Контакты <i class="material-icons">settings_phone</i>')?> </li>
+            <li> <?= $this->tag->linkTo('admin/users', 'Администраторы  <i class="material-icons">info</i>')?> </li>
+        </ul>
+    </header>
     <main>
-        <div class="container admin-page-main-section">
+        <div class="admin-page-main-section">
             <?= $this->getContent() ?>
         </div>
     </main>

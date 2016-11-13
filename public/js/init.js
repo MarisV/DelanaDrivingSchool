@@ -3,9 +3,8 @@
 
       //---------- COMMON ---------- //
         $('.button-collapse').sideNav({
-            menuWidth: 240,
+            menuWidth: 230,
             edge: 'left',
-//            closeOnClick: true,
             draggable: true
         });
         $('.materialboxed').materialbox();

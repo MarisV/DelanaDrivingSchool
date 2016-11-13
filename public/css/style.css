@@ -69,4 +69,10 @@
     cursor: move;
 }
 
+@media screen and (min-width: 993px) {
+    main {
+        padding-left: 230px;
+    }
+}
+
 

@@ -19,6 +19,12 @@
             <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
         <ul id="slide-out" class="side-nav fixed">
+            <li>
+                <div class="userView">
+                    <?= $this->tag->image(['img/admin-avatar.png', 'class' => 'circle responsive-img', 'id' => 'admin-avatar']) ?>
+                    <p><span class="black-text name center-align">Привет, <?= $admin->firstname ?></span></p>
+                </div>
+            </li>
             <li> <?= $this->tag->linkTo('admin/news', 'Новости <i class="left material-icons">speaker_notes</i>'); ?> </li>
             <li> <?= $this->tag->linkTo('admin/pages', 'Страницы <i class="left material-icons">bookmark_border</i>'); ?></li>
             <li> <?= $this->tag->linkTo('admin/languages', 'Языки <i class="material-icons">language</i>');?></li>

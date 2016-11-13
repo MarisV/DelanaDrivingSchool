@@ -19,7 +19,7 @@
             var formData = colletcNewsFormData();
 
             $.ajax({
-                url : '/news/add',
+                url : '/admin/news/add',
                 method : 'POST',
                 data : {'new' : formData},
                 dataType: "json",
@@ -41,7 +41,7 @@
             var newId = $(this).attr('id');
 
             $.ajax({
-                url : '/news/delete',
+                url : '/admin/news/delete',
                 method : 'POST',
                 data : {'newId' : newId},
                 dataType: "json",
@@ -69,7 +69,7 @@
             $('#nstat').val(newId);
 
             $.ajax({
-                url : '/news/get',
+                url : '/admin/news/get',
                 method : 'POST',
                 data : {id : newId},
                 cache: false,

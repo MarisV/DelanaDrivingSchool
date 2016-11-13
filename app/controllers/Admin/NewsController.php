@@ -11,6 +11,7 @@ namespace app\controllers\Admin;
 use app\models\News;
 use app\models\Languages;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
+use library\SharedService;
 
 
 class NewsController extends BaseController

@@ -104,5 +104,49 @@ nav > div > ul > li > a{
     height: 32px !important;
 }
 
+.main-page-big-container {
+    background-image: url("/img/driver2.jpg");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
 
 
+@media screen and (max-width: 487px) {
+    .main-page-big-container {
+        background-size: 100% 100%;
+    }
+}
+
+#language-selector-list-item{
+    border-left: 1px dashed lightgrey;
+}
+
+.arrow_box {
+    position: relative;
+    background: #03a9f4;
+    border: 2px solid #c2e1f5;
+    border-radius: 10px;
+}
+.arrow_box:after, .arrow_box:before {
+    bottom: 100%;
+    left: 39%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-color: rgba(7, 117, 227, 0);
+    border-bottom-color: #03a9f4;
+    border-width: 30px;
+    margin-left: -30px;
+}
+.arrow_box:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #c2e1f5;
+    border-width: 33px;
+    margin-left: -33px;
+}

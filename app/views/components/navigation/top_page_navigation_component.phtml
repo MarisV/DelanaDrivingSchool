@@ -44,7 +44,7 @@
 </ul>
 <!-- END OF DROPDOWNS CONTENT -->
 
-<nav class="white" role="navigation">
+<nav class="white" role="navigation" style="margin-bottom: 5px">
     <a href="#" data-activates="nav-mobile" style="color: grey;" class="button-collapse"><i class="material-icons">menu</i></a>
     <div class="nav-wrapper container">
         <a href="#" class="brand-logo center-align">
@@ -73,8 +73,7 @@
             <li>
                 <?= $this->tag->linkTo('contacts', 'Контакты')?>
             </li>
-
-            <li class="right-align">
+            <li class="right-align" id="language-selector-list-item">
                 <a class="dropdown-button" id="language-selector" href="#" data-activates="top-header-menu-languages-dropdown" data-beloworigin="true" data-alignment="left">
                     <div class="valign-wrapper">
                         <img src="<?= $selectedLanguageData['img'] ?>" class="valign">   <i class="material-icons right">arrow_drop_down</i>
@@ -120,7 +119,7 @@
     </div>
 </nav>
 
-<!-- START OF DROPDOWNS CONTENT -->
+<!-- START OF MOBILE DROPDOWNS CONTENT -->
 <ul id="header-menu-dropdown-m" class="dropdown-content">
     <li>
         <?= $this->tag->linkTo('/teachers', 'Преподаватели' ) ?>
@@ -165,4 +164,4 @@
     <?php } ?>
 </ul>
 
-<!-- END OF DROPDOWNS CONTENT -->
+<!-- END OF MOBILE DROPDOWNS CONTENT -->

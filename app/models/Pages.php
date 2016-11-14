@@ -125,7 +125,7 @@ class Pages extends BaseModel
      *
      * @return mixed
      */
-    public function getValidationMessages()
+    public function getValidationMessages() : array
     {
         $errorMessages = $this->getMessages();
 
@@ -142,7 +142,7 @@ class Pages extends BaseModel
      * @param $positions
      * @return bool
      */
-    public static function updatePagesPositions($positions)
+    public static function updatePagesPositions(array  $positions) : bool
     {
         $pages = self::find();
 
@@ -163,7 +163,7 @@ class Pages extends BaseModel
      * @param $positionsString
      * @return array
      */
-    public static function getOrderPositionsFromString($positionsString)
+    public static function getOrderPositionsFromString(string $positionsString) : array
     {
         $positions = [];
 

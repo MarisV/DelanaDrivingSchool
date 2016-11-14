@@ -1,0 +1,28 @@
+<nav class="blue lighten-3" >
+    <div class="row">
+        <div class="col s9 m8 l8">
+            <h5 style="font-weight: bold">Автошкола De Lana Auto</h5>
+        </div>
+        <div class="col s3 m4 l4">
+            <ul>
+                <li>
+                    <a class="dropdown-button" id="language-selector" href="#" data-activates="top-header-menu-languages-dropdown" data-beloworigin="true" data-alignment="left">
+                        <div class="valign-wrapper">
+                            <img src="<?= $selectedLanguageData['img'] ?>" class="valign">   <i class="material-icons right">arrow_drop_down</i>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<ul id="top-header-menu-languages-dropdown" class="dropdown-content">
+    <?php foreach ($languages as $language) { ?>
+        <li>
+            <a href="<?= $language['href'] ?>">
+                <?= $language['name'] ?> <img src="<?= $language['img'] ?>">
+            </a>
+        </li>
+    <?php } ?>
+</ul>

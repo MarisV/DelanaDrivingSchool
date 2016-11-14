@@ -7,12 +7,15 @@
             edge: 'left',
             draggable: true
         });
+
         $('.materialboxed').materialbox();
+
         $('select').material_select();
+
         $('.dropdown-button').dropdown({
-              hover: true,
-              alignment: 'left',
-              belowOrigin: true
+                hover: true,
+                alignment: 'left',
+                belowOrigin: true
             }
         );
   });

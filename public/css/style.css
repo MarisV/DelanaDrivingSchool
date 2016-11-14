@@ -57,10 +57,6 @@
     line-height: 35px;
 }
 
-.top-page-navigation{
-    min-height: 90px;
-}
-
 .nav-wrapper .container ul {
     height: 100%;
 }
@@ -74,5 +70,39 @@
         padding-left: 230px;
     }
 }
+
+#logo-container {
+    max-width: 60%;
+    max-height:60%;
+    margin-top: 2px;
+}
+
+nav > div > ul > li > a{
+    color: dimgrey !important;
+}
+
+#header-menu-dropdown {
+    width: 140px !important;
+}
+
+#top-header-menu-languages-dropdown > li > a > img {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+#top-header-menu-languages-dropdown-m > li > a > img {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+#top-header-menu-languages-dropdown {
+    width: 120px !important;
+}
+
+#language-selector > div > img {
+    width: 32px !important;
+    height: 32px !important;
+}
+
 
 

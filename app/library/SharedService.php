@@ -68,4 +68,26 @@ class SharedService
        return self::getDi()->get('simpleview');
     }
 
+    public static function getBaseUrl(){
+
+        $request = self::getDi()->getShared('request');
+
+        $url =  $request->getScheme() . '://';
+        $url .= $request->getHttpHost();
+        $url .= $request->getServer('PHP_SELF') ? $request->getServer('PHP_SELF') : '/';
+
+        return rtrim($url, 'index.php');
+    }
+
+
+    /**
+     * Returns cookie service
+     *
+     * @return \Phalcon\Http\Response\Cookies
+     */
+    public static function getCookies()
+    {
+        return self::getDi()->getShared('cookies');
+    }
+
 }

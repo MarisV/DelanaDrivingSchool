@@ -8,6 +8,8 @@
 
 namespace app\models;
 
+use library\SharedService;
+use app\models\Languages;
 
 class System extends BaseModel
 {
@@ -42,6 +44,26 @@ class System extends BaseModel
             'id'                    =>  'id',
             'default_site_language' =>  'defaultSiteLanguage'
         ];
+    }
+
+    /**
+     * Get default language code or selecte before
+     *
+     * @return string
+     */
+    public static function getSelectedBeforeOrDefaultSiteLanguage() : string
+    {
+        $cookies = SharedService::getCookies();
+
+        if ($cookies->has('lang')) {
+            $languageId = $cookies->get('lang');
+        } else {
+            $languageId = self::findFirst()->id;
+        }
+
+        $language = Languages::findFirst('id = '. $languageId);
+
+        return $language->code;
     }
 
 }

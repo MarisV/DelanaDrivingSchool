@@ -1,6 +1,7 @@
 <?php
-    use library\Components\TopPageNavigationComponent;
-    use library\Components\TopLineComponent;
+    use library\Widgets\TopPageNavigationWidget;
+    use library\Widgets\MainPageBannerWidget;
+    use library\Widgets\FooterContactWidget;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,23 +24,10 @@
 
 <body>
 
-<?= (new TopPageNavigationComponent())->getContent(); ?>
-<div class="section no-pad-bot main-page-big-container" id="index-banner">
-    <div class="container">
-        <br><br>
-        <div class="row center">
-            <a href="#" id="app-for-course" class="btn-large waves-effect waves-light red">Подать заявку</a>
-            <a href="#" id="review-button" class="btn-large waves-effect waves-light light-blue">Оставить отзыв</a>
-        </div>
-        <br><br>
-        <div class="row center ">
-            <h5 class="header col s12 white-text lighten-2 left arrow_box">
-                Запишись прямо сейчас и пройди лучший курс теоретического и практического обучения в автошколе De Lana Auto
-            </h5>
-        </div>
-        <br><br>
-    </div>
-</div>
+<?= (new TopPageNavigationWidget())->getWidget(); ?>
+
+<?= (new MainPageBannerWidget())->getWidget() ?>
+
 <div class="container">
     <?= $this->getContent() ?>
 </div>
@@ -48,7 +36,7 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <?= (new \library\Components\FooterContactComponent())->getContent(); ?>
+                <?= (new FooterContactWidget())->getWidget(); ?>
             </div>
             <div class="col l3 s12">
                 <h5 class="white-text">Settings</h5>

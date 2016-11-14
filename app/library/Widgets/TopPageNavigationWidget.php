@@ -6,24 +6,22 @@
  * Time: 01:57
  */
 
-namespace library\Components;
+namespace library\Widgets;
 
 use library\SharedService;
 use app\models\{Categories, Pages, Languages, System};
 
 
-class TopPageNavigationComponent extends AbstractComponent 
+class TopPageNavigationWidget extends AbstractWidget
 {
 
     /**
-     *  Render top page navigtion panel
+     *  Render top page navigtion panel widget
      *
      * @return string
      */
-    public function getContent()
+    public function getWidget()
     {
-        $view = SharedService::getSimpleView();
-
         $activeLanguages = Languages::find("visible = 'yes'");
 
         $languagesWithIco = [];
@@ -48,7 +46,7 @@ class TopPageNavigationComponent extends AbstractComponent
             }
         }
 
-        $view->setVars([
+        $this->simpleView->setVars([
             'languages'             =>  $languagesWithIco,
             'selectedLanguageCode'  =>  $siteLanguage,
             'selectedLanguageData'  =>  $siteLanguageData,
@@ -56,7 +54,7 @@ class TopPageNavigationComponent extends AbstractComponent
             'pages'                 =>  $this->getAnotherPagesLinks()
         ]);
 
-        return $view->render('components/navigation/top_page_navigation_component');
+        return $this->simpleView->render('widgets/mainpage/navigation/top_page_navigation');
     }
 
     /**

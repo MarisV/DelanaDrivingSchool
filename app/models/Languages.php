@@ -12,15 +12,19 @@ use Phalcon\Mvc\Model;
 
 class Languages extends Model
 {
+    /** @var  int */
     public $id;
 
+    /** @var  string */
     public $name;
 
+    /** @var  string */
     public $code;
 
+    /** @var  string */
     public $visible;
 
-    public function columnMap()
+    public function columnMap() : array
     {
         return [
             'id'                =>  'id',

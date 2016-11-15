@@ -12,6 +12,11 @@ use library\SharedService;
 
 abstract class AbstractWidget
 {
+    /**
+     * Simple view instance
+     *
+     * @var \Phalcon\Mvc\View\Simple
+     */
     protected $simpleView;
 
     public function __construct()
@@ -19,5 +24,10 @@ abstract class AbstractWidget
         $this->simpleView = SharedService::getSimpleView();
     }
 
+    /**
+     * Generate and render widget content
+     *
+     * @return mixed
+     */
     public abstract function getWidget();
 }

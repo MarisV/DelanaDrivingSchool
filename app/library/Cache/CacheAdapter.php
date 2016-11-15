@@ -84,12 +84,6 @@ class CacheAdapter
             $key = $this->keyPrefix . '.' . $key;
         }
 
-        // try to get from registry
-       // $registry = \SM::getRegistry();
-
-//        if ($registry->offsetExists($key)) {
-//            return $registry->offsetGet($key);
-//        }
 
         // try to get from memcache
         $data = $this->server()->get($key);
@@ -112,6 +106,7 @@ class CacheAdapter
      * @param $data mixed
      * @param $expiration int
      * @param $usePrefix bool
+     * @return mixed
      */
     public function set($key, $data, $expiration = null, $usePrefix = true)
     {

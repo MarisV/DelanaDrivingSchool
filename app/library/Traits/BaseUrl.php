@@ -17,8 +17,8 @@ trait BaseUrl
      *
      * @return string
      */
-    public function getBaseUrl(){
-
+    public function getBaseUrl() : string
+    {
         $request = Di::getDefault()->getShared('request');
 
         $url = $request->getScheme() . '://';

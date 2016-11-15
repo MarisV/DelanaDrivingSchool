@@ -1,8 +1,8 @@
 <?php
 
 namespace app\controllers;
-use app\models\News;
 
+use app\models\News;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
 
@@ -13,7 +13,7 @@ class IndexController extends ControllerBase
         $page = $this->request->getQuery('page', 'int');
 
         $news = News::find([
-            'published' =>  'on',
+            "published =  'on'",
             'order' =>  'dateAdded desc'
         ]);
 

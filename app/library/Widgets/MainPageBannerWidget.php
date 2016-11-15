@@ -8,7 +8,6 @@
 
 namespace library\Widgets;
 
-
 class MainPageBannerWidget extends AbstractWidget 
 {
     public function getWidget()

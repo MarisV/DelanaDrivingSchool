@@ -10,10 +10,13 @@ namespace app\models;
 
 class Contacts extends BaseModel
 {
+    /** @var  int */
     public $id;
 
+    /** @var  string */
     public $contactType;
 
+    /** @var  string */
     public $contactValue;
 
     const CONTACT_TYPE_ADDRESS  = 'address';
@@ -24,7 +27,7 @@ class Contacts extends BaseModel
 
     const CONTACT_TYPE_SKYPE    = 'skype';
 
-    public function columnMap()
+    public function columnMap() : array
     {
         return [
             'id'            =>  'id',
@@ -41,11 +44,17 @@ class Contacts extends BaseModel
     public function initFromArray($contactAsArray)
     {
         foreach ($contactAsArray as $key  =>  $value) {
-            $this->$key  =   $value;
+            $this->$key = $value;
         }
     }
 
-    public static function getContactTypesAndTranslations()
+    /**
+     *  Return address types and their translations to RU
+     * @todo Add other languages support
+     *
+     * @return array
+     */
+    public static function getContactTypesAndTranslations() : array
     {
         return [
             self::CONTACT_TYPE_ADDRESS  =>  'Адрес',
@@ -61,7 +70,7 @@ class Contacts extends BaseModel
      * @todo Add cache
      * @return array
      */
-    public static function getAddress()
+    public static function getAddress() : array
     {
         $addresses = self::find([
             "conditions" => "contactType = ?1",
@@ -87,7 +96,7 @@ class Contacts extends BaseModel
      * @todo Add cache
      * @return array
      */
-    public static function getEmail()
+    public static function getEmail() : array
     {
         $emails = self::find([
             "conditions" => "contactType = ?1",
@@ -113,7 +122,7 @@ class Contacts extends BaseModel
      * @todo Get phone
      * @return array
      */
-    public static function getPhone()
+    public static function getPhone() : array
     {
         $phones = self::find([
             "conditions" => "contactType = ?1",
@@ -139,7 +148,7 @@ class Contacts extends BaseModel
      * @todo Add cache
      * @return array
      */
-    public static function getSkype()
+    public static function getSkype() : array
     {
         $skypes = self::find([
             "conditions" => "contactType = ?1",

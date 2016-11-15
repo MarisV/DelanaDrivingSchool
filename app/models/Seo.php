@@ -50,7 +50,7 @@ class Seo extends BaseModel
      *
      * @return array
      */
-    public function columnMap()
+    public function columnMap() : array
     {
         return [
             'id'                        =>  'id',

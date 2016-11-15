@@ -9,36 +9,43 @@
 
 namespace app\models;
 
+use library\Utils\Slug;
 use Phalcon\Validation;
-use Phalcon\Validation\Validator\Uniqueness as UniquenessValidator;
-use Phalcon\Validation\Validator\Email as EmailValidator;
 use Phalcon\Validation\Validator\PresenceOf;
 
-use library\Utils\Slug;
 
 class Categories extends BaseModel
 {
 
+    /** @var  int */
     public $id;
 
+    /** @var  string */
     public $title;
 
+    /** @var  string */
     public $content;
 
+    /** @var  string */
     public $seoTitle;
 
+    /** @var  string */
     public $seoDescription;
 
+    /** @var  string */
     public $seoKeywords;
 
+    /** @var  string */
     public $dateAdded;
 
+    /** @var  int */
     public $languageId;
 
+    /** @var  string */
     public $uri;
 
 
-    public function columnMap()
+    public function columnMap() : array
     {
         return [
             'id'                =>  'id',
@@ -77,7 +84,7 @@ class Categories extends BaseModel
      *
      * @param array $categoryAsArray
      */
-    public function initFromArray($categoryAsArray)
+    /*public function initFromArray($categoryAsArray)
     {
         $fields =  $this->getModelsMetaData()->getReverseColumnMap($this);
 
@@ -87,7 +94,7 @@ class Categories extends BaseModel
                 $this->$field = $value;
             }
         }
-    }
+    }*/
 
 
     /**
@@ -125,6 +132,24 @@ class Categories extends BaseModel
 
         foreach ($errorMessages as $message) {
             $result[$message->getField()] = $message->getMessage();
+        }
+
+        return $result;
+    }
+
+    public static function getCategoriesForMainPageWidgets() : array
+    {
+        $categories = self::find();
+
+        $result = [];
+
+        if ($categories) {
+            foreach ($categories as $category) {
+                $result[] = [
+                    'title' =>  $category->title,
+                    'href'  =>  '/category/'.$category->id . '/'.$category->uri
+                ];
+            }
         }
 
         return $result;

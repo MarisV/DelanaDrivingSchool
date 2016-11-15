@@ -150,7 +150,7 @@
             name: 'uploadfile', // upload parameter name
             responseType: 'json',
             allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
-            maxSize: 4096,
+            maxSize: 15000,
             hoverClass: 'ui-state-hover',
             focusClass: 'ui-state-focus',
             disabledClass: 'ui-state-disabled',

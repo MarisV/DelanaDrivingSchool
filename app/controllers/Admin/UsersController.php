@@ -44,7 +44,7 @@ class UsersController extends BaseController
 
             $userToUpdate = Administrators::findFirst($userForEditId);
 
-            $userToUpdate->mapDataFromArray($user);
+            $userToUpdate->initFromArray($user);
 
             $result = $userToUpdate->save();
 
@@ -57,7 +57,7 @@ class UsersController extends BaseController
 
             $userToSave = new Administrators();
 
-            $userToSave->mapDataFromArray($user);
+            $userToSave->initFromArray($user);
 
             $userToSave->password = $this->security->hash($userToSave->password);
 

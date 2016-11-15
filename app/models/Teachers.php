@@ -14,26 +14,37 @@ use Phalcon\Validation\Validator\PresenceOf;
 
 class Teachers extends  BaseModel
 {
+    /** @var  int */
     public $id;
 
+    /** @var  string */
     public $firstname;
 
+    /** @var  string */
     public $lastname;
 
+    /** @var  int */
     public $age;
 
+    /** @var  string */
     public $car;
 
+    /** @var  int */
     public $languageId;
 
+    /** @var  string */
     public $image;
 
+    /** @var  string */
     public $profStatus;
 
+    /** @var  string */
     public $phone;
 
+    /** @var  string */
     public $about;
 
+    /** @var  string */
     public $email;
 
     const STATUS_TEACHER = 'Преподаватель';
@@ -41,7 +52,7 @@ class Teachers extends  BaseModel
     const STATUS_INSTRUCTOR = 'Инструктор';
 
 
-    public function columnMap()
+    public function columnMap() : array
     {
         return [
             'id'            =>  'id',

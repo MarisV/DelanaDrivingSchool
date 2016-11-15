@@ -18,9 +18,9 @@ class BaseModel extends Model
      *
      * @param array $dataAsArray
      */
-    public function initFromArray($dataAsArray)
+    public function initFromArray(array $dataAsArray)
     {
-        $fields =  $this->getModelsMetaData()->getReverseColumnMap($this);
+        $fields = $this->getModelsMetaData()->getReverseColumnMap($this);
 
         foreach ($dataAsArray as $field => $value) {
 

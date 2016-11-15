@@ -125,7 +125,7 @@ nav > div > ul > li > a{
     position: relative;
     background: #03a9f4;
     border: 2px solid #c2e1f5;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 .arrow_box:after, .arrow_box:before {
     bottom: 100%;
@@ -149,4 +149,22 @@ nav > div > ul > li > a{
     border-bottom-color: #c2e1f5;
     border-width: 33px;
     margin-left: -33px;
+}
+
+#category-title {
+    display: block;
+    border-bottom: 1px dotted lightgrey;
+    margin-bottom: -10px;
+    padding-bottom: 3px;
+}
+
+.categories-list {
+    border: none !important;
+}
+
+.categories-list > a {
+    border-bottom: 1px dotted lightgrey !important;
+    border-left: 1px solid lightgrey;
+    border-top: 1px dotted lightgrey;
+    color: dimgrey !important;
 }

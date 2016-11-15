@@ -9,38 +9,45 @@
 
 namespace app\models;
 
+use library\Utils\Slug;
 use Phalcon\Validation;
-use Phalcon\Validation\Validator\Uniqueness as UniquenessValidator;
-use Phalcon\Validation\Validator\Email as EmailValidator;
 use Phalcon\Validation\Validator\PresenceOf;
 
-use library\Utils\Slug;
 
 class Pages extends BaseModel
 {
-
+    /** @var  int */
     public $id;
 
+    /** @var  string */
     public $title;
 
+    /** @var  string */
     public $content;
 
+    /** @var  string */
     public $seoTitle;
 
+    /** @var  string */
     public $seoDescription;
 
+    /** @var  string */
     public $seoKeywords;
 
+    /** @var  string */
     public $dateAdded;
 
+    /** @var  int */
     public $languageId;
 
+    /** @var  int */
     public $orderIndex;
 
+    /** @var  string */
     public $uri;
 
 
-    public function columnMap()
+    public function columnMap() : array
     {
         return [
             'id'                =>  'id',
@@ -66,6 +73,7 @@ class Pages extends BaseModel
         $pagesCount = Pages::count();
 
         $this->orderIndex = ($pagesCount == null) ? 1 : $pagesCount + 1;
+
         $this->uri = Slug::generate($this->title);
     }
 
@@ -77,24 +85,6 @@ class Pages extends BaseModel
             array('notNullValidations'=>false)
         );
     }
-
-    /**
-     *  Map page data array to page model object
-     *
-     * @param array $pageAsArray
-     */
-    public function initFromArray($pageAsArray)
-    {
-        $fields =  $this->getModelsMetaData()->getReverseColumnMap($this);
-
-        foreach ($pageAsArray as $field => $value) {
-
-            if (array_key_exists($field, $fields)) {
-                $this->$field = $value;
-            }
-        }
-    }
-
 
     /**
      *  Validation rules for Pages model

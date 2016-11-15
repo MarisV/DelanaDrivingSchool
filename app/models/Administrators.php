@@ -17,19 +17,25 @@ use Phalcon\Validation\Validator\PresenceOf;
 
 class Administrators extends BaseModel
 {
+    /** @var  int */
     public $id;
 
+    /** @var  string */
     public $username;
 
+    /** @var  string */
     public $password;
 
+    /** @var  string */
     public $firstname;
 
+    /** @var  string */
     public $lastname;
 
+    /** @var  string */
     public $email;
 
-    public function columnMap()
+    public function columnMap() : array
     {
         return [
             'id'                =>  'id',
@@ -99,22 +105,6 @@ class Administrators extends BaseModel
         return $this->validate($validator);
     }
 
-    /**
-     *  Map array with user data to user model object
-     *
-     * @param array $userAsArray
-     */
-    public function mapDataFromArray($userAsArray)
-    {
-        $fields = $this->getModelsMetaData()->getReverseColumnMap($this);
-
-        foreach ($userAsArray as $field => $value) {
-
-            if (array_key_exists($field, $fields)) {
-                $this->$field = $value;
-            }
-        }
-    }
 
     /**
      * Get validation errors for Pages model

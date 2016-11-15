@@ -59,7 +59,6 @@ class UploadsController extends ControllerBase
     /**
      * Check whether articles images dir exists.
      * If not exists - create it.
-     *
      */
     public function createArticlesImagesDirIfNotExists()
     {
@@ -68,6 +67,10 @@ class UploadsController extends ControllerBase
         }
     }
 
+    /**
+     * Check whether teachers images dir exists.
+     * If not exists - create it.
+     */
     public function createTeacherDirIfNotExists()
     {
         if (!is_dir(self::TEACHER_IMAGES_DIR)) {
@@ -79,7 +82,6 @@ class UploadsController extends ControllerBase
     /**
      * Check whether pages images dir exists.
      * If not exists - create it.
-     *
      */
     public function createPagesImagesDirIfNotExists()
     {
@@ -91,7 +93,6 @@ class UploadsController extends ControllerBase
     /**
      * Check whether pages images dir exists.
      * If not exists - create it.
-     *
      */
     public function createCategoriesImagesDirIfNotExists()
     {
@@ -117,6 +118,9 @@ class UploadsController extends ControllerBase
         }
     }
 
+    /**
+     *  Upload page image
+     */
     public function uploadPageImageAction()
     {
         $this->view->disable();
@@ -145,6 +149,9 @@ class UploadsController extends ControllerBase
         }
     }
 
+    /**
+     *  Upload category image
+     */
     public function uploadCategoryImageAction()
     {
         $this->view->disable();
@@ -173,6 +180,9 @@ class UploadsController extends ControllerBase
         }
     }
 
+    /**
+     * Upload teacher photo
+     */
     public function uploadTeacherPhotoAction()
     {
         $this->view->disable();

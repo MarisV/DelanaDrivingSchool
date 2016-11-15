@@ -50,26 +50,12 @@ $router->add('/:controller/:action', array(
 
 // ADMIN ROUTES //
 
-$router->add('admin/news/add', array(
-    'namespace'     => 'app\controllers\Admin',
-    'controller'    =>  'news',
-    'action'        =>  'add'
-));
-
-$router->add('/admin/news/page/:int', array(
-    'namespace'     => 'app\controllers\Admin',
-    'controller'    =>  'news',
-    'action'        =>  'index',
-    'page'          =>  1
-));
-
 $router->add('/admin', array(
     'namespace'     =>  'app\controllers\Admin',
     'controller'    =>  'news',
     'action'        =>  'index',
     'page'          =>  1
 ));
-
 
 $router->add('/admin/:controller', [
     'namespace'  => 'app\controllers\Admin',
@@ -82,6 +68,14 @@ $router->add('/admin/:controller/:action/:params', [
     'action'     => 2,
     'params'     => 3,
 ]);
+
+$router->add('/admin/news/page/:int', array(
+    'namespace'     => 'app\controllers\Admin',
+    'controller'    =>  'news',
+    'action'        =>  'index',
+    'page'          =>  1
+));
+
 
 $router->add('/admin/pages/edit/{pageid}', [
     'namespace'  => 'app\controllers\Admin',

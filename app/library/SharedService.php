@@ -39,7 +39,7 @@ class SharedService
      *
      * @return bool
      */
-    public static function isAdminLogged()
+    public static function isAdminLogged() : bool
     {
         return self::getDi()->getShared('session')->has(self::LOGGED_IN_ADMIN_SESSION_KEY);
     }
@@ -47,7 +47,7 @@ class SharedService
     /**
      * Return logged admin object.
      *
-     * @return \Administrators
+     * @return \Administrators|bool
      */
     public static function getLoggedInAdmin()
     {
@@ -68,8 +68,13 @@ class SharedService
        return self::getDi()->get('simpleview');
     }
 
-    public static function getBaseUrl(){
-
+    /**
+     * Get base URL
+     *
+     * @return string
+     */
+    public static function getBaseUrl() : string
+    {
         $request = self::getDi()->getShared('request');
 
         $url =  $request->getScheme() . '://';

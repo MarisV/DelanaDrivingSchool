@@ -14,29 +14,40 @@ use library\Utils\Slug;
 
 class News extends BaseModel
 {
+    /** @var  int */
     public $id;
 
+    /** @var  string */
     public $title;
 
+    /** @var  string */
     public $shortDescription;
 
+    /** @var  string */
     public $author;
 
+    /** @var  string */
     public $dateAdded;
 
+    /** @var  string */
     public $seoTitle;
 
+    /** @var  string */
     public $seoDescription;
 
+    /** @var  string */
     public $seoKeywords;
 
+    /** @var  string */
     public $languageId;
 
+    /** @var  string */
     public $image;
 
+    /** @var  string */
     public $published;
 
-    public function columnMap()
+    public function columnMap() : array
     {
         return [
             'id'                =>  'id',
@@ -54,34 +65,18 @@ class News extends BaseModel
         ];
     }
 
-    public function initialize()
+    public  function initialize()
     {
         $this->hasOne('language_id', 'Languages', 'id');
     }
 
-    /**
-     *  Map article array to news model object
-     *
-     * @param array $newAsArray
-     */
-    public function mapDataFromArray($newAsArray)
-    {
-        $fields =  $this->getModelsMetaData()->getReverseColumnMap($this);
-
-        foreach ($newAsArray as $field => $value) {
-
-            if (array_key_exists($field, $fields)) {
-                $this->$field = $value;
-            }
-        }
-    }
 
     /**
      * Get link to new
      *
      * @return string
      */
-    public function getLink()
+    public function getLink() : string
     {
         return 'news/'.$this->id . '/' . Slug::generate($this->title);
     }
@@ -96,9 +91,9 @@ class News extends BaseModel
      *  Delete article image
      *
      * @param $filepath
-     * @return mixed
+     * @return bool
      */
-    public function deleteNewImage($filepath)
+    public function deleteNewImage($filepath) : bool
     {
         $filepath = ltrim($filepath, '/');
 

@@ -11,7 +11,6 @@ namespace library\Widgets;
 use library\SharedService;
 use app\models\{Categories, Pages, Languages, System};
 
-
 class TopPageNavigationWidget extends AbstractWidget
 {
 
@@ -50,35 +49,13 @@ class TopPageNavigationWidget extends AbstractWidget
             'languages'             =>  $languagesWithIco,
             'selectedLanguageCode'  =>  $siteLanguage,
             'selectedLanguageData'  =>  $siteLanguageData,
-            'categories'            =>  $this->getCategories(),
+            'categories'            =>  Categories::getCategoriesForMainPageWidgets(),
             'pages'                 =>  $this->getAnotherPagesLinks()
         ]);
 
         return $this->simpleView->render('widgets/mainpage/navigation/top_page_navigation');
     }
 
-    /**
-     * Get categories for top page navigation dropdown
-     *
-     * @return array
-     */
-    private function getCategories() : array
-    {
-        $categories = Categories::find();
-
-        $result = [];
-
-        if ($categories) {
-            foreach ($categories as $category) {
-                $result[] = [
-                    'title' =>  $category->title,
-                    'href'  =>  '/categories/'.$category->id . '/'.$category->uri
-                ];
-            }
-        }
-
-        return $result;
-    }
 
     /**
      * Get links to another pages for top page navigation dropdown
@@ -92,7 +69,6 @@ class TopPageNavigationWidget extends AbstractWidget
         $result = [];
         if ($pages) {
             foreach ($pages as $page) {
-
                 $result[] = [
                     'title' =>  $page->title,
                     'href'  =>  '/pages/'.$page->id . '/'.$page->uri

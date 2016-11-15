@@ -11,7 +11,6 @@ class ControllerBase extends Controller
 
     public function beforeExecuteroute()
     {
-
         $this->assets
             ->addCss('css/style.css')
             ->addCss('components/materialize/dist/css/materialize.min.css');
@@ -23,7 +22,7 @@ class ControllerBase extends Controller
     }
 
 
-    public function forwardTo404()
+    public function forwardTo404() : bool
     {
         $this->getDI()->get('dispatcher')->forward(
             array(

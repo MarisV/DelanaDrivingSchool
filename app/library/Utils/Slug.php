@@ -26,7 +26,7 @@ class Slug
      *
      * @throws \Phalcon\Exception
      */
-    public static function generate($string, $replace = [], $delimiter = '-')
+    public static function generate(string $string, array $replace = [], string $delimiter = '-') : string
     {
         if (!extension_loaded('intl')) {
             throw new Exception('intl module not loaded');
@@ -34,6 +34,7 @@ class Slug
 
         // Save the old locale and set the new locale to UTF-8
         $oldLocale = setlocale(LC_ALL, '0');
+
         setlocale(LC_ALL, 'en_US.UTF-8');
 
         // Better to replace given $replace array as index => value
@@ -43,6 +44,7 @@ class Slug
         }
 
         $transliterator = \Transliterator::create('Any-Latin; Latin-ASCII');
+
         $string = $transliterator->transliterate(
             mb_convert_encoding(htmlspecialchars_decode($string), 'UTF-8', 'auto')
         );

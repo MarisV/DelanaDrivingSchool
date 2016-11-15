@@ -70,7 +70,7 @@ class NewsController extends BaseController
 
                 $newToUpdate = News::findFirst($newId);
 
-                $newToUpdate->mapDataFromArray($new);
+                $newToUpdate->initFromArray($new);
 
                 $newToUpdate->prepareAuthorAndStatusFields();
 
@@ -80,7 +80,7 @@ class NewsController extends BaseController
 
                 $newToSave = new News();
 
-                $newToSave->mapDataFromArray($new);
+                $newToSave->initFromArray($new);
 
                 $newToSave->prepareAuthorAndStatusFields();
 

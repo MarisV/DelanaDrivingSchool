@@ -7,7 +7,7 @@
  * Time: 22:25
  */
 
-class ErrorController extends ControllerBase
+class ErrorController extends BaseController
 {
     public function error404Action()
     {

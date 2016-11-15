@@ -46,11 +46,26 @@ $router->add('/:controller/:action', array(
     'action'      => 2
 ));
 
+$router->add('/:controller/:action/:int', array(
+    'namespace'     => 'app\controllers',
+    'controller'    =>  1,
+    'action'        =>  2,
+    'id'            =>  3
+));
+
 /**
  * Route for read actions
  * Accepts only GET http requests.
  */
 $router->addGet('/:controller/:int/:params', array(
+    'namespace'     => 'app\controllers',
+    'controller'    => 1,
+    'action'        => 'read',
+    'id'            =>  2,
+    'uri'           =>  3
+));
+
+$router->addGet('/instructors/:int/:params', array(
     'namespace'     => 'app\controllers',
     'controller'    => 1,
     'action'        => 'read',
@@ -96,16 +111,16 @@ $router->add('/admin/pages/edit/{pageid}', [
 ]);
 
 $router->add('/admin/categories/edit/{categoryId}', [
-    'namespace'  => 'app\controllers\Admin',
-    'controller' => 'categories',
-    'action'     => 'edit',
-    'categoryId'     => 1,
+    'namespace'     => 'app\controllers\Admin',
+    'controller'    => 'categories',
+    'action'        => 'edit',
+    'categoryId'    => 1,
 ]);
 
-$router->add('/admin/instructors/edit/{teacherId}', [
-    'namespace'  => 'app\controllers\Admin',
-    'controller' => 'instructors',
-    'action'     => 'edit',
+$router->add('/admin/instructors/edit/:int', [
+    'namespace'     => 'app\controllers\Admin',
+    'controller'    => 'instructors',
+    'action'        => 'edit',
     'teacherId'     => 1,
 ]);
 

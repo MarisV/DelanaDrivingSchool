@@ -168,3 +168,17 @@ nav > div > ul > li > a{
     border-top: 1px dotted lightgrey;
     color: dimgrey !important;
 }
+
+.lecturers-list a.collection-item {
+    padding: 0;
+    color: inherit !important;
+}
+
+.lecturers-list > a > li:hover{
+    background-color: #ddd !important;
+    cursor: pointer;
+}
+
+.teacher-photo:hover{
+    cursor: pointer;
+}

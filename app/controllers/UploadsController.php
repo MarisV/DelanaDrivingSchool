@@ -11,7 +11,7 @@ namespace app\controllers;
 
 use library\SharedService;
 
-class UploadsController extends ControllerBase
+class UploadsController extends BaseController
 {
     const ARTICLE_IMAGES_DIR    =   'uploads/news/';
 
@@ -20,6 +20,7 @@ class UploadsController extends ControllerBase
     const CATEGORY_IMAGES_DIR    =   'uploads/categories/';
 
     const TEACHER_IMAGES_DIR    =   'uploads/teachers/';
+
 
     public function beforeExecuteroute()
     {
@@ -31,6 +32,9 @@ class UploadsController extends ControllerBase
         }
     }
 
+    /**
+     * Upload image for new
+     */
     public function uploadArticleImageAction()
     {
         $this->view->disable();

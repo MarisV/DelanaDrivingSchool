@@ -5,7 +5,7 @@ namespace app\controllers;
 use app\models\News;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
-class IndexController extends ControllerBase
+class IndexController extends BaseController
 {
     const NEWS_PER_PAGE = 15; // TODO: Fix pagination
 

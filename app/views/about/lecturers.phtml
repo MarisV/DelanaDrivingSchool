@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col s12 m12 l12 center-align">
+        <h5 class="left-align" id="category-title">
+            Список преподавателей
+        </h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m12 l12">
+        <?php if (!count($lecturers)) { ?>
+            <p class="subheader">
+                Нет информации
+            </p>
+        <?php } else { ?>
+        <ul class="collection lecturers-list">
+            <?php foreach ($lecturers as $lecturer) { ?>
+                <a href="/about/lecturer/<?= $lecturer->id?>" class="collection-item">
+                    <li class="collection-item avatar">
+                        <img src="<?= $lecturer->image ?>" alt="<?= $lecturer->firstname . ' ' . $lecturer->lastname ?>" class="circle">
+                        <span class="title"><?= $lecturer->firstname . ' ' . $lecturer->lastname ?></span>
+                        <p><?= $lecturer->car ?> <br>
+                            <?= $lecturer->phone ?>
+                        </p>
+                    </li>
+                </a>
+            <?php } ?>
+        </ul>
+        <?php } ?>
+    </div>
+</div>

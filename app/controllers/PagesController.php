@@ -10,9 +10,8 @@ namespace app\controllers;
 
 use app\models\Pages;
 
-class PagesController extends ControllerBase 
+class PagesController extends BaseController
 {
-
     public function readAction() // TODO : Init SEO data. Do sorting by language
     {
         $pageId =  $this->dispatcher->getParam('id');

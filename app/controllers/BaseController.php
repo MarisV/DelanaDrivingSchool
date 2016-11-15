@@ -5,7 +5,7 @@ namespace app\controllers;
 use Phalcon\Mvc\Controller;
 use library\Traits\BaseUrl;
 
-class ControllerBase extends Controller
+class BaseController extends Controller
 {
     use BaseUrl;
 

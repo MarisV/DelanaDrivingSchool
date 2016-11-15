@@ -51,6 +51,10 @@ class Teachers extends  BaseModel
 
     const STATUS_INSTRUCTOR = 'Инструктор';
 
+    const LECTURER = 'teacher';
+
+    const INSTRUCTOR = 'instructor';
+
 
     public function columnMap() : array
     {
@@ -85,7 +89,6 @@ class Teachers extends  BaseModel
                 ]
             )
         );
-
 
         $validator->add(
             'email',

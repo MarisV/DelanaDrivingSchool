@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col s12 m12 l12 center-align">
+        <h5 class="left-align" id="category-title">
+            Список инструкторов
+        </h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m12 l12">
+        <?php if (!count($instructors)) { ?>
+            <p class="subheader">
+                Нет информации
+            </p>
+        <?php } else { ?>
+
+            <ul class="collection lecturers-list">
+                <?php foreach ($instructors as $instructor) { ?>
+                    <a href="/about/instructor/<?= $instructor->id?>" class="collection-item">
+                        <li class="collection-item avatar">
+                            <img src="<?= $instructor->image ?>" alt="<?= $instructor->firstname . ' ' . $instructor->lastname ?>" class="circle">
+                            <span class="title"><?= $instructor->firstname . ' ' . $instructor->lastname ?></span>
+                            <p><?= $instructor->car ?> <br>
+                                <?= $instructor->phone ?>
+                            </p>
+                        </li>
+                    </a>
+                <?php } ?>
+            </ul>
+
+        <?php } ?>
+    </div>
+</div>

@@ -10,9 +10,8 @@ namespace app\controllers;
 
 use app\models\Categories;
 
-class CategoryController extends ControllerBase
+class CategoryController extends BaseController
 {
-
     public function readAction() // TODO : Init SEO data. Do sorting by language
     {
         $categoryId = $this->dispatcher->getParam('categoryId');

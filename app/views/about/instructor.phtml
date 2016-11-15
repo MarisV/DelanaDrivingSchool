@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col s12 m12 l12 center-align">
+        <h5 class="left-align" id="category-title">
+           <?= $instructor->firstname . ' ' . $instructor->lastname ?>
+        </h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m3 l3">
+        <?php if (!empty($instructor->image)) { ?>
+            <div class="teacher-photo card-panel" data-featherlight="<?= $instructor->image?>">
+                <img class="responsive-img" src="<?= $instructor->image ?>" alt="<?= $instructor->firstname . ' ' . $instructor->lastname ?>" title="<?= $instructor->firstname . ' ' . $instructor->lastname ?>">
+            </div>
+        <?php } ?>
+    </div>
+    <div class="col s12 m9 l9">
+        <div class="card-panel">
+            <span class="card-title">
+              <b>Возраст:</b>
+            </span>
+            <?= $instructor->age ?>
+            <br><br><br>
+
+            <span class="card-title">
+                <b>Машина:</b>
+            </span>
+            <?= $instructor->car ?>
+            <br><br><br>
+            <span class="card-title">
+                <b>Email:</b>
+            </span>
+            <?= $instructor->email ?>
+            <br><br><br>
+            <?php if ($instructor->about) { ?>
+                <span class="card-title">
+                    <b>Информация:</b>
+                </span>
+                <?= $instructor->about ?>
+            <?php } ?>
+        </div>
+    </div>
+</div>

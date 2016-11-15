@@ -10,13 +10,8 @@ namespace app\controllers;
 
 use app\models\News;
 
-class NewsController extends ControllerBase
+class NewsController extends BaseController
 {
-    public function beforeExecuteroute()
-    {
-        parent::beforeExecuteroute();
-    }
-
     /**
      *  Perform new display
      */

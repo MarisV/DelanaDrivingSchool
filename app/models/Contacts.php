@@ -37,18 +37,6 @@ class Contacts extends BaseModel
     }
 
     /**
-     *  Map page data array to contact model object
-     *
-     * @param array $contactAsArray
-     */
-    public function initFromArray($contactAsArray)
-    {
-        foreach ($contactAsArray as $key  =>  $value) {
-            $this->$key = $value;
-        }
-    }
-
-    /**
      *  Return address types and their translations to RU
      * @todo Add other languages support
      *

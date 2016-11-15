@@ -11,6 +11,6 @@ class ErrorController extends ControllerBase
 {
     public function error404Action()
     {
-
+        die('Test 404');
     }
 }

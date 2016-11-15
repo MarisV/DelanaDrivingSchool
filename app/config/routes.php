@@ -46,6 +46,17 @@ $router->add('/:controller/:action', array(
     'action'      => 2
 ));
 
+/**
+ * Route for read actions
+ * Accepts only GET http requests.
+ */
+$router->addGet('/:controller/:int/:params', array(
+    'namespace'     => 'app\controllers',
+    'controller'    => 1,
+    'action'        => 'read',
+    'id'            =>  2,
+    'uri'           =>  3
+));
 
 
 // ADMIN ROUTES //

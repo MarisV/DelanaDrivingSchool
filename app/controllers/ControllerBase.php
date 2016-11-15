@@ -26,8 +26,9 @@ class ControllerBase extends Controller
     {
         $this->getDI()->get('dispatcher')->forward(
             array(
-                'controller' => 'error',
-                'action'     => 'error404'
+                'namespace'     => 'app\controllers',
+                'controller'    => 'error',
+                'action'        => 'error404'
             )
         );
 

@@ -50,9 +50,6 @@ class InstructorsController extends BaseController
                 $this->response->redirect('/admin/instructors');
             }
         }
-
-        $this->view->setVar('defaultSiteLanguage', System::findFirst()->defaultSiteLanguage);
-        $this->view->setVar('languages', Languages::find());
     }
 
     
@@ -93,6 +90,5 @@ class InstructorsController extends BaseController
         }
 
         $this->view->setVar('teacher', $teacher);
-        $this->view->setVar('languages', Languages::find());
     }
 }

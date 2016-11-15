@@ -5,9 +5,10 @@ namespace app\controllers;
 use app\models\News;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
-
 class IndexController extends ControllerBase
 {
+    const NEWS_PER_PAGE = 15; // TODO: Fix pagination
+
     public function indexAction()
     {
         $page = $this->request->getQuery('page', 'int');
@@ -19,7 +20,7 @@ class IndexController extends ControllerBase
 
         $paginator = new PaginatorModel([
             'data'  =>  $news,
-            'limit' =>  15,
+            'limit' =>  self::NEWS_PER_PAGE,
             'page'  =>  $page
         ]);
 

@@ -13,7 +13,6 @@ use app\models\{Categories, Pages, Languages, System};
 
 class TopPageNavigationWidget extends AbstractWidget
 {
-
     /**
      *  Render top page navigtion panel widget
      *

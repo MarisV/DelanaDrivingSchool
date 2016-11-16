@@ -58,9 +58,13 @@ class System extends BaseModel
         if ($cookies->has('lang')) {
             $languageId = $cookies->get('lang');
         } else {
-            $languageId = self::findFirst()->id;
+            $language = self::findFirst();
+            if ($language !== false) {
+                $languageId = $language->id;
+            } else {
+                $languageId = 1;
+            }
         }
-
         $language = Languages::findFirst('id = '. $languageId);
 
         return $language->code ?? null;

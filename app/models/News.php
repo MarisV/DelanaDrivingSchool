@@ -47,6 +47,8 @@ class News extends BaseModel
     /** @var  string */
     public $published;
 
+    const NEWS_PER_PAGE = 15;
+
     public function columnMap() : array
     {
         return [

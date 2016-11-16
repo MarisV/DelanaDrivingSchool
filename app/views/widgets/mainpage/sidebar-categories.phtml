@@ -4,7 +4,11 @@
     </div>
 </div>
 <ul class="collection categories-list">
-    <?php foreach ($categories as $category) { ?>
-        <?= $this->tag->linkTo([$category['href'], $category['title'], "class" => "collection-item"]) ?>
+   <?php if (count($categories)) { ?>
+       <?php foreach ($categories as $category) { ?>
+           <?= $this->tag->linkTo([$category['href'], $category['title'], "class" => "collection-item"]) ?>
+       <?php } ?>
+    <?php } else { ?>
+        <h6 class="center">Категорий нет</h6>
     <?php } ?>
 </ul>

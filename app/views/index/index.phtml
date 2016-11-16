@@ -1,66 +1,77 @@
+<?php
+    use app\models\News;
+?>
 <div class="row">
     <div class="col s12 m12 l12 center-align">
         <h5 id="category-title">Новости</h5>
     </div>
 </div>
-<? foreach ($news->items as $new) {?>
-    <div class="section">
-        <div class="row">
-            <div class="news-image col s3 m3 l3">
-                <?php if (!empty($new->image)) { ?>
+<?php if (count($news) > 1) { ?>
+    <? foreach ($news->items as $new) { ?>
+        <div class="section">
+            <div class="row">
+                <div class="news-image col s3 m3 l3">
+                    <?php if (!empty($new->image)) { ?>
                         <img class="responsive-img" src="<?= $new->image ?>" alt="<?= $new->title ?>" title="<?= $new->title ?>">
-
-                <?php } ?>
-            </div>
-            <div class="news-content col s9 m9 l9">
-                <div class="row">
-                    <div class="col s12 m6 l6">
-                        <div class="valign-wrapper">
-                            <i class="material-icons">schedule</i> &nbsp;
-                            <span class="valign">
+                    <?php } ?>
+                </div>
+                <div class="news-content col s9 m9 l9">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <div class="valign-wrapper">
+                                <i class="material-icons">schedule</i> &nbsp;
+                                <span class="valign">
                                 <?= $new->dateAdded ?>
                             </span>
+                            </div>
+                        </div>
+                        <div class="col s12 m12 l12">
+                            <h4>
+                                <?= $this->tag->linkTo([$new->getLink(), $new->title , 'title' => "$new->title"]) ?>
+                            </h4>
                         </div>
                     </div>
-                    <div class="col s12 m12 l12">
-                        <h4>
-                            <?= $this->tag->linkTo([$new->getLink(), $new->title , 'title' => "$new->title"]) ?>
-                        </h4>
+                    <div class="row">
+                        <div class="col s12 m12 l12 news-description">
+                            <?= $new->shortDescription ?> ...
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m12 l12 news-description">
-                        <?= $new->shortDescription ?> ...
-                    </div>
-                </div>
-                <div class="row news-sub-content">
-                    <div class="col s6 m6 l6 news-read-button">
-                        <?= $this->tag->linkTo([$new->getLink(), 'Читать всю новость', 'title' => "$new->title", 'class' => 'waves-effect light-blue lighten-1 btn']) . '<br><br>' ?>
-                    </div>
+                    <div class="row news-sub-content">
+                        <div class="col s6 m6 l6 news-read-button">
+                            <?= $this->tag->linkTo([$new->getLink(), 'Читать всю новость', 'title' => "$new->title", 'class' => 'waves-effect light-blue lighten-1 btn']) . '<br><br>' ?>
+                        </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
-    </div> <div class="divider"></div>
-<? } ?>
-
-
-<ul class="pagination">
-    <li class="<?= ($news->before  <= 1) ? 'disabled' : 'waves-effect' ?>">
-        <a href="/?page=<?= $news->before ?>"> <i class="material-icons">chevron_left</i> </a>
-    </li>
-    <li class="waves-effect active">
-        <a href="/?page=<?= $news->current ?>"> <?= $news->current ?></a>
-    </li>
-    <? if($news->total_pages > 1) { ?>
-        <li class="<?= ($news->next  >= $news->total_pages) ? 'disabled' : 'waves-effect' ?>">
-            <a href="/?page=<?= $news->next ?>"> <?= $news->next ?></a>
-        </li>
+        </div> <div class="divider"></div>
     <? } ?>
-    <li class="waves-effect">
-        <a href="/?page=<?= $news->last ?>"> <i class="material-icons">chevron_right</i> </a>
-    </li>
-</ul>
+
+<?php } else { ?>
+    <h6>Новостей пока что нет!</h6>
+<?php } ?>
+
+
+<?php if (count($news) > News::NEWS_PER_PAGE) { ?>
+
+    <ul class="pagination">
+        <li class="<?= ($news->before  <= 1) ? 'disabled' : 'waves-effect' ?>">
+            <a href="/?page=<?= $news->before ?>"> <i class="material-icons">chevron_left</i> </a>
+        </li>
+        <li class="waves-effect active">
+            <a href="/?page=<?= $news->current ?>"> <?= $news->current ?></a>
+        </li>
+        <? if($news->total_pages > 1) { ?>
+            <li class="<?= ($news->next  >= $news->total_pages) ? 'disabled' : 'waves-effect' ?>">
+                <a href="/?page=<?= $news->next ?>"> <?= $news->next ?></a>
+            </li>
+        <? } ?>
+        <li class="waves-effect">
+            <a href="/?page=<?= $news->last ?>"> <i class="material-icons">chevron_right</i> </a>
+        </li>
+    </ul>
+
+<?php } ?>
 
 
 

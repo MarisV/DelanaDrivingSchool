@@ -60,7 +60,7 @@ use app\models\Teachers;
                         </td>
                         <td id="about" class="center-align">
                             <?php if ($teacher->about != null) { ?>
-                                <a href="#" data-featherlight=" <?= $teacher->about ?>">Показать</a>
+                                <a href="#" data-featherlight='<div> <?= $teacher->about?>  </div>'>Показать</a>
                             <?php  } else { ?>
                                 <p class="center-align">-</p>
                             <?php } ?>

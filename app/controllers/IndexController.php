@@ -20,7 +20,7 @@ class IndexController extends BaseController
 
         $paginator = new PaginatorModel([
             'data'  =>  $news,
-            'limit' =>  News::NEWS_PER_PAGE,
+            'limit' =>  self::NEWS_PER_PAGE,
             'page'  =>  $page
         ]);
 

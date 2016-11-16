@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Maris Vigulis
  * Date: 16.16.11
- * Time: 02:18
+ * Time: 03:17
  */
 
 namespace app\models;
@@ -12,7 +12,7 @@ use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Email as EmailValidator;
 
-class Support extends BaseModel
+class Course extends BaseModel
 {
     /** @var  int */
     public $id;
@@ -21,31 +21,46 @@ class Support extends BaseModel
     public $firstname;
 
     /** @var  string */
+    public $lastname;
+
+    /** @var  string */
     public $email;
 
     /** @var  string */
-    public $content;
+    public $phone;
+
+    /** @var  int */
+    public $categoryId;
 
     /** @var  string */
-    public $contactTime;
+    public $timeRequested;
 
+    /** @var  string */
+    public $comment;
 
     public function columnMap() : array
     {
         return [
             'id'            =>  'id',
-            'content'       =>  'content',
             'firstname'     =>  'firstname',
+            'lastname'      =>  'lastname',
             'email'         =>  'email',
-            'contact_time'  =>  'contactTime'
+            'phone'         =>  'phone',
+            'category_id'   =>  'categoryId',
+            'time_requested'=>  'timeRequested',
+            'comment'       =>  'comment'
         ];
     }
 
     public function beforeValidationOnCreate()
     {
-        $this->contactTime = date('d-m-y H:m:s');
+        $this->timeRequested = date('d-m-y H:m:s');
     }
 
+    public function initialize()
+    {
+        $this->hasOne('categoryId', 'Categories', 'id');
+    }
 
     /**
      *  Validation rules for Pages model
@@ -57,13 +72,15 @@ class Support extends BaseModel
         $validator = new Validation();
 
         $validator->add(
-            ['firstname', 'email', 'content'],
+            ['firstname', 'lastname', 'email', 'phone', 'categoryId'],
             new PresenceOf(
                 [
                     'message' => [
-                        'firstname' =>  'Введите имя',
-                        'email'     =>  'Введите email',
-                        'content'   =>  'Введите сообщение',
+                        'firstname'     =>  'Введите имя',
+                        'lastname'      =>  'Введите фамилию',
+                        'email'         =>  'Введите email',
+                        'phone'         =>  'Введите номер телефона',
+                        'categoryId'    =>  'Пожалуйста выберите категорию',
                     ]
                 ]
             )
@@ -80,7 +97,6 @@ class Support extends BaseModel
 
         return $this->validate($validator);
     }
-
 
     /**
      * Get validation errors for Support model

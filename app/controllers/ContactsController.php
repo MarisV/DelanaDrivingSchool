@@ -9,7 +9,9 @@
 namespace app\controllers;
 
 
+use app\models\Categories;
 use app\models\Contacts;
+use app\models\Course;
 use app\models\Support;
 
 class ContactsController extends BaseController
@@ -43,5 +45,32 @@ class ContactsController extends BaseController
                 $this->view->setVar('success', 'Сообщение успешно отправлено');
             }
         }
+    }
+
+    public function courseAction() // TODO: Add working course category select validation
+    {
+        $availableCategories = Categories::find([
+            'columnds'  =>  'id, title'
+        ]);
+
+        if ($this->request->isPost()) {
+
+            $applicationData = $this->request->getPost();
+
+            $applicationForCourse = new Course();
+
+            $applicationForCourse->initFromArray($applicationData);
+
+            $result = $applicationForCourse->create();
+
+            if ($result === false) {
+                $errors = $applicationForCourse->getValidationMessages();
+                $this->view->setVar('errors', $errors);
+            } else {
+                $this->view->setVar('success', 'Заявка успешно оставлена ');
+            }
+        }
+
+        $this->view->setVar('categories', $availableCategories);
     }
 }

@@ -51,7 +51,7 @@ class System extends BaseModel
      *
      * @return string
      */
-    public static function getSelectedBeforeOrDefaultSiteLanguage() : string
+    public static function getSelectedBeforeOrDefaultSiteLanguage()
     {
         $cookies = SharedService::getCookies();
 
@@ -63,7 +63,7 @@ class System extends BaseModel
 
         $language = Languages::findFirst('id = '. $languageId);
 
-        return $language->code;
+        return $language->code ?? null;
     }
 
 }

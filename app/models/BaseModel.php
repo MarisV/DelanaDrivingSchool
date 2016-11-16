@@ -29,4 +29,22 @@ class BaseModel extends Model
             }
         }
     }
+
+    /**
+     * Get validation errors for model
+     *
+     * @return array
+     */
+    public function getValidationMessages() : array
+    {
+        $result = [];
+
+        $errorMessages = $this->getMessages();
+
+        foreach ($errorMessages as $message) {
+            $result[$message->getField()] = $message->getMessage();
+        }
+
+        return $result;
+    }
 }

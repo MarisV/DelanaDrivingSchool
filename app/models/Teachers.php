@@ -103,22 +103,6 @@ class Teachers extends  BaseModel
     }
 
     /**
-     * Get validation errors for Pages model
-     *
-     * @return mixed
-     */
-    public function getValidationMessages()
-    {
-        $errorMessages = $this->getMessages();
-
-        foreach ($errorMessages as $message) {
-            $result[$message->getField()] = $message->getMessage();
-        }
-
-        return $result;
-    }
-
-    /**
      *  Get professional status => translation list
      *
      * @return array
@@ -137,7 +121,7 @@ class Teachers extends  BaseModel
      * @param string $key
      * @return string mixed
      */
-    public static function getStatusTranslation($key) : string
+    public static function getStatusTranslation(string $key) : string
     {
         return self::getProfStatuses()[$key];
     }

@@ -110,21 +110,6 @@ class Pages extends BaseModel
         return $this->validate($validator);
     }
 
-    /**
-     * Get validation errors for Pages model
-     *
-     * @return mixed
-     */
-    public function getValidationMessages() : array
-    {
-        $errorMessages = $this->getMessages();
-
-        foreach ($errorMessages as $message) {
-            $result[$message->getField()] = $message->getMessage();
-        }
-
-        return $result;
-    }
 
     /**
      * Update pages positions

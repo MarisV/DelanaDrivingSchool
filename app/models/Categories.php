@@ -80,24 +80,6 @@ class Categories extends BaseModel
     }
 
     /**
-     *  Map page data array to cateogory model object
-     *
-     * @param array $categoryAsArray
-     */
-    /*public function initFromArray($categoryAsArray)
-    {
-        $fields =  $this->getModelsMetaData()->getReverseColumnMap($this);
-
-        foreach ($categoryAsArray as $field => $value) {
-
-            if (array_key_exists($field, $fields)) {
-                $this->$field = $value;
-            }
-        }
-    }*/
-
-
-    /**
      *  Validation rules for Pages model
      *
      * @return bool
@@ -119,22 +101,6 @@ class Categories extends BaseModel
         );
 
         return $this->validate($validator);
-    }
-
-    /**
-     * Get validation errors for Categories model
-     *
-     * @return mixed
-     */
-    public function getValidationMessages()
-    {
-        $errorMessages = $this->getMessages();
-
-        foreach ($errorMessages as $message) {
-            $result[$message->getField()] = $message->getMessage();
-        }
-
-        return $result;
     }
 
     public static function getCategoriesForMainPageWidgets() : array

@@ -81,22 +81,4 @@ class Support extends BaseModel
         return $this->validate($validator);
     }
 
-
-    /**
-     * Get validation errors for Support model
-     *
-     * @return array
-     */
-    public function getValidationMessages() : array
-    {
-        $errorMessages = $this->getMessages();
-
-        $result = [];
-
-        foreach ($errorMessages as $message) {
-            $result[$message->getField()] = $message->getMessage();
-        }
-
-        return $result;
-    }
 }

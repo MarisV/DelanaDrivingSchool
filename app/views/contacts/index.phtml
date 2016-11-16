@@ -1,0 +1,63 @@
+<?php
+    use app\models\Contacts;
+?>
+
+<div class="row">
+    <div class="col s12 m12 l12 center-align">
+        <h5 class="left-align" id="category-title">
+            Наши контакты
+        </h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s6 m6 l6">
+        <p class="black-text">
+            <?php if ($contactsExist) { ?>
+                <?php if(!empty(Contacts::getAddress() )) { ?>
+                    <?php  $address = Contacts::getAddress(); ?>
+                    <i class="tiny material-icons">add_location</i> <b>Адрес : </b>
+                        <?= implode(', ', $address); ?>
+                    <br> <br>
+                <?php } ?>
+
+                <?php if(!empty(Contacts::getPhone() )) { ?>
+                    <?php  $phones = Contacts::getPhone(); ?>
+                    <i class="tiny material-icons">phone</i>  <b>Телефон : </b>
+                        <?= implode(', ', $phones); ?>
+                    <br> <br>
+                <?php } ?>
+
+                <?php if(!empty(Contacts::getEmail() )) { ?>
+                    <?php  $emails = Contacts::getEmail(); ?>
+                    <i class="tiny material-icons">email</i>   <b>Email : </b>
+                        <?= implode(', ', $emails); ?>
+                    <br> <br>
+                <?php } ?>
+
+                <?php if(!empty(Contacts::getSkype() )) { ?>
+                    <?php  $skype = Contacts::getSkype(); ?>
+                        <b>Skype : </b>
+                        <?= implode(', ', $skype); ?>
+                <?php } ?>
+            <?php } ?>
+        </p>
+    </div>
+
+    <div class="col s6 m6 l6">
+        <a class="waves-effect waves-light btn btn-large" href="/contacts/support">Написать нам <i class="material-icons left">email</i> </a>
+    </div>
+</div>
+
+<hr class="">
+<div class="row">
+    <div class="col s12 m12 l12">
+        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBZW0RobycYnCgcPotTsN2Aj3qvAlET130'></script>
+        <div style='overflow:hidden;height:401px;width: 100%;'>
+            <div id='gmap_canvas' style='height:401px;width: 100%;'></div>
+            <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+        </div>
+        <a href='http://www.maps-iframe.com/'>auf www.Maps-Iframe.com</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=f8d1f7c556740fa148794bbd57bcb3f42294782d'></script><script type='text/javascript'>function init_map(){var myOptions = {zoom:15,center:new google.maps.LatLng(55.8709957,26.5204923),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(55.8709957,26.5204923)});infowindow = new google.maps.InfoWindow({content:'<strong></strong><br>Saules iela 32<br> Daugavpils<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+    </div>
+</div>
+

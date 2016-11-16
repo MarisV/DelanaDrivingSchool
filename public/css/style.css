@@ -124,7 +124,7 @@ nav > div > ul > li > a{
 .arrow_box {
     position: relative;
     background: #03a9f4;
-    border: 2px solid #c2e1f5;
+    border: 1px solid #c2e1f5;
     border-radius: 6px;
 }
 .arrow_box:after, .arrow_box:before {
@@ -147,8 +147,8 @@ nav > div > ul > li > a{
 .arrow_box:before {
     border-color: rgba(194, 225, 245, 0);
     border-bottom-color: #c2e1f5;
-    border-width: 33px;
-    margin-left: -33px;
+    border-width: 32px;
+    margin-left: -32px;
 }
 
 #category-title {

@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col s8 m8 l8 center-align">
+        <h5 class="left-align" id="category-title">
+            Задайте нам вопрос
+        </h5>
+    </div>
+    <div class="col s4 m4 l4">
+        <?php if (isset($success)) { ?>
+            <script>
+                Materialize.toast("<?= $success ?>", 4000);
+            </script>
+        <?php } ?>
+    </div>
+</div>
+
+<div class="row">
+    <form class="col s12 m12 l12" method="post" action="/contacts/support">
+        <div class="row">
+            <div class="input-field col s11 m5 l5">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="firstname" type="text" name="firstname" class="validate <?= (isset($errors['firstname'])) ? ' invalid' : '' ?>">
+                <label for="firstname" data-error="<?= $errors['firstname'] ?? '' ?>">Имя</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s11 m5 l5">
+                <i class="material-icons prefix">email</i>
+                <input id="email" type="email" name="email" class="validate <?= (isset($errors['email'])) ? ' invalid' : '' ?>">
+                <label for="email"  data-error="<?= $errors['email'] ?? '' ?>">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m12 l10">
+                <textarea id="content" name="content" class="materialize-textarea validate <?= (isset($errors['content'])) ? ' invalid' : '' ?>"></textarea>
+                <label for="content"  data-error="<?= $errors['content'] ?? '' ?>">Сообщение</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 input-field">
+                <button class="btn waves-effect waves-light light-blue" type="submit">
+                    Отправить<i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

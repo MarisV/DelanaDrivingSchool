@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col s11 m11 l11 push-s1 push-m1" style="margin-top: -30px">
+        <h5 class="teal-text">
+            Заявки на курсы
+        </h5>
+    </div>
+</div>
+<div class="divider"></div>
+
+<div class="row">
+    <div class="col s12 m 12 l12">
+        <table class="highlight responsive-table">
+            <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Email</th>
+                <th>Номер телефона</th>
+                <th>Категория</th>
+                <th>Дата</th>
+                <th>Комментарий</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($courses as $course) {?>
+                <tr>
+                    <td>
+                        <?= $course->firstname ?>
+                    </td>
+                    <td>
+                        <?= $course->lastname ?>
+                    </td>
+                    <td>
+                        <?= $course->email?>
+                    </td>
+                    <td>
+                        <?= $course->phone ?>
+                    </td>
+
+                    <td>
+                        <?= $course->getRelated('app\models\Categories')->title ?>
+                    </td>
+
+                    <td>
+                        <?= $course->timeRequested?>
+                    </td>
+
+                    <td>
+                        <?php if ($course->comment != null) { ?>
+                            <a href="#" data-featherlight='<div> <?= $course->comment?>  </div>'>Показать</a>
+                        <?php  } else { ?>
+                            <p class="center-align">-</p>
+                        <?php } ?>
+                    </td>
+
+                    <td>
+                        <div class="center-align">
+                            <?= $this->tag->linkTo(['#', '<i class="material-icons">delete</i>', 'class' => 'btn-floating red lighten-1 delete-application-btn', 'id' => $course->id, 'title' => 'Удалить']) ?>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>

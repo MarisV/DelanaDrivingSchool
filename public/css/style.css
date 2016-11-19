@@ -182,3 +182,17 @@ nav > div > ul > li > a{
 .teacher-photo:hover{
     cursor: pointer;
 }
+
+#feedback-list {
+    margin-left: 12px;
+}
+
+.feedback-firstname {
+    border-bottom: 1px dotted lightgrey;
+    padding-right: 3px;
+}
+
+.feedback-date {
+    padding-left: 3px;
+    border-bottom: 1px dotted lightgrey
+}

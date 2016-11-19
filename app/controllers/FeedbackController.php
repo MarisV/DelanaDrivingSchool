@@ -14,7 +14,7 @@ class FeedbackController extends BaseController
 {
     public function indexAction()
     {
-
+       
     }
 
     /**
@@ -22,8 +22,6 @@ class FeedbackController extends BaseController
      */
     public function sendAction()
     {
-
-
         if ($this->request->isPost()) {
             $feedbackData = $this->request->getPost();
 
@@ -46,5 +44,14 @@ class FeedbackController extends BaseController
                 ]
             );
         }
+    }
+
+    public function allAction()
+    {
+        $feedbackMessages = Feedback::find([
+            'order' =>  'commentDate desc'
+        ]);
+
+        $this->view->setVar('feedbackMessages', $feedbackMessages);
     }
 }

@@ -59,7 +59,7 @@ class Course extends BaseModel
 
     public function initialize()
     {
-        $this->hasOne('categoryId', 'Categories', 'id');
+        $this->hasOne('categoryId', 'app\models\Categories', 'id');
     }
 
     /**

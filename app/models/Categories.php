@@ -77,6 +77,8 @@ class Categories extends BaseModel
         $this->setup(
             array('notNullValidations'=>false)
         );
+
+        $this->belongsTo("id", "Course", "languageId");
     }
 
     /**

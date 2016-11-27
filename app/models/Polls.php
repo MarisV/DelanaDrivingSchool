@@ -8,7 +8,6 @@
 
 namespace app\models;
 
-
 class Polls extends BaseModel
 {
     /**
@@ -52,9 +51,15 @@ class Polls extends BaseModel
         $this->hasOne('languageId', 'app\models\Languages', 'id');
     }
 
+    public function beforeValidation()
+    {
+        $this->active = ( $this->active != null ) ? ($this->active == 'on' || $this->active == 'yes') ? 'yes' : 'no' : 'no';
+    }
+
     public function afterValidation()
     {
         $this->answers = serialize($this->answers);
+
     }
 
 

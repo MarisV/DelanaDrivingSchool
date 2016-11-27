@@ -32,10 +32,16 @@
                         <td id="visible">
                             <?= $lang->visible ?>
                         </td>
-                        <td>
-                            <?= $this->tag->linkTo(['languages/edit/', '<i class="material-icons">mode_edit</i>', 'class' => 'btn-floating edit-language-btn', 'title' => 'Редактировать', 'id' => "$lang->id"]) ?>
-                            <?= $this->tag->linkTo(['languages/delete/'.$lang->id, '<i class="material-icons">delete</i>', 'class' => 'btn-floating red lighten-1 delete-language-btn', 'id' => $lang->id, 'title' => 'Удалить']) ?>
-                        </td>
+                        <?php if ($lang->code != 'all') { ?>
+                            <td>
+                                <?= $this->tag->linkTo(['languages/edit/', '<i class="material-icons">mode_edit</i>', 'class' => 'btn-floating edit-language-btn', 'title' => 'Редактировать', 'id' => "$lang->id"]) ?>
+                                <?= $this->tag->linkTo(['languages/delete/'.$lang->id, '<i class="material-icons">delete</i>', 'class' => 'btn-floating red lighten-1 delete-language-btn', 'id' => $lang->id, 'title' => 'Удалить']) ?>
+                            </td>
+                        <?php } else { ?>
+                            <td>
+
+                            </td>
+                        <?php } ?>
                     </tr>
                 <?php } ?>
             </tbody>

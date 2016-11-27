@@ -36,13 +36,11 @@
 <ul id="top-header-menu-languages-dropdown" class="dropdown-content">
     <?php foreach ($languages as $language) { ?>
         <?php if ($language['name'] != '-- Все --') { ?>
-
             <li>
                 <a href="<?= $language['href'] ?>">
                     <?= $language['name'] ?> <img src="<?= $language['img'] ?>">
                 </a>
             </li>
-
         <?php } ?>
     <?php } ?>
 </ul>
@@ -160,11 +158,13 @@
 
 <ul id="top-header-menu-languages-dropdown-m" class="dropdown-content">
     <?php foreach ($languages as $language) { ?>
-        <li>
-            <a href="<?= $language['href'] ?>">
-                <?= $language['name'] ?> <img src="<?= $language['img'] ?>">
-            </a>
-        </li>
+        <?php if ($language['name'] != '-- Все --') { ?>
+            <li>
+                <a href="<?= $language['href'] ?>">
+                    <?= $language['name'] ?> <img src="<?= $language['img'] ?>">
+                </a>
+            </li>
+        <?php } ?>
     <?php } ?>
 </ul>
 

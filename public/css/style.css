@@ -163,7 +163,7 @@ nav > div > ul > li > a{
 }
 
 .categories-list > a {
-    border-bottom: 1px dotted lightgrey !important;
+    border-bottom: 1px dotted !important;
     border-left: 1px solid lightgrey;
     border-top: 1px dotted lightgrey;
     color: dimgrey !important;
@@ -203,4 +203,52 @@ nav > div > ul > li > a{
 
 .poll-answers-list {
     width: 100px;
+}
+
+.poll-container {
+    width: 100%;
+
+    display: inline-block;
+}
+
+.poll-container > .question-text {
+    border-top: none !important;
+    border-bottom:  1px dotted lightgrey !important;
+}
+
+.poll-container {
+    border-right: none !important;
+}
+
+.poll-answer:hover {
+    background-color: #f5f5f5 !important;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.poll-answer > input[type="radio"]:not(:checked) + label:before,
+.poll-answer > input[type="radio"]:not(:checked) + label:after {
+    border: 1px solid #0d47a1;
+}
+
+
+.poll-answer > input[type="radio"]:checked + label:after,
+.poll-answer > input[type="radio"].with-gap:checked + label:before,
+.poll-answer > input[type="radio"].with-gap:checked + label:after {
+    border: 1px solid #26a69a !important;
+}
+
+.poll-answer > input[type="radio"]:checked + label:after,
+.poll-answer > input[type="radio"].with-gap:checked + label:after {
+    background-color: #64b5f6;
+    z-index: 0;
+}
+
+.poll-answer > input[type="radio"]:checked + label:after {
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+}
+
+.waves-effect.waves-blue .waves-ripple {
+    background-color: rgba(66, 165, 245, 0.7);
 }

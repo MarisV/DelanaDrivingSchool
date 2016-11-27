@@ -18,5 +18,13 @@
                 belowOrigin: true
             }
         );
+
+        $('.poll-answer').on('click', function (e) {
+            e.preventDefault();
+
+            $(this).find('input:radio').prop('checked', 'true');
+
+        })
+
   });
 })(jQuery);

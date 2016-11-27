@@ -1,0 +1,80 @@
+<?php
+use app\models\Teachers;
+?>
+<div class="row">
+    <div class="col s12 m12 l8" style="margin-top: -30px">
+        <h5 class="teal-text">
+           Редактировать опрос
+        </h5>
+    </div>
+</div>
+
+<div class="row">
+    <form class="col s12 add-news-form" action="/admin/polls/edit/<?= $poll->id?>" method="post">
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Вопрос" value="<?= $poll->question ?>" id="question" name="question" type="text" class="validate <?= (isset($errors['question'])) ? ' invalid' : '' ?>">
+                <label for="question" data-error="<?= (isset($errors['question'])) ? $errors['question'] : '' ?>">Вопрос</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m6 l4 input-field">
+                <select name="languageId" id="language-id">
+                    <?php foreach ($languages AS $language) { ?>
+                        <?php  $selected = ($language->id == $poll->languageId) ? ' selected ' : '' ?>
+                        <option value="<?= $language->id ?>" <?= $selected ?> >  <?= $language->name ?></option>
+                    <? } ?>
+                </select>
+                <label>Язык опроса</label>
+            </div>
+            <div class="col s12 m6 l6 input-field">
+                <div class="switch">
+                    <label>
+                        Скрыть
+                        <input type="checkbox" name="active" id="active" <?= ($poll->active == 'yes') ? ' checked ' : '' ?> >
+                        <span class="lever"></span>
+                        Опубликовать
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div id="answers-container">
+            <? $answers = unserialize($poll->answers); ?>
+            <?php foreach ($answers as $index => $answer) { ?>
+                <div class="row">
+                    <div class="input-field col s9 m9 l9">
+                        <input id="answers" name="answers[]" value="<?= $answer ?>" type="text" class="answers validate">
+                        <label for="answers">Ответ - <?= $index+1 ?></label>
+                    </div>
+
+                    <?php if ($index == 0) { ?>
+
+                        <div class="col s3 m3 l3 right-align">
+                            <a class="btn-floating btn-large waves-effect waves-light red add-answer" href="#"><i class="material-icons">add</i></a>
+                        </div>
+
+                    <?php } else if ($index > 1) { ?>
+
+                        <div class="col s3 m3 l3 left-align">
+                            <a class="btn-floating btn-medium waves-effect waves-light red delete-answer" href="#"><i class="material-icons">delete</i></a>
+                        </div>
+
+                    <?php } ?>
+
+                </div>
+            <?php } ?>
+        </div>
+
+
+        <div class="row">
+            <div class="col s12 input-field center" style="margin-top: 30px;">
+                <button class="btn waves-effect waves-light" type="submit">
+                    Сохранить<i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

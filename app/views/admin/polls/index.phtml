@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col s5 m5 l6 push-s1 push-m1" style="margin-top: -30px">
+        <h5 class="teal-text">
+            Опросы
+        </h5>
+    </div>
+    <div class="col s6 m6 l6 right-align" style="margin-top: -26px">
+        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="/admin/polls/add"><i class="material-icons">add</i></a>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col s12 m 12 l12">
+        <table class="highlight responsive-table">
+            <thead>
+            <tr>
+                <th data-field="firstname">Вопрос</th>
+                <th data-field="lastname">Язык</th>
+                <th data-field="car">Активный</th>
+                <th data-field="image">Ответы</th>
+                <th>Управление</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($polls as $poll) {?>
+                <tr>
+                    <td class="left-align">
+                        <?= $poll->question?>
+                    </td>
+                    <td class="left-align">
+                        <?= $poll->getRelated('app\models\Languages')->name ?>
+                    </td>
+
+                    <td class="left-align">
+                        <?= ($poll->active == 'yes') ? 'Да' : 'Нет' ?>
+                    </td>
+
+                    <td class="left-align">
+                        <a href="#" data-featherlight='<div class = "poll-answers-list"> <? foreach (unserialize($poll->answers) as $answer) {
+                            echo '<li>' . $answer .'</li>' . '<br>';
+                        } ?>  </div>'>Показать</a>
+                    </td>
+
+                    <td>
+                        <div>
+                            <?= $this->tag->linkTo(['/admin/polls/edit/'.$poll->id, '<i class="material-icons">mode_edit</i>', 'class' => 'btn-floating', 'title' => 'Редактировать', 'id' => "$poll->id"]) ?>
+                            <?= $this->tag->linkTo(['#', '<i class="material-icons">delete</i>', 'class' => 'btn-floating red lighten-1 delete-poll-btn', 'id' => $poll->id, 'title' => 'Удалить']) ?>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
+</div>

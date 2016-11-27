@@ -131,4 +131,12 @@ $router->add('/admin/seo/lang/{languageId}', [
     'languageId'    => 1,
 ]);
 
+$router->add('/admin/polls/edit/:int', [
+    'namespace'     => 'app\controllers\Admin',
+    'controller'    => 'polls',
+    'action'        => 'edit',
+    'pollId'     => 1,
+]);
+
+
 return $router;

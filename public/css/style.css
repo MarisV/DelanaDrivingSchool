@@ -200,3 +200,7 @@ nav > div > ul > li > a{
 #feedback-message {
     border-left: 1px dotted lightgrey;
 }
+
+.poll-answers-list {
+    width: 100px;
+}

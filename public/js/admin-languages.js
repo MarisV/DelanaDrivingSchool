@@ -63,13 +63,14 @@
 
             var languageId = $(this).attr('id');
 
-            var tr = $(this).parent().parent().parent();
+            var tr = $(this).parent().parent();
+
+            console.log(tr);
 
             var id = $(this).attr('id');
             var name =  $(tr).find('td#name')[0].innerText;
             var code =  $(tr).find('td#code')[0].innerText;
             var visible = $(tr).find('td#visible')[0].innerText;
-
 
             $('.add-language-modal').click();
 

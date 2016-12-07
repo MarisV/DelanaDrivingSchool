@@ -95,4 +95,9 @@ class SharedService
         return self::getDi()->getShared('cookies');
     }
 
+    public static function getRequest()
+    {
+        return self::getDi()->get('request');
+    }
+
 }

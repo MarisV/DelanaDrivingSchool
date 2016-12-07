@@ -12,7 +12,7 @@ use app\models\Polls;
 
 class SidebarPollsWidget extends AbstractWidget 
 {
-    public function getWidget()
+    public function getWidget() : string
     {
         $oneRandomActivePoll = Polls::findFirst([ // TODO: Get poll by language too
             'order' =>  'RAND()',

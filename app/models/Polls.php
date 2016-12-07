@@ -59,7 +59,6 @@ class Polls extends BaseModel
     public function afterValidation()
     {
         $this->answers = serialize($this->answers);
-
     }
 
 

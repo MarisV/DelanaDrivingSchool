@@ -3,20 +3,19 @@
         <h5 id="category-title">Наш опрос</h5>
     </div>
 </div>
-<ul class="collection poll-container" style="margin-bottom: 0px !important;">
+<ul class="collection poll-container" data-poll-id="<?= $poll->id ?>" style="margin-bottom: 0px !important;">
     <p class="collection-item question-text" style="background-color: #f5f5f5;">
         <?= $poll->question ?>
     </p>
     <?php foreach (unserialize($poll->answers) as $index => $answer) { ?>
         <a class="collection-item poll-answer">
-            <input name="anwers" type="radio" id="a_<?= $index ?>" />
+            <input name="anwers" type="radio" id="a_<?= $index ?>" data-answer="<?= $answer ?>" />
             <label for="a_<?= $index ?>"><?= $answer ?></label>
         </a>
     <?php } ?>
 </ul>
-<div style="width: 100% !important">
-    <a class="waves-effect waves-block waves-blue btn-flat center-align hoverable" style="background-color: #f5f5f5; width: 100%;">
+<div style="width: 100% !important" class="hoverable">
+    <a class="waves-effect waves-block waves-blue btn-flat center-align hoverable poll-answer-btn" style="background-color: #f5f5f5; width: 100%;">
          Голосовать
-        <i class="tiny material-icons right">poll</i>
     </a>
 </div>

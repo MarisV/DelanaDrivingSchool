@@ -36,14 +36,9 @@ class PollsController extends BaseController
                 $pollsAnswers->answerHash = $hash;
 
                 $voteResult = $pollsAnswers->create();
-
-                if ($voteResult === false) {
-                    die(var_dump('123'));
-                    die(var_dump($pollsAnswers->getValidationMessages()));
-                }
             }
         }
 
-        return die(json_encode(['result'    =>  $voteResult]));
+        return die(json_encode(['result' => $voteResult]));
     }
 }

@@ -78,7 +78,13 @@ class PollsAnswers extends BaseModel
         return $hash;
     }
 
-    public function getIsVotedByHash(string $hash)
+    /**
+     * Check, whether user is voted this vote, by voye hash
+     *
+     * @param string $hash
+     * @return bool
+     */
+    public function getIsVotedByHash(string $hash) : bool
     {
         $vote = self::findFirstByAnswerHash($hash);
 
@@ -88,5 +94,25 @@ class PollsAnswers extends BaseModel
 
         return false;
     }
-    
+
+    /**
+     *  Get and aggregate poll answers
+     *
+     * @param \app\models\Polls $poll
+     * @return array
+     */
+    public function getPollStatistics(Polls $poll) : array
+    {
+        $availableAnswers = unserialize($poll->answers);
+
+        $pollAnswers = PollsAnswers::findByPollId($poll->id)->toArray();
+
+        $statistics = array_fill_keys(array_keys($availableAnswers), 0);
+
+        foreach ($pollAnswers as $key => $answer) {
+            $statistics[$answer['answerId']] +=1;
+        }
+
+        return array_combine($availableAnswers, array_values($statistics));
+    }
 }

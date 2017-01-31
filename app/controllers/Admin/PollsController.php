@@ -9,8 +9,8 @@
 namespace app\controllers\Admin;
 
 use app\models\Polls;
-use app\models\PollsAnswers;
 use app\models\Languages;
+use app\models\PollsAnswers;
 
 class PollsController extends BaseController
 {
@@ -20,6 +20,7 @@ class PollsController extends BaseController
 
         $this->assets->addJs('js/admin-polls.js')
             ->addJs('components/lightbox/featherlight.js')
+            ->addJs('components/chart.js/dist/Chart.js')
             ->addCss('components/lightbox/featherlight.css');
 
         $visibleLanguages = Languages::find("visible = 'yes'");
@@ -100,6 +101,22 @@ class PollsController extends BaseController
             $deleteResult = $poll->delete();
 
             die(json_encode(['result' => $deleteResult]));
+        }
+    }
+
+    public function statisticsAction()
+    {
+        $pollId = $this->dispatcher->getParam('id');
+
+        $poll = Polls::findFirst($pollId);
+
+        if ($poll !== false) {
+
+            $pollAnswersStatistics = (new PollsAnswers())->getPollStatistics($poll);
+
+            $this->view->setVars([
+                'statistics'    =>  $pollAnswersStatistics,
+            ]);
         }
     }
 }

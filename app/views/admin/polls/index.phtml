@@ -9,7 +9,6 @@
     </div>
 </div>
 <div class="row">
-
     <div class="col s12 m 12 l12">
         <table class="highlight responsive-table">
             <thead>
@@ -45,6 +44,7 @@
                         <div>
                             <?= $this->tag->linkTo(['/admin/polls/edit/'.$poll->id, '<i class="material-icons">mode_edit</i>', 'class' => 'btn-floating', 'title' => 'Редактировать', 'id' => "$poll->id"]) ?>
                             <?= $this->tag->linkTo(['#', '<i class="material-icons">delete</i>', 'class' => 'btn-floating red lighten-1 delete-poll-btn', 'id' => $poll->id, 'title' => 'Удалить']) ?>
+                            <?= $this->tag->linkTo(['/admin/polls/statistics/'.$poll->id, ' <i class="material-icons">insert_chart</i>', 'class' => 'btn-floating green', 'title' => 'Статистика', 'id' => "$poll->id"]) ?>
                         </div>
                     </td>
                 </tr>

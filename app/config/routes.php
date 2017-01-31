@@ -138,5 +138,12 @@ $router->add('/admin/polls/edit/:int', [
     'pollId'     => 1,
 ]);
 
+$router->add('/admin/polls/statistics/:int', [
+    'namespace'     => 'app\controllers\Admin',
+    'controller'    => 'polls',
+    'action'        => 'statistics',
+    'id'     => 1,
+]);
+
 
 return $router;

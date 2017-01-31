@@ -57,7 +57,7 @@
             <div class="col s12 input-field">
                 <select name="languageId" id="language-id">
                     <?php foreach ($languages AS $language) { ?>
-                        <?php  $selected = ($language->code == 'ru') ? ' selected ' : '' ?>
+                        <?php  $selected = ($language->code == 'all') ? ' selected ' : '' ?>
                         <option value="<?php echo $language->id ?>" <?= $selected ?> > <?php echo $language->name ?></option>
                     <? } ?>
                 </select>

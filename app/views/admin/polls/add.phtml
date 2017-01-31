@@ -23,7 +23,8 @@ use app\models\Teachers;
             <div class="col s12 m6 l4 input-field">
                 <select name="languageId" id="language-id">
                     <?php foreach ($languages AS $language) { ?>
-                        <option value="<?php echo $language->id ?>"> <?php echo $language->name ?></option>
+                        <?php  $selected = ($language->code == 'all') ? ' selected ' : '' ?>
+                        <option value="<?php echo $language->id ?>" <?= $selected ?>> <?php echo $language->name ?></option>
                     <? } ?>
                 </select>
                 <label>Язык опроса</label>

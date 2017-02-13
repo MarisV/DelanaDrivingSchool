@@ -16,7 +16,7 @@ use Phalcon\Mvc\View\Engine\Php as PhpEngine;
 use Phalcon\Mvc\View\Simple as SimpleView;
 use Phalcon\Mvc\Url as UrlResolver;
 use library\Helpers\Locale;
-
+use library\Adapters\Cache\CacheAdapter;
 
 class Bootstrap
 {
@@ -214,7 +214,7 @@ class Bootstrap
     private function initCache()
     {
         $this->_di->set('cache', function (){
-            return new CacheAdapter('custom-cache-key-');
+            return new CacheAdapter('delana-auto-cache-key-');
         });
 
     }

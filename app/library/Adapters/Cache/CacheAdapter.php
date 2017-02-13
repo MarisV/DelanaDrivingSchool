@@ -6,7 +6,7 @@
  * Time: 19:15
  */
 
-namespace library\Cache;
+namespace library\Adapters\Cache;
 
 
 class CacheAdapter
@@ -119,9 +119,6 @@ class CacheAdapter
         if ($usePrefix && !empty($this->keyPrefix)) {
             $key = $this->keyPrefix . '.' . $key;
         }
-
-        // store into registry
-       // \SM::getRegistry()->offsetSet($key, $data);
 
         // store into memcache
         $success = $this->server()->set($key, $data, $expiration);

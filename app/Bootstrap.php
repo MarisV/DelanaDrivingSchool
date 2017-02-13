@@ -17,6 +17,7 @@ use Phalcon\Mvc\View\Simple as SimpleView;
 use Phalcon\Mvc\Url as UrlResolver;
 use library\Helpers\Locale;
 use library\Adapters\Cache\CacheAdapter;
+use Phalcon\Translate\Adapter\NativeArray;
 
 class Bootstrap
 {
@@ -73,6 +74,7 @@ class Bootstrap
         $this->initConfig();
         $this->initHtmlHelper();
         $this->initLocale();
+        $this->initTranslator();
 
         return $this->_di;
     }
@@ -103,7 +105,7 @@ class Bootstrap
             ]
         )->register();
     }
-
+    
 
     /**
      * Init database
@@ -323,11 +325,17 @@ class Bootstrap
 
         $this->_di->setShared('locale', $locale);
 
-        // key prefix will be changed, to cache locale depended data
-//        $this->_di->getShared('ramcache')->keyPrefix = DOMAIN_NAME . '-'. APPLICATION_ENV . '-' . LOCALE_CODE;
-//        $this->_di->getShared('filecache')->namePrefix = DOMAIN_NAME . '-'. APPLICATION_ENV . '-' . LOCALE_CODE;
+    }
 
-
+    public function initTranslator()
+    {
+        $this->_di->setShared('translate', function() {
+            return new NativeArray(
+                array(
+                    'content' => \app\models\Translates::loadTranslates()
+                )
+            );
+        });
     }
 
 }

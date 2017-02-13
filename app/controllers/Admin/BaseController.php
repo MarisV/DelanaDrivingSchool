@@ -36,5 +36,4 @@ class BaseController extends Controller
 
         $this->view->setVar('admin', SharedService::getLoggedInAdmin());
     }
-
 }

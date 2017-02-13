@@ -31,7 +31,7 @@ class SharedService
      */
     public static function getCache()
     {
-       return self::getDi()->getShared('cache');
+           return self::getDi()->getShared('cache');
     }
 
     /**
@@ -84,7 +84,6 @@ class SharedService
         return rtrim($url, 'index.php');
     }
 
-
     /**
      * Returns cookie service
      *
@@ -100,4 +99,14 @@ class SharedService
         return self::getDi()->get('request');
     }
 
+
+    /**
+     * Returns translate adapter
+     *
+     * @return \Phalcon\Translate\Adapter\NativeArray
+     */
+    public static function getTranslate()
+    {
+        return self::getDi()->get('translate');
+    }
 }

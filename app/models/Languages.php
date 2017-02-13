@@ -58,4 +58,26 @@ class Languages extends Model
         }
     }
 
+    /**
+     *  Return active languages [ code => id]
+     *
+     * @return array
+     */
+    public static function getActiveLanguages()
+    {
+        $tmp =  self::find(
+          [
+            'columns' => 'id, code',
+            'conditions' => 'code != "all" AND visible = "yes"'
+          ])->toArray();
+
+        $langs = [];
+        if ($tmp) {
+            foreach ($tmp as $key => $lang) {
+                $langs[$lang['code']] = $lang['id'];
+            }
+        }
+        return $langs;
+    }
+
 }

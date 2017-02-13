@@ -28,55 +28,60 @@ $router->notFound(
 // +++++ DEFAULT +++++
 //
 
-$router->add('/', array(
-    'namespace'   =>  'app\controllers',
-    'controller'  => 'index',
-    'action'      => 'index'
+$router->add('/([a-z]{2})/', array(
+    'namespace'     =>  'app\controllers',
+    'language'      =>  1,
+    'controller'    =>  'index',
+    'action'        =>  'index'
 ));
 
-$router->add('/:controller', array(
-    'namespace'   => 'app\controllers',
-    'controller'  => 1,
-    'action'      => 'index'
-));
-
-$router->add('/:controller/:action', array(
-    'namespace'   => 'app\controllers',
-    'controller'  => 1,
-    'action'      => 2
-));
-
-$router->add('/:controller/:action/:int', array(
-    'namespace'     => 'app\controllers',
+$router->add('/([a-z]{2})/:controller', array(
+    'namespace'     =>  'app\controllers',
+    'language'      =>  1,
     'controller'    =>  1,
-    'action'        =>  2,
-    'id'            =>  3
+    'action'        =>  'index'
+));
+
+$router->add('/([a-z]{2})/:controller/:action', array(
+    'namespace'     => 'app\controllers',
+    'language'      =>  1,
+    'controller'    =>  2,
+    'action'        =>  3
+));
+
+$router->add('/([a-z]{2})/:controller/:action/:int', array(
+    'namespace'     => 'app\controllers',
+    'language'      =>  1,
+    'controller'    =>  2,
+    'action'        =>  3,
+    'id'            =>  4
 ));
 
 /**
  * Route for read actions
  * Accepts only GET http requests.
  */
-$router->addGet('/:controller/:int/:params', array(
+$router->addGet('/([a-z]{2})/:controller/:int/:params', array(
     'namespace'     => 'app\controllers',
-    'controller'    => 1,
+    'language'      =>  1,
+    'controller'    =>  2,
     'action'        => 'read',
-    'id'            =>  2,
-    'uri'           =>  3
+    'id'            =>  3,
+    'uri'           =>  4
 ));
 
-$router->addGet('/instructors/:int/:params', array(
+$router->addGet('/([a-z]{2})/instructors/:int/:params', array(
     'namespace'     => 'app\controllers',
-    'controller'    => 1,
-    'action'        => 'read',
-    'id'            =>  2,
-    'uri'           =>  3
+    'language'      =>  1,
+    'controller'    =>  2,
+    'action'        =>  'read',
+    'id'            =>  3,
+    'uri'           =>  4
 ));
 
 
 // ADMIN ROUTES //
-
-$router->add('/admin', array(
+$router->add('/([a-z]{2})/admin', array(
     'namespace'     =>  'app\controllers\Admin',
     'controller'    =>  'news',
     'action'        =>  'index',

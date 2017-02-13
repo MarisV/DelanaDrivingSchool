@@ -31,7 +31,7 @@ class TopPageNavigationWidget extends AbstractWidget
         foreach ($activeLanguages as $language) {
             $languagesWithIco[] = [
                 'name'  =>  $language->name,
-                'href'      =>  SharedService::getBaseUrl().$language->code,
+                'href'      =>  SharedService::getBaseUrl().$language->code . '/',
                 'img'       =>  '/img/flags/'.strtolower($language->code) . '.ico'
             ];
 

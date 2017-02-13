@@ -20,6 +20,7 @@ class BaseController extends Controller
     public function beforeExecuteRoute()
     {
 
+
         if (SharedService::isAdminLogged() !== true && $this->dispatcher->getActionName() != 'login' ) {
             $this->response->redirect('/admin/auth/login');
             return false;

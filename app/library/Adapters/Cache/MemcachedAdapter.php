@@ -33,13 +33,6 @@ class MemcachedAdapter implements CacheAdapterInterface
     public $keyPrefix = '';
 
     /**
-     * Use file cache as fallback
-     *
-     * @var bool
-     */
-    public $useFallback = true;
-
-    /**
      * Constructor
      *
      * @param $keyPrefix string
@@ -84,7 +77,6 @@ class MemcachedAdapter implements CacheAdapterInterface
             $key = $this->keyPrefix . '.' . $key;
         }
 
-
         // try to get from memcache
         $data = $this->getInstance()->get($key);
 
@@ -93,9 +85,8 @@ class MemcachedAdapter implements CacheAdapterInterface
             return $data;
         }
 
-        if (!$this->connected && $this->useFallback) {
+        if (!$this->connected) {
             return false;
-           // return \SM::getFileCache()->get($key, false);
         }
     }
 
@@ -126,12 +117,11 @@ class MemcachedAdapter implements CacheAdapterInterface
         if ($success) {
             $this->connected = true;
         } else {
-            trigger_error('Memcached set failed with message: ' . $this->server()->getResultMessage(), E_USER_NOTICE);
+            trigger_error('Memcached set failed with message: ' . $this->getInstance()->getResultMessage(), E_USER_NOTICE);
         }
 
-        if (!$success && $this->useFallback) {
+        if (!$success) {
             return false;
-           // \SM::getFileCache()->set($key, $data, $expiration, false);
         }
     }
 
@@ -140,6 +130,7 @@ class MemcachedAdapter implements CacheAdapterInterface
      *
      * @param $key
      * @param bool|true $usePrefix
+     * @return void
      */
     public function delete($key, $usePrefix = true)
     {
@@ -151,14 +142,9 @@ class MemcachedAdapter implements CacheAdapterInterface
 
         $data = $this->getInstance()->get($key);
 
-//        if (\SM::getRegistry()->offsetExists($key)) {
-//            \SM::getRegistry()->offsetUnset($key);
-//        }
 
         if($data != false){
             $this->getInstance()->delete($key);
         }
-
-       // \SM::getFileCache()->delete($key, false);
     }
 }

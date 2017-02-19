@@ -16,7 +16,7 @@ use Phalcon\Mvc\View\Simple as SimpleView;
 use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use library\Helpers\Locale;
-use library\Adapters\Cache\CacheAdapter;
+use library\Adapters\Cache\MemcachedAdapter;
 use library\Adapters\Translate\TranslateAdapter;
 
 class Bootstrap
@@ -216,7 +216,7 @@ class Bootstrap
     private function initCache()
     {
         $this->_di->set('cache', function (){
-            return new CacheAdapter('delana-auto-');
+            return new MemcachedAdapter('delana-auto-');
         });
 
     }

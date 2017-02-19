@@ -9,7 +9,7 @@
 namespace library\Adapters\Cache;
 
 
-class CacheAdapter implements CacheAdapterInterface
+class MemcachedAdapter implements CacheAdapterInterface
 {
     /**
      * Memcached instance

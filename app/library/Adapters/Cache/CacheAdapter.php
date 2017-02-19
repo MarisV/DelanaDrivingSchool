@@ -9,7 +9,7 @@
 namespace library\Adapters\Cache;
 
 
-class CacheAdapter
+class CacheAdapter implements CacheAdapterInterface
 {
     /**
      * Memcached instance
@@ -54,7 +54,7 @@ class CacheAdapter
      *
      * @return \Memcached
      */
-    protected function server()
+    protected function getInstance()
     {
         if (null == $this->memcached) {
             $this->memcached = new \Memcached('DE_LANA_AUTO');
@@ -86,7 +86,7 @@ class CacheAdapter
 
 
         // try to get from memcache
-        $data = $this->server()->get($key);
+        $data = $this->getInstance()->get($key);
 
         if ($data) {
             $this->connected = true;
@@ -121,7 +121,7 @@ class CacheAdapter
         }
 
         // store into memcache
-        $success = $this->server()->set($key, $data, $expiration);
+        $success = $this->getInstance()->set($key, $data, $expiration);
 
         if ($success) {
             $this->connected = true;
@@ -149,14 +149,14 @@ class CacheAdapter
             $key = $this->keyPrefix . '.' . $key;
         }
 
-        $data = $this->server()->get($key);
+        $data = $this->getInstance()->get($key);
 
 //        if (\SM::getRegistry()->offsetExists($key)) {
 //            \SM::getRegistry()->offsetUnset($key);
 //        }
 
         if($data != false){
-            $this->server()->delete($key);
+            $this->getInstance()->delete($key);
         }
 
        // \SM::getFileCache()->delete($key, false);

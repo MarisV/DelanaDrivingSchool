@@ -24,6 +24,7 @@ class SharedService
         return Di::getDefault();
     }
 
+
     /**
      * Return memcache instance
      *
@@ -31,8 +32,9 @@ class SharedService
      */
     public static function getCache()
     {
-           return self::getDi()->getShared('cache');
+       return self::getDi()->getShared('cache');
     }
+
 
     /**
      * Check whether admin is logged in
@@ -43,6 +45,7 @@ class SharedService
     {
         return self::getDi()->getShared('session')->has(self::LOGGED_IN_ADMIN_SESSION_KEY);
     }
+
 
     /**
      * Return logged admin object.
@@ -58,6 +61,7 @@ class SharedService
         }
     }
 
+
     /**
      * Returns simple veiw from phalcon
      *
@@ -67,6 +71,7 @@ class SharedService
     {
        return self::getDi()->get('simpleview');
     }
+
 
     /**
      * Get base URL
@@ -84,6 +89,7 @@ class SharedService
         return rtrim($url, 'index.php');
     }
 
+
     /**
      * Returns cookie service
      *
@@ -94,6 +100,12 @@ class SharedService
         return self::getDi()->getShared('cookies');
     }
 
+
+    /**
+     *  HTTP Request instance
+     *
+     * @return \Phalcon\Http\Request|\Phalcon\Http\RequestInterface
+     */
     public static function getRequest()
     {
         return self::getDi()->get('request');
@@ -108,5 +120,15 @@ class SharedService
     public static function getTranslate()
     {
         return self::getDi()->get('translate');
+    }
+
+    /**
+     *  Return db instance
+     *
+     * @return \Phalcon\Db\Adapter\Pdo\Mysql
+     */
+    public static function getDb()
+    {
+        return self::getDi()->getShared('db');
     }
 }

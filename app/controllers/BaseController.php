@@ -24,6 +24,7 @@ class BaseController extends Controller
 
     public function forwardTo404() : bool
     {
+        $this->request;
         $this->getDI()->get('dispatcher')->forward(
             array(
                 'namespace'     => 'app\controllers',

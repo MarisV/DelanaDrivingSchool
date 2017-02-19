@@ -7,17 +7,17 @@
  * Time: 21:06
  */
 
-use Phalcon\Mvc\Router;
 use Phalcon\Mvc\View;
+use Phalcon\Mvc\Router;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
-use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Mvc\View\Engine\Php as PhpEngine;
 use Phalcon\Mvc\View\Simple as SimpleView;
 use Phalcon\Mvc\Url as UrlResolver;
+use Phalcon\Session\Adapter\Files as SessionAdapter;
 use library\Helpers\Locale;
 use library\Adapters\Cache\CacheAdapter;
-use Phalcon\Translate\Adapter\NativeArray;
+use library\Adapters\Translate\TranslateAdapter;
 
 class Bootstrap
 {
@@ -74,7 +74,7 @@ class Bootstrap
         $this->initConfig();
         $this->initHtmlHelper();
         $this->initLocale();
-        $this->initTranslator();
+        $this->initTranslate();
 
         return $this->_di;
     }
@@ -216,7 +216,7 @@ class Bootstrap
     private function initCache()
     {
         $this->_di->set('cache', function (){
-            return new CacheAdapter('delana-auto-cache-key-');
+            return new CacheAdapter('delana-auto-');
         });
 
     }
@@ -300,6 +300,9 @@ class Bootstrap
         });
     }
 
+    /**
+     *  Init locale
+     */
     private function initLocale()
     {
         $autodetect = true;
@@ -327,14 +330,13 @@ class Bootstrap
 
     }
 
-    public function initTranslator()
+    /**
+     *  Init translation adapter
+     */
+    public function initTranslate()
     {
-        $this->_di->setShared('translate', function() {
-            return new NativeArray(
-                array(
-                    'content' => \app\models\Translates::loadTranslates()
-                )
-            );
+        $this->_di->setShared('translate', function ()  {
+           return new TranslateAdapter([]);
         });
     }
 

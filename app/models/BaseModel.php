@@ -9,6 +9,7 @@
 
 namespace app\models;
 
+use library\SharedService;
 use Phalcon\Mvc\Model;
 
 class BaseModel extends Model
@@ -46,5 +47,10 @@ class BaseModel extends Model
         }
 
         return $result;
+    }
+
+    public function getPdo()
+    {
+        return SharedService::getDb();
     }
 }

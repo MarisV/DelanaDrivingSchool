@@ -9,6 +9,7 @@
 
 namespace app\models;
 
+use library\Helpers\Locale;
 use library\Utils\Slug;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
@@ -107,7 +108,11 @@ class Categories extends BaseModel
 
     public static function getCategoriesForMainPageWidgets() : array
     {
-        $categories = self::find();
+        $categories = self::find(
+            [
+                 'conditions'    =>  'languageId IN ('. Locale::getCurrentAndAllId() .') '
+            ]
+        );
 
         $result = [];
 

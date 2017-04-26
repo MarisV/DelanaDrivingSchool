@@ -8,6 +8,7 @@
 
 namespace app\models;
 
+use library\Helpers\Locale;
 use library\SharedService;
 use app\models\Languages;
 
@@ -58,12 +59,7 @@ class System extends BaseModel
         if ($cookies->has('lang')) {
             $languageId = $cookies->get('lang');
         } else {
-            $language = self::findFirst();
-            if ($language !== false) {
-                $languageId = $language->id;
-            } else {
-                $languageId = 1;
-            }
+           $languageId = Locale::getCurrentLocaleId();
         }
         $language = Languages::findFirst('id = '. $languageId);
 

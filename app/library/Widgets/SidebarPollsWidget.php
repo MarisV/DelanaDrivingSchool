@@ -9,12 +9,14 @@
 namespace library\Widgets;
 
 use app\models\Polls;
+use library\Helpers\Locale;
 
 class SidebarPollsWidget extends AbstractWidget 
 {
     public function getWidget() : string
     {
         $oneRandomActivePoll = Polls::findFirst([ // TODO: Get poll by language too
+            'conditions'    =>  'languageId IN (' . Locale::getCurrentAndAllId() . ')',
             'order' =>  'RAND()',
             'limit' =>  1
         ]);

@@ -52,7 +52,7 @@ $router->add('/admin/:controller', [
 $router->add('/([a-z]{2})/:controller', array(
     'namespace'     =>  'app\controllers',
     'language'      =>  1,
-    'controller'    =>  1,
+    'controller'    =>  2,
     'action'        =>  'index'
 ));
 

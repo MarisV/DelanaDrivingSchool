@@ -8,6 +8,7 @@
 
 namespace library\Widgets;
 
+use library\Helpers\Locale;
 use library\SharedService;
 use app\models\{Categories, Pages, Languages, System};
 
@@ -63,7 +64,11 @@ class TopPageNavigationWidget extends AbstractWidget
      */
     private function getAnotherPagesLinks() : array
     {
-        $pages = Pages::find();
+        $pages = Pages::find(
+            [
+                'conditions'    =>  'languageId IN (' . Locale::getCurrentAndAllId() . ')'
+            ]
+        );
 
         $result = [];
         if ($pages) {

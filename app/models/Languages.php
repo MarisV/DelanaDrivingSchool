@@ -63,7 +63,7 @@ class Languages extends Model
      *
      * @return array
      */
-    public static function getActiveLanguages()
+    public static function getActiveLanguagesCodes()
     {
         $tmp =  self::find(
           [
@@ -78,6 +78,25 @@ class Languages extends Model
             }
         }
         return $langs;
+    }
+
+    public static function getActiveLanguages()
+    {
+        $assocLanguages = [];
+
+        $tmp =  self::find(
+            [
+                'columns' => 'id, name',
+                'conditions' => 'code != "all" AND visible = "yes"'
+            ])->toArray();
+
+        if ($tmp) {
+            foreach ($tmp as $id => $lang) {
+                $assocLanguages[$lang['id']] = $lang['name'];
+            }
+
+            return $assocLanguages;
+        }
     }
 
 }

@@ -1,0 +1,47 @@
+
+<?php
+    $langsCount = count($languages);
+?>
+<div class="row">
+    <div class="col s5 m5 l6 push-s1 push-m1" style="margin-top: -30px">
+        <h5 class="teal-text">
+            Переводы текстов
+        </h5>
+    </div>
+</div>
+<div class="divider"></div>
+
+<div class="row">
+    <table class="highlight">
+        <thead>
+            <th>
+                Слово
+            </th>
+            <?php foreach ($languages as $id => $language) { ?>
+                <th> <?= $language; ?></th>
+            <?php } ?>
+        </thead>
+        <tbody>
+
+            <?php foreach ($translations as $translation) { ?>
+                <tr>
+                <td>
+                    <?= $translation['keyword'] ?>
+                </td>
+                    <?php foreach ($languages as $id => $language) { ?>
+                        <?php if ($translation['language_id'] = $id) { ?>
+                            <td>
+                                <?= $translation['translate']?>
+                            </td>
+                        <?php } else { ?>
+                            <td>
+                                <?= '---' ?>
+                            </td>
+                        <?php } ?>
+                    <?php } ?>
+                </tr>
+            <?php } ?>
+
+        </tbody>
+    </table>
+</div>

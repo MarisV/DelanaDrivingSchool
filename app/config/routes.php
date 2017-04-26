@@ -35,6 +35,20 @@ $router->add('/([a-z]{2})/', array(
     'action'        =>  'index'
 ));
 
+$router->add('/([a-z]{2})/admin', array(
+    'namespace'     =>  'app\controllers\Admin',
+    'controller'    =>  'news',
+    'action'        =>  'index'
+));
+
+
+$router->add('/admin/:controller', [
+    'namespace'     => 'app\controllers\Admin',
+    'controller'    => 1,
+    'action'        =>  'index'
+]);
+
+
 $router->add('/([a-z]{2})/:controller', array(
     'namespace'     =>  'app\controllers',
     'language'      =>  1,
@@ -79,19 +93,6 @@ $router->addGet('/([a-z]{2})/instructors/:int/:params', array(
     'uri'           =>  4
 ));
 
-
-// ADMIN ROUTES //
-$router->add('/([a-z]{2})/admin', array(
-    'namespace'     =>  'app\controllers\Admin',
-    'controller'    =>  'news',
-    'action'        =>  'index',
-    'page'          =>  1
-));
-
-$router->add('/admin/:controller', [
-    'namespace'  => 'app\controllers\Admin',
-    'controller' => 1
-]);
 
 $router->add('/admin/:controller/:action/:params', [
     'namespace'  => 'app\controllers\Admin',

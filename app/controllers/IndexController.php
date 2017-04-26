@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Languages;
 use app\models\News;
+use library\Helpers\Locale;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
 class IndexController extends BaseController
@@ -14,7 +16,7 @@ class IndexController extends BaseController
         $page = $this->request->getQuery('page', 'int');
 
         $news = News::find([
-            "published =  'on'",
+            'published =  "on" AND languageId IN (' . Locale::getCurrentAndAllId() . ')',
             'order' =>  'dateAdded desc'
         ]);
 

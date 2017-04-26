@@ -99,4 +99,13 @@ class Languages extends Model
         }
     }
 
+    public static function getByIsoCode($isoCode)
+    {
+        return self::findFirst(
+            [
+                'conditions'    =>  'code = "'. $isoCode .'" AND visible = "yes" '
+            ]
+        );
+    }
+
 }

@@ -1,17 +1,17 @@
 <!-- START OF DROPDOWNS CONTENT -->
 <ul id="header-menu-dropdown" class="dropdown-content">
     <li>
-        <?= $this->tag->linkTo('/about/lecturers', 'Преподаватели' ) ?>
+        <?= $this->tag->linkTo(LOCALE_CODE .'/about/lecturers', 'Преподаватели' ) ?>
     </li>
     <li>
-        <?= $this->tag->linkTo('/about/instructors', 'Инструкторы' ) ?>
+        <?= $this->tag->linkTo(LOCALE_CODE .'/about/instructors', 'Инструкторы' ) ?>
     </li>
 </ul>
 
 <ul id="header-menu-category-dropdown" class="dropdown-content">
     <?php foreach ($categories as $category) { ?>
         <li>
-            <?= $this->tag->linkTo($category['href'], $category['title'] ) ?>
+            <?= $this->tag->linkTo(LOCALE_CODE . $category['href'], $category['title'] ) ?>
         </li>
     <?php } ?>
 </ul>
@@ -19,7 +19,7 @@
 <ul id="header-menu-pages-dropdown" class="dropdown-content">
     <?php foreach ($pages as $page) { ?>
         <li>
-            <?= $this->tag->linkTo($page['href'], $page['title'] ) ?>
+            <?= $this->tag->linkTo(LOCALE_CODE .$page['href'], $page['title'] ) ?>
         </li>
     <?php } ?>
 </ul>
@@ -28,7 +28,7 @@
 <ul id="header-menu-pages-dropdown" class="dropdown-content">
     <?php foreach ($pages as $page) { ?>
         <li>
-            <?= $this->tag->linkTo($page['href'], $page['title'] ) ?>
+            <?= $this->tag->linkTo(LOCALE_CODE . $page['href'], $page['title'] ) ?>
         </li>
     <?php } ?>
 </ul>
@@ -49,7 +49,7 @@
 <nav class="white" role="navigation" >
     <a href="#" data-activates="nav-mobile" style="color: grey;" class="button-collapse"><i class="material-icons">menu</i></a>
     <div class="nav-wrapper container">
-        <a href="/" class="brand-logo center-align">
+        <a href="/<?= LOCALE_CODE ?>/" class="brand-logo center-align">
             <img class="responsive-img" id="logo-container" src="/img/logo2.jpg" >
         </a>
 
@@ -124,17 +124,17 @@
 <!-- START OF MOBILE DROPDOWNS CONTENT -->
 <ul id="header-menu-dropdown-m" class="dropdown-content">
     <li>
-        <?= $this->tag->linkTo('/teachers', 'Преподаватели' ) ?>
+        <?= $this->tag->linkTo(LOCALE_CODE . '/teachers', 'Преподаватели' ) ?>
     </li>
     <li>
-        <?= $this->tag->linkTo('/instructors', 'Инструкторы' ) ?>
+        <?= $this->tag->linkTo(LOCALE_CODE . '/instructors', 'Инструкторы' ) ?>
     </li>
 </ul>
 
 <ul id="header-menu-category-dropdown-m" class="dropdown-content">
     <?php foreach ($categories as $category) { ?>
         <li>
-            <?= $this->tag->linkTo($category['href'], $category['title'] ) ?>
+            <?= $this->tag->linkTo(LOCALE_CODE . $category['href'], $category['title'] ) ?>
         </li>
     <?php } ?>
 </ul>
@@ -142,7 +142,7 @@
 <ul id="header-menu-pages-dropdown-m" class="dropdown-content">
     <?php foreach ($pages as $page) { ?>
         <li>
-            <?= $this->tag->linkTo($page['href'], $page['title'] ) ?>
+            <?= $this->tag->linkTo(LOCALE_CODE . $page['href'], $page['title'] ) ?>
         </li>
     <?php } ?>
 </ul>
@@ -151,7 +151,7 @@
 <ul id="header-menu-pages-dropdown-m" class="dropdown-content">
     <?php foreach ($pages as $page) { ?>
         <li>
-            <?= $this->tag->linkTo($page['href'], $page['title'] ) ?>
+            <?= $this->tag->linkTo(LOCALE_CODE . $page['href'], $page['title'] ) ?>
         </li>
     <?php } ?>
 </ul>

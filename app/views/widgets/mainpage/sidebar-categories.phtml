@@ -6,7 +6,7 @@
 <ul class="collection categories-list">
    <?php if (count($categories)) { ?>
        <?php foreach ($categories as $category) { ?>
-           <?= $this->tag->linkTo([$category['href'], $category['title'], "class" => "collection-item"]) ?>
+           <?= $this->tag->linkTo([ LOCALE_CODE .  $category['href'], $category['title'], "class" => "collection-item"]) ?>
        <?php } ?>
     <?php } else { ?>
         <h6 class="center">Категорий нет</h6>

@@ -146,12 +146,12 @@ class Locale
 
         // set cookie, if not set
         /* @var $cookies \Phalcon\Http\Response\Cookies */
-        /*$cookies = \Phalcon\DI::getDefault()->getCookies();
-
-        if (!$cookies->has('lg') || $cookies->get('lg')->getValue() != $this->languageId) {
-            $cookies->set('lg', $this->languageId, time() + 86400 * 1500, '/');
-            $cookies->get('lg')->send();
-        }*/
+//        $cookies = \Phalcon\DI::getDefault()->getCookies();
+//        $cookies->useEncryption(false);
+//        if (!$cookies->has('lg') || $cookies->get('lg')->getValue() != $this->languageId) {
+//            $cookies->set('lg', $this->languageId, time() + 86400 * 1500, '/');
+//            $cookies->get('lg')->send();
+//        }
     }
 
     /**

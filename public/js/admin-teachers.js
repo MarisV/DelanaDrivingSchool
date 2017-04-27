@@ -12,7 +12,7 @@
             if(href.indexOf('add') != -1 || href.indexOf('edit') != -1) {
                 var uploader = new ss.SimpleUpload({
                     button: $('#teacher-photo'), // file upload button
-                    url: '/uploads/uploadTeacherPhoto', // server side handler
+                    url: '/lv/uploads/uploadTeacherPhoto', // server side handler
                     name: 'uploadfile', // upload parameter name
                     responseType: 'json',
                     allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
@@ -73,10 +73,6 @@
                     }
                 }
             });
-
-
         })
-
-
     });
 })(jQuery);

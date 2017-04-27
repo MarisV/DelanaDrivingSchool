@@ -35,7 +35,7 @@
           e.preventDefault();
 
           $.ajax({
-              url : '/polls/vote',
+              url : '/lv/polls/vote',
               method : 'POST',
               data : {'answerId' : answerId, 'pollId' : pollId},
               dataType: "json",

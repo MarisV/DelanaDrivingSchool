@@ -14,7 +14,7 @@ class PagesController extends BaseController
 {
     public function readAction() // TODO : Init SEO data. Do sorting by language
     {
-        $pageId =  $this->dispatcher->getParam('id');
+        $pageId =  $this->dispatcher->getParam('id', ['int']);
 
         $page = Pages::findFirst($pageId);
 

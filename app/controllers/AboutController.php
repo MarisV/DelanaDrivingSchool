@@ -47,7 +47,7 @@ class AboutController extends BaseController
 
     public function lecturerAction()
     {
-        $id = $this->dispatcher->getParam('id');
+        $id = $this->dispatcher->getParam('id', ['int']);
 
         $lecturer = Teachers::findFirst($id);
 
@@ -61,7 +61,7 @@ class AboutController extends BaseController
 
     public function instructorAction()
     {
-        $id = $this->dispatcher->getParam('id');
+        $id = $this->dispatcher->getParam('id', ['int']);
 
         $instructor = Teachers::findFirst($id);
 

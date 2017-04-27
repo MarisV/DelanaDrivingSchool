@@ -146,7 +146,7 @@
 
         var uploader = new ss.SimpleUpload({
             button: $('#news-image'), // file upload button
-            url: '/uploads/uploadArticleImage', // server side handler
+            url: '/lv/uploads/uploadArticleImage', // server side handler
             name: 'uploadfile', // upload parameter name
             responseType: 'json',
             allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],

@@ -12,7 +12,7 @@ class IndexController extends BaseController
 
     public function indexAction()
     {
-        $page = $this->request->getQuery('page', 'int');
+        $page = $this->request->getQuery('page', ['int']);
 
         $news = News::find([
             'published =  "on" AND languageId IN (' . Locale::getCurrentAndAllId() . ')',

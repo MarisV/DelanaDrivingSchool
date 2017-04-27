@@ -18,7 +18,7 @@ class NewsController extends BaseController
 {
     private $cache;
 
-    const NEWS_PER_PAGE = 40;
+    const NEWS_PER_PAGE = 12;
 
     public function beforeExecuteRoute()
     {
@@ -27,9 +27,7 @@ class NewsController extends BaseController
 
     public function indexAction()
     {
-        $this->assets->addJs('components/ckeditor/ckeditor.js');
-        $this->assets->addJs('components/AjaxUpload/SimpleAjaxUploader.js');
-        $this->assets->addJs('js/admin-news.js');
+        $this->initAssets();
 
         $page = $this->dispatcher->getParam('page');
 
@@ -50,6 +48,8 @@ class NewsController extends BaseController
         $this->view->setVar('news', $news);
         $this->view->setVar('languages', $visibleLanguages);
     }
+
+
 
     public function addAction()
     {
@@ -138,6 +138,13 @@ class NewsController extends BaseController
     private function isNewForEdit(&$new)
     {
         return !empty($new['nstat']);
+    }
+
+    private function initAssets()
+    {
+        $this->assets->addJs('components/ckeditor/ckeditor.js');
+        $this->assets->addJs('components/AjaxUpload/SimpleAjaxUploader.js');
+        $this->assets->addJs('js/admin-news.js');
     }
 
 }

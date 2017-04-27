@@ -50,7 +50,7 @@ class ContactsController extends BaseController
     public function courseAction() // TODO: Add working course category select validation
     {
         $availableCategories = Categories::find([
-            'columnds'  =>  'id, title'
+            'columns'  =>  'id, title'
         ]);
 
         if ($this->request->isPost()) {

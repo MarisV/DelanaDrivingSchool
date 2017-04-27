@@ -14,7 +14,7 @@ class CategoryController extends BaseController
 {
     public function readAction() // TODO : Init SEO data. Do sorting by language
     {
-        $categoryId = $this->dispatcher->getParam('categoryId');
+        $categoryId = $this->dispatcher->getParam('id', ['int']);
 
         $category = Categories::findFirst($categoryId);
 

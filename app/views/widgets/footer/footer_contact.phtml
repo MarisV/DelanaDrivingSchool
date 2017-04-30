@@ -9,7 +9,7 @@ use app\models\Contacts;
 
         <?php if(!empty(Contacts::getAddress() )) { ?>
             <?php  $address = Contacts::getAddress(); ?>
-            Наш адрес:
+            <?= $this->translate->_('Наш адрес') ?>:
             <?php if (!is_array($address)) {
                 echo $address;
             } else {
@@ -19,7 +19,7 @@ use app\models\Contacts;
 
         <?php if(!empty(Contacts::getPhone() )) { ?>
             <?php  $phones = Contacts::getPhone(); ?>
-            Телефон :
+            <?= $this->translate->_('Телефон')?> :
             <?php if (!is_array($phones)) {
                 echo $phones;
             } else {
@@ -29,7 +29,7 @@ use app\models\Contacts;
 
         <?php if(!empty(Contacts::getEmail() )) { ?>
             <?php  $emails = Contacts::getEmail(); ?>
-            Email :
+            <?= $this->translate->_('Email') ?> :
             <?php if (!is_array($emails)) {
                 echo $emails;
             } else {
@@ -39,7 +39,7 @@ use app\models\Contacts;
 
         <?php if(!empty(Contacts::getSkype() )) { ?>
             <?php  $skype = Contacts::getSkype(); ?>
-            Skype :
+            <?= $this->translate->_('Skype') ?> :
             <?php if (!is_array($skype)) {
                 echo $skype;
             } else {

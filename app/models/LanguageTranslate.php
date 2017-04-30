@@ -34,6 +34,8 @@ class LanguageTranslate extends BaseModel
      */
     public $keyword;
 
+    const GLOBAL_TRANSLATES_CACHE = 'global-translations-';
+
     public function columnMap()
     {
         return [
@@ -63,17 +65,15 @@ class LanguageTranslate extends BaseModel
         }
 
         $cache = SharedService::getCache();
-
-        $translations = $cache->get('global-translations-'.$languageIdToLoad);
+        $translations = $cache->get(self::GLOBAL_TRANSLATES_CACHE.$languageIdToLoad);
 
         if (!$translations) {
 
-            $sth = $this->getPdo()->prepare( // SELECT k.keyword, t.keyword IF(t.keyword != '', t.keyword, k.keyword) AS translate
-                'SELECT k.keyword, t.keyword AS translate
-                      FROM language_keywords AS k
-                      LEFT JOIN language_translate AS t
-                        ON k.id = t.id AND t.language_id = :langid'
-            );
+            $sth = $this->getPdo()->prepare(
+                'SELECT k.keyword, IF(t.keyword != \'\', t.keyword, k.keyword) AS translate
+                  FROM language_keywords AS k
+                  LEFT JOIN language_translate AS t
+                    ON k.id = t.id AND t.language_id = :langid');
 
             $sth->execute(array(
                 ':langid' => $languageIdToLoad
@@ -132,5 +132,18 @@ class LanguageTranslate extends BaseModel
         $translateObject->keyword = $newTranslate;
 
         return $translateObject->create();
+    }
+
+    public function resetTranslatesCache()
+    {
+        $languages = Languages::find()->toArray();
+        $cache = SharedService::getCache();
+
+        foreach ($languages as $language) {
+            $key = self::GLOBAL_TRANSLATES_CACHE . $language['id'];
+
+            $cache->delete($key);
+        }
+
     }
 }

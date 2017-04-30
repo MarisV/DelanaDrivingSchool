@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col s8 m8 l8 center-align">
         <h5 class="left-align" id="category-title">
-            Запишитесь на курсы
+            <?= $this->translate->_('Запишитесь на курсы') ?>
         </h5>
     </div>
     <div class="col s4 m4 l4">
@@ -18,12 +18,12 @@
             <div class="input-field col s6 m6 l6">
                 <i class="material-icons prefix">account_circle</i>
                 <input id="firstname" type="text" name="firstname" class="validate <?= (isset($errors['firstname'])) ? ' invalid' : '' ?>">
-                <label for="firstname" data-error="<?= $errors['firstname'] ?? '' ?>">Имя</label>
+                <label for="firstname" data-error="<?= $errors['firstname'] ?? '' ?>"><?= $this->translate->_('Имя') ?></label>
             </div>
             <div class="input-field col s6 m6 l6">
                 <i class="material-icons prefix">account_circle</i>
                 <input id="lastname" type="text" name="lastname" class="validate <?= (isset($errors['lastname'])) ? ' invalid' : '' ?>">
-                <label for="lastname" data-error="<?= $errors['lastname'] ?? '' ?>">Фамилия</label>
+                <label for="lastname" data-error="<?= $errors['lastname'] ?? '' ?>"><?= $this->translate->_('Фамилия') ?></label>
             </div>
         </div>
 
@@ -31,37 +31,37 @@
             <div class="input-field col s6 m6 l6">
                 <i class="material-icons prefix">email</i>
                 <input id="email" type="email" name="email" class="validate <?= (isset($errors['email'])) ? ' invalid' : '' ?>">
-                <label for="email"  data-error="<?= $errors['email'] ?? '' ?>">Email</label>
+                <label for="email"  data-error="<?= $errors['email'] ?? '' ?>"><?= $this->translate->_('Email') ?></label>
             </div>
             <div class="input-field col s6 m6 l6">
                 <i class="material-icons prefix">phone</i>
                 <input id="phone" type="tel" name="phone" class="validate <?= (isset($errors['phone'])) ? ' invalid' : '' ?>">
-                <label for="phone" data-error="<?= $errors['phone'] ?? '' ?>">Телефон</label>
+                <label for="phone" data-error="<?= $errors['phone'] ?? '' ?>"><?= $this->translate->_('Телефон') ?></label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12 m12 l12">
                 <select name="categoryId" required>
-                    <option value="-1" disabled selected> - Категория - </option>
+                    <option value="-1" disabled selected> - <?= $this->translate->_('Категория') ?> - </option>
                     <?php foreach ($categories as $category) { ?>
                         <option value="<?= $category->id ?>"><?= $category->title ?></option>
                     <?php } ?>
                 </select>
-                <label>Выберите категорию</label>
+                <label><?= $this->translate->_('Выберите категорию') ?></label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12 m12 l12">
                 <textarea id="comment" name="comment" class="materialize-textarea validate <?= (isset($errors['comment'])) ? ' invalid' : '' ?>"></textarea>
-                <label for="comment"  data-error="<?= $errors['comment'] ?? '' ?>">Коментарий</label>
+                <label for="comment"  data-error="<?= $errors['comment'] ?? '' ?>"><?= $this->translate->_('Коментарий') ?></label>
             </div>
         </div>
         <div class="row">
             <div class="col s12 input-field">
                 <button class="btn waves-effect waves-light light-blue" type="submit">
-                    Отправить<i class="material-icons right">send</i>
+                    <?= $this->translate->_('Отправить') ?><i class="material-icons right">send</i>
                 </button>
             </div>
         </div>

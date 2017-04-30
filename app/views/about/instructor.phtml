@@ -16,24 +16,24 @@
     <div class="col s12 m9 l9">
         <div class="card-panel">
             <span class="card-title">
-              <b>Возраст:</b>
+              <b><?= $this->translate->_('Возраст') ?>:</b>
             </span>
             <?= $instructor->age ?>
             <br><br><br>
 
             <span class="card-title">
-                <b>Машина:</b>
+                <b><?= $this->translate->_('Машина') ?>:</b>
             </span>
             <?= $instructor->car ?>
             <br><br><br>
             <span class="card-title">
-                <b>Email:</b>
+                <b><?= $this->translate->_('Email') ?>:</b>
             </span>
             <?= $instructor->email ?>
             <br><br><br>
             <?php if ($instructor->about) { ?>
                 <span class="card-title">
-                    <b>Информация:</b>
+                    <b><?= $this->translate->_('Информация') ?>:</b>
                 </span>
                 <?= $instructor->about ?>
             <?php } ?>

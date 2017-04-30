@@ -1,7 +1,7 @@
 <?php if ($poll) { ?>
 <div class="row">
     <div class="col s12 m12 l12 center-align">
-        <h5 id="category-title">Наш опрос</h5>
+        <h5 id="category-title"><?= $this->translate->_('Наш опрос') ?></h5>
     </div>
 </div>
 <ul class="collection poll-container" data-poll-id="<?= $poll->id ?>" style="margin-bottom: 0px !important;">
@@ -17,7 +17,7 @@
 </ul>
 <div style="width: 100% !important" class="hoverable">
     <a class="waves-effect waves-block waves-blue btn-flat center-align hoverable poll-answer-btn" style="background-color: #f5f5f5; width: 100%;">
-         Голосовать
+         <?= $this->translate->_('Голосовать') ?>
     </a>
 </div>
 <?php } ?>

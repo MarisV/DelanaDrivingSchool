@@ -1,10 +1,10 @@
 <!-- START OF DROPDOWNS CONTENT -->
 <ul id="header-menu-dropdown" class="dropdown-content">
     <li>
-        <?= $this->tag->linkTo(LOCALE_CODE .'/about/lecturers', 'Преподаватели' ) ?>
+        <?= $this->tag->linkTo(LOCALE_CODE .'/about/lecturers', $this->translate->_('Преподаватели') ) ?>
     </li>
     <li>
-        <?= $this->tag->linkTo(LOCALE_CODE .'/about/instructors', 'Инструкторы' ) ?>
+        <?= $this->tag->linkTo(LOCALE_CODE .'/about/instructors', $this->translate->_('Инструкторы') ) ?>
     </li>
 </ul>
 
@@ -55,25 +55,25 @@
 
         <ul class="hide-on-med-and-down right">
             <li>
-                <a href="/">Главная</a>
+                <a href="/"><?= $this->translate->_('Главная') ?></a>
             </li>
             <li>
                 <a class="dropdown-button" href="#" data-activates="header-menu-dropdown" data-beloworigin="true">
-                    О нас<i class="material-icons right">arrow_drop_down</i>
+                    <?= $this->translate->_('О нас') ?><i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
             <li>
                 <a class="dropdown-button" href="#" data-activates="header-menu-category-dropdown" data-beloworigin="true">
-                    Категории<i class="material-icons right">arrow_drop_down</i>
+                    <?= $this->translate->_('Категории') ?><i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
             <li>
                 <a class="dropdown-button" href="#" data-activates="header-menu-pages-dropdown" data-beloworigin="true">
-                    Дополнительно<i class="material-icons right">arrow_drop_down</i>
+                    <?= $this->translate->_('Дополнительно') ?><i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
             <li>
-                <?= $this->tag->linkTo('contacts', 'Контакты')?>
+                <a href="/contacts"><?= $this->translate->_('Контакты') ?></a>
             </li>
             <li class="right-align" id="language-selector-list-item">
                 <a class="dropdown-button" id="language-selector" href="#" data-activates="top-header-menu-languages-dropdown" data-beloworigin="true" data-alignment="left">
@@ -88,24 +88,24 @@
         <!-- Mobile navigation -->
         <ul id="nav-mobile" class="side-nav">
             <li>
-                <a href="/">Главная</a>
+                <a href="/"><?= $this->translate->_('Главная') ?></a>
             </li>
 
             <li>
                 <a class="dropdown-button" href="#" data-activates="header-menu-dropdown-m" data-beloworigin="true">
-                    О нас<i class="material-icons right">arrow_drop_down</i>
+                   <?= $this->translate->_('О нас') ?><i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
 
             <li>
                 <a class="dropdown-button" href="#" data-activates="header-menu-category-dropdown-m" data-beloworigin="true">
-                    Категории<i class="material-icons right">arrow_drop_down</i>
+                    <?= $this->translate->_('Категории') ?><i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
 
             <li>
                 <a class="dropdown-button" href="#" data-activates="header-menu-pages-dropdown-m" data-beloworigin="true">
-                    Дополнительно<i class="material-icons right">arrow_drop_down</i>
+                    <?= $this->translate->_('Дополнительно') ?><i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
 
@@ -124,10 +124,10 @@
 <!-- START OF MOBILE DROPDOWNS CONTENT -->
 <ul id="header-menu-dropdown-m" class="dropdown-content">
     <li>
-        <?= $this->tag->linkTo(LOCALE_CODE . '/teachers', 'Преподаватели' ) ?>
+        <?= $this->tag->linkTo(LOCALE_CODE . '/teachers', $this->translate->_('Преподаватели') ) ?>
     </li>
     <li>
-        <?= $this->tag->linkTo(LOCALE_CODE . '/instructors', 'Инструкторы' ) ?>
+        <?= $this->tag->linkTo(LOCALE_CODE . '/instructors', $this->translate->_('Инструкторы') ) ?>
     </li>
 </ul>
 

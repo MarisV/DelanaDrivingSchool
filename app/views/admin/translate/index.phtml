@@ -1,11 +1,10 @@
-
 <?php
     $langsCount = count($languages);
 ?>
 <div class="row">
     <div class="col s5 m5 l6 push-s1 push-m1" style="margin-top: -30px">
         <h5 class="teal-text">
-            Переводы текстов
+            Перевод текстов
         </h5>
     </div>
 </div>
@@ -15,33 +14,26 @@
     <table class="highlight">
         <thead>
             <th>
-                Слово
+                Текст
             </th>
-            <?php foreach ($languages as $id => $language) { ?>
+            <?php foreach ($languages as $id    =>  $language) { ?>
                 <th> <?= $language; ?></th>
             <?php } ?>
         </thead>
-        <tbody>
 
-            <?php foreach ($translations as $translation) { ?>
+        <tbody>
+            <?php foreach ($keywords as $id =>  $keyword) { ?>
                 <tr>
-                <td>
-                    <?= $translation['keyword'] ?>
-                </td>
-                    <?php foreach ($languages as $id => $language) { ?>
-                        <?php if ($translation['language_id'] = $id) { ?>
-                            <td>
-                                <?= $translation['translate']?>
-                            </td>
-                        <?php } else { ?>
-                            <td>
-                                <?= '---' ?>
-                            </td>
-                        <?php } ?>
+                    <td>
+                        <?= $keyword['keyword'] ?>
+                    </td>
+                    <?php foreach ($translates as $languageTranslate    =>  $translate) { ?>
+                       <td data-keyword-id="<?= $keyword['id'] ?>" data-language-id="<?= $languageTranslate ?>" contenteditable>
+                           <?= empty($translate[$keyword['keyword']]) ? "&mdash;" : $translate[$keyword['keyword']] ?>
+                       </td>
                     <?php } ?>
                 </tr>
             <?php } ?>
-
         </tbody>
     </table>
 </div>

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\LanguageKeywords;
+use app\models\LanguageTranslate;
 use app\models\News;
 use app\models\Translates;
 use library\Helpers\Locale;

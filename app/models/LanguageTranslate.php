@@ -34,6 +34,16 @@ class LanguageTranslate extends BaseModel
      */
     public $keyword;
 
+    public function columnMap()
+    {
+        return [
+            'id'            =>  'id',
+            'language_id'   =>  'languageId',
+            'keyword'       =>  'keyword'
+        ];
+    }
+
+
     /**
      *  Load all translations
      *
@@ -41,21 +51,32 @@ class LanguageTranslate extends BaseModel
      */
     public function loadTranslates(int $languageId = null) : array
     {
+        if ($languageId !== null) {
+            $languageExists = Languages::findFirst($languageId);
+            if ($languageExists === false){
+                $languageIdToLoad = LOCALE_ID;
+            } else {
+                $languageIdToLoad = $languageId;
+            }
+        } else {
+            $languageIdToLoad = LOCALE_ID;
+        }
+
         $cache = SharedService::getCache();
 
-        $translations = $cache->get('global-translations');
+        $translations = $cache->get('global-translations-'.$languageIdToLoad);
 
         if (!$translations) {
 
-            $sth = $this->getPdo()->prepare(
-                'SELECT k.keyword, IF(t.keyword != \'\', t.keyword, k.keyword) AS translate
+            $sth = $this->getPdo()->prepare( // SELECT k.keyword, t.keyword IF(t.keyword != '', t.keyword, k.keyword) AS translate
+                'SELECT k.keyword, t.keyword AS translate
                       FROM language_keywords AS k
                       LEFT JOIN language_translate AS t
                         ON k.id = t.id AND t.language_id = :langid'
             );
 
             $sth->execute(array(
-                ':langid' => LOCALE_ID
+                ':langid' => $languageIdToLoad
             ));
 
             $translations = array();
@@ -68,5 +89,48 @@ class LanguageTranslate extends BaseModel
         }
 
         return $translations;
+    }
+
+    /**
+     *  Update existing translate or inesrt new
+     *
+     * @param int $keywordId
+     * @param int $languageId
+     * @param string $newTranslate
+     * @return bool
+     */
+    public function updateTranslate(int $keywordId, int $languageId, string $newTranslate) : bool
+    {
+        $existingTranslate = self::findFirst([
+            'conditions' => 'id = '.$keywordId.' AND languageId = '. $languageId
+        ]);
+
+        if ($existingTranslate === false) {
+            $result = $this->insertTranslate($keywordId, $languageId, $newTranslate);
+        } else {
+            $existingTranslate->keyword = $newTranslate;
+            $result = $existingTranslate->save();
+        }
+
+        return $result;
+    }
+
+    /**
+     *  Insery new translate
+     *
+     * @param int $keywordId
+     * @param int $languageId
+     * @param string $newTranslate
+     * @return bool
+     */
+    public function insertTranslate(int $keywordId, int $languageId, string $newTranslate) : bool
+    {
+        $translateObject = new self();
+
+        $translateObject->id = $keywordId;
+        $translateObject->languageId = $languageId;
+        $translateObject->keyword = $newTranslate;
+
+        return $translateObject->create();
     }
 }

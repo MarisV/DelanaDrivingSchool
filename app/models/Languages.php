@@ -87,7 +87,7 @@ class Languages extends Model
         $tmp =  self::find(
             [
                 'columns' => 'id, name',
-                'conditions' => 'code != "all" AND visible = "yes"'
+                'conditions' => 'code != "all" AND code != "ru"'
             ])->toArray();
 
         if ($tmp) {

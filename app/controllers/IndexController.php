@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\LanguageKeywords;
 use app\models\News;
+use app\models\Translates;
 use library\Helpers\Locale;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 

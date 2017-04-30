@@ -8,18 +8,20 @@
 
 namespace library\Adapters\Translate;
 
+use app\models\LanguageKeywords;
 use app\models\TranslateKeywordsModel;
 use Phalcon\Translate\Adapter;
 use Phalcon\Translate\AdapterInterface;
 
 class TranslateAdapter extends Adapter implements AdapterInterface
 {
-
     private $translates;
 
     public function __construct(array $options)
     {
         parent::__construct($options);
+
+        $this->translates = $options['content'];
     }
 
     private function initTranslates()
@@ -48,7 +50,7 @@ class TranslateAdapter extends Adapter implements AdapterInterface
      */
     public function query($index, $placeholders = null)
     {
-        return false;
+        return $this->_($index, $placeholders);
     }
 
     /**
@@ -59,8 +61,6 @@ class TranslateAdapter extends Adapter implements AdapterInterface
      */
     public function exists($index)
     {
-        $this->initTranslates();
-
         return array_key_exists($index, $this->translates);
     }
 
@@ -76,7 +76,7 @@ class TranslateAdapter extends Adapter implements AdapterInterface
         if ($this->exists($translateKey)) {
             return $this->translates[$translateKey];
         } else {
-            (new TranslateKeywordsModel())->insertKeyword($translateKey);
+            (new LanguageKeywords())->insertKeyword($translateKey);
             return $translateKey;
         }
     }

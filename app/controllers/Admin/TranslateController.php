@@ -16,8 +16,6 @@ class TranslateController extends BaseController
 {
     public function beforeExecuteRoute()
     {
-        die('Translate module temporary down!');
-
         parent::beforeExecuteRoute();
 
         $this->assets->addJs('components/EditableTable/editable-table.js');
@@ -26,6 +24,7 @@ class TranslateController extends BaseController
     public function indexAction()
     {
         $languages = Languages::getActiveLanguages();
+
         $translations = (new Translates())->getTranslationsForEdit();
 
         die(var_dump($translations));

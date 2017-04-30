@@ -328,13 +328,15 @@ class Bootstrap
         $this->_di->setShared('locale', $locale);
     }
 
-    /**
-     *  Init translation adapter
-     */
-    public function initTranslate()
+
+    protected function initTranslate()
     {
-        $this->_di->setShared('translate', function ()  {
-           return new TranslateAdapter([]);
+        $this->_di->setShared('translate', function() {
+            return new TranslateAdapter(
+                array(
+                    'content' => (new \app\models\LanguageTranslate())->loadTranslates()
+                )
+            );
         });
     }
 

@@ -95,7 +95,6 @@ class Bootstrap
 
         ], true)->register();
 
-
         $loader->registerDirs(
             [
                 $this->_config->application->controllersDir,
@@ -327,7 +326,6 @@ class Bootstrap
         defined('LOCALE_ID') || define('LOCALE_ID', $locale->languageId);
 
         $this->_di->setShared('locale', $locale);
-
     }
 
     /**

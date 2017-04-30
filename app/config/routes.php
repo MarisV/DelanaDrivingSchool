@@ -35,7 +35,7 @@ $router->add('/([a-z]{2})/', array(
     'action'        =>  'index'
 ));
 
-$router->add('/([a-z]{2})/admin', array(
+$router->add('/admin', array(
     'namespace'     =>  'app\controllers\Admin',
     'controller'    =>  'news',
     'action'        =>  'index'

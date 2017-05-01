@@ -10,7 +10,7 @@
 </div>
 
 <div class="row">
-    <form class="col s12 m12 l12" method="post" action="/<?= LOCALE_CODE ?>/feedback/send">
+    <form class="col s12 m12 l12" method="post" action="/<?= LOCALE_CODE ?>/feedback/send" onsubmit="return checkform(this);    ">
         <div class="row">
             <div class="input-field col s12 m6 l6">
                 <i class="material-icons prefix">account_circle</i>
@@ -39,10 +39,21 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s8 m8 l8 input-field">
+            <div class="col s8 m8 l4 input-field">
                 <button class="btn waves-effect waves-light light-blue" type="submit">
                     <?= $this->translate->_('Оставить отзыв') ?><i class="material-icons right">send</i>
                 </button>
+            </div>
+            <div class="col s4">
+                <div class="capbox">
+                    <div id="CaptchaDiv"></div>
+                    <div class="capbox-inner">
+                        <?= $this->translate->_('Введите число выше') ?>:<br>
+
+                        <input type="hidden" id="txtCaptcha">
+                        <input type="text" name="CaptchaInput" id="CaptchaInput" size="12"><br>
+                    </div>
+                </div>
             </div>
             <div class="col s4 m4 l4 left-align input-field">
                 <a href="/feedback/all#feedback-list" class="btn waves-effect waves-light blue cyan lighten-2">

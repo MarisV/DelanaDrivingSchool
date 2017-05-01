@@ -40,8 +40,7 @@ class ContactsController extends BaseController
             $resultMessage = '';
 
             if ($result === false) {
-                $errors = $supportMessage->getValidationMessages();
-                $resultMessage = $errors;
+                $resultMessage = $this->translate->_('Произошла ошибка, попробуйте еще раз!');
                 $this->view->setVar('errors', $resultMessage);
             } else {
                 $resultMessage = $this->translate->_('Сообщение успешно отправлено');

@@ -9,7 +9,7 @@
             <?= (new FooterContactWidget())->getWidget(); ?>
         </div>
         <div class="col sm12 m4 l4" id="footer-contacts-form">
-            <form class="col s12 m12 l12" method="post" action="/<?= LOCALE_CODE ?>/contacts/support">
+            <form class="col s12 m12 l12" method="post" action="/<?= LOCALE_CODE ?>/contacts/support"  onsubmit="return checkform(this);">
                 <div class="col s12 m12 l12 ">
                     <h5 class="left-align" >
                         <?= $this->translate->_('Задайте нам вопрос') ?>
@@ -34,10 +34,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12 input-field">
+                    <div class="col s7 m7 l7 input-field">
                         <button class="btn waves-effect waves-light light-blue" type="submit">
                             <?= $this->translate->_('Отправить') ?><i class="material-icons right">send</i>
                         </button>
+                    </div>
+                    <div class="col s5 m5 l5">
+                        <div class="capbox">
+                            <div id="CaptchaDiv"></div>
+                            <div class="capbox-inner">
+                                <?= $this->translate->_('Введите число выше') ?>:<br>
+
+                                <input type="hidden" id="txtCaptcha">
+                                <input type="text" name="CaptchaInput" id="CaptchaInput" size="12"><br>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>

@@ -254,3 +254,32 @@ nav > div > ul > li > a{
 .waves-effect.waves-blue .waves-ripple {
     background-color: rgba(66, 165, 245, 0.7);
 }
+
+
+.capbox {
+    display: inline-block;
+    padding: 8px 40px 8px 8px;
+}
+
+.capbox-inner {
+    font: bold 11px arial, sans-serif;
+    color: #000000;
+    margin: -5px auto 0px auto;
+    padding: 3px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#CaptchaDiv {
+    font: bold 17px verdana, arial, sans-serif;
+    font-style: italic;
+    color: #000000;
+    background-color: #FFFFFF;
+    padding: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#CaptchaInput { margin: 1px 0px 1px 0px; width: 135px; }

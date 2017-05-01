@@ -33,7 +33,7 @@ class FeedbackController extends BaseController
     public function deleteAction()
     {
         if ($this->request->isPost() && $this->request->isAjax()) {
-            $feedBackMessageId = $this->request->getPost('feedbackId');
+            $feedBackMessageId = $this->request->getPost('feedbackId', ['int']);
 
             $result = Feedback::findFirst($feedBackMessageId)->delete();
 

@@ -197,7 +197,9 @@ nav > div > ul > li > a{
     border-bottom: 1px dotted lightgrey
 }
 
-#feedback-message {
+
+#footer-contacts-form{
+    border-right: 1px dotted lightgrey;
     border-left: 1px dotted lightgrey;
 }
 

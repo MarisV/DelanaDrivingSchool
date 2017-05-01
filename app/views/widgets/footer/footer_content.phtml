@@ -1,21 +1,54 @@
-<?
-use library\Widgets\FooterContactWidget;
-use library\Widgets\FooterFeedbackWidget;
+<?php
+    use library\Widgets\FooterContactWidget;
+    use library\Widgets\FooterFeedbackWidget;
 ?>
+<div class="divider"></div>
 <footer class="page-footer white" style="background-color: #f9f9f9;">
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m6 l6 ">
-                <?= (new FooterContactWidget())->getWidget(); ?>
-            </div>
-            <div class="col s12 m6 l6" id="feedback-message">
-                <?= (new FooterFeedbackWidget())->getWidget()?>
-            </div>
+    <div class="row" style="margin-left: 20px">
+        <div class="col s12 m4 l3">
+            <?= (new FooterContactWidget())->getWidget(); ?>
+        </div>
+        <div class="col sm12 m4 l4" id="footer-contacts-form">
+            <form class="col s12 m12 l12" method="post" action="/<?= LOCALE_CODE ?>/contacts/support">
+                <div class="col s12 m12 l12 ">
+                    <h5 class="left-align" >
+                        <?= $this->translate->_('Задайте нам вопрос') ?>
+                    </h5>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l11">
+                        <input id="firstname" type="text" name="firstname" class="validate <?= (isset($errors['firstname'])) ? ' invalid' : '' ?>">
+                        <label for="firstname" data-error="<?= $errors['firstname'] ?? '' ?>"><?= $this->translate->_('Имя') ?></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l11">
+                        <input id="email" type="email" name="email" class="validate <?= (isset($errors['email'])) ? ' invalid' : '' ?>">
+                        <label for="email"  data-error="<?= $errors['email'] ?? '' ?>"><?= $this->translate->_('Email') ?></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l12">
+                        <textarea id="content" name="content" class="materialize-textarea validate <?= (isset($errors['content'])) ? ' invalid' : '' ?>"></textarea>
+                        <label for="content"  data-error="<?= $errors['content'] ?? '' ?>"><?= $this->translate->_('Сообщение') ?></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <button class="btn waves-effect waves-light light-blue" type="submit">
+                            <?= $this->translate->_('Отправить') ?><i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col s12 m4 l4" >
+            <?= (new FooterFeedbackWidget())->getWidget()?>
         </div>
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Made by <a class="orange-text text-lighten-3" href="http://maris-dev.tech/">Maris Vigulis</a>
+            <a class="red-text text-lighten-1" href="http://maris-dev.tech/">Maris Vigulis</a>
         </div>
     </div>
 </footer>

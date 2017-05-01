@@ -38,13 +38,13 @@
                     </div>
                     <div class="row news-sub-content">
                         <div class="col s6 m6 l6 news-read-button">
-                            <?= $this->tag->linkTo([$new->getLink(), $this->translate->_('Новости') , 'title' => "$new->title", 'class' => 'waves-effect light-blue lighten-1 btn']) . '<br><br>' ?>
+                            <?= $this->tag->linkTo([$new->getLink(), $this->translate->_('Читать дальше') . '...' , 'title' => "$new->title", 'class' => 'waves-effect light-blue lighten-1 btn']) . '<br><br>' ?>
                         </div>
 
                     </div>
                 </div>
             </div>
-        </div> <div class="divider"></div>
+        </div>
     <? } ?>
 
 <?php } else { ?>

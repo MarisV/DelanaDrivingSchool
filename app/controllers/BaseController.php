@@ -19,6 +19,12 @@ class BaseController extends Controller
             ->addJs('components/jquery/dist/jquery.js')
             ->addJs('components/materialize/dist/js/materialize.min.js')
             ->addJs('js/init.js');
+
+        if ($this->session->has('msg')) {
+            $this->view->setVar('success', $this->session->get('msg'));
+            $this->session->remove('msg');
+        }
+
     }
 
 

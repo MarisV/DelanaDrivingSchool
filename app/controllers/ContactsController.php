@@ -8,7 +8,6 @@
 
 namespace app\controllers;
 
-
 use app\models\Categories;
 use app\models\Contacts;
 use app\models\Course;
@@ -38,12 +37,23 @@ class ContactsController extends BaseController
 
             $result = $supportMessage->create();
 
+            $resultMessage = '';
+
             if ($result === false) {
                 $errors = $supportMessage->getValidationMessages();
-                $this->view->setVar('errors', $errors);
+                $resultMessage = $errors;
+                $this->view->setVar('errors', $resultMessage);
             } else {
-                $this->view->setVar('success', 'Сообщение успешно отправлено');
+                $resultMessage = $this->translate->_('Сообщение успешно отправлено');
+                $this->view->setVar('success', $resultMessage);
             }
+
+            if (!strstr($this->request->getHTTPReferer(), 'support')){
+                $this->session->set('msg', $resultMessage);
+                $this->response->redirect($this->request->getHTTPReferer());
+                return false;
+            }
+
         }
     }
 

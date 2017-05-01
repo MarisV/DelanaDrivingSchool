@@ -1,4 +1,9 @@
-<h5 class="black-text"><?= $this->translate->_('Отзывы') ?></h5>
-<h6 class="black-text">
-    <?= $feedbackMessage->comment ?>
-</h6>
+<?php if ($feedbackMessage) {?>
+    <h5 class="black-text"><?= $this->translate->_('Отзывы') ?></h5>
+    <h6 class="black-text">
+        <?= $feedbackMessage->comment ?>
+    </h6>
+    <a href="/feedback/all#feedback-list" class="">
+        <?= $this->translate->_('Читать все отзывы') ?>
+    </a>
+<?php }?>

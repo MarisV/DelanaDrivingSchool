@@ -5,6 +5,7 @@
     use library\Widgets\SidebarWidget;
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +30,13 @@
 </head>
 
 <body>
+<div class="col s4 m4 l4">
+    <?php if (isset($success)) { ?>
+        <script>
+            Materialize.toast("<?= $success ?>", 4000);
+        </script>
+    <?php } ?>
+</div>
 
 <?= (new TopPageNavigationWidget())->getWidget(); ?>
 

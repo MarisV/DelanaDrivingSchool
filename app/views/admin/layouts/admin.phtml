@@ -22,7 +22,11 @@
             <li>
                 <div class="userView">
                     <?= $this->tag->image(['img/admin-avatar.png', 'class' => 'circle responsive-img', 'id' => 'admin-avatar']) ?>
-                    <p><span class="black-text name center-align">Привет, <?= $admin->firstname ?></span></p>
+                    <p>
+                        <span class="black-text name center-align">
+                            Привет, <?= $admin->firstname ?>
+                        </span>
+                    </p>
                 </div>
             </li>
             <li> <?= $this->tag->linkTo('admin/news', 'Новости <i class="left material-icons">speaker_notes</i>'); ?> </li>
